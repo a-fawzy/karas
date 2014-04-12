@@ -1,0 +1,54 @@
+{% for flashMessage in app.session.flashbag.get('notice') %}
+<div class="alert alert-info">
+    {{ flashMessage | raw }}
+</div>
+{% endfor %}
+
+{% for flashMessage in app.session.flashbag.get('success') %}
+<div class="alert alert-success">
+    {{ flashMessage | raw }}
+</div>
+{% endfor %}
+
+{% for flashMessage in app.session.flashbag.get('error') %}
+<div class="alert alert-error">
+    {{ flashMessage | raw }}
+</div>
+{% endfor %}
+{% if message %}
+<div class="alert">
+    {{ message | raw }}
+</div>
+{% endif %}
+{% if error %}
+<div class="alert alert-error">
+    {{ error.message | trans }}
+</div>
+{% endif %}
+
+<form action="{{ path('login_check') }}" method="post">
+    <label for="username">{% if loginNameRequired %}{% trans %}Login Name{% endtrans %}{% else %}{% trans %}Email{% endtrans %}{% endif %}:</label>
+    <input type="{% if loginNameRequired %}text{% else %}email{% endif %}" id="username" name="_username" required="" placeholder="{% if loginNameRequired %}{% trans %}Login Name{% endtrans %}{% else %}{% trans %}Email{% endtrans %}{% endif %}" value="{{ last_username }}" /><br>
+
+    <label for="password">{% trans %}Password{% endtrans %}:</label>
+    <input type="password" id="password" name="_password" required="" placeholder="{% trans %}Password{% endtrans %}" /><br>
+
+    <label for="remember_me">{% trans %}Remember me{% endtrans %}:</label>
+    <input type="checkbox" id="remember_me" name="_remember_me" checked="" /><br>
+
+    <input type="submit" title="{% trans %}Login{% endtrans %}" value="{% trans %}Login{% endtrans %}" />
+</form>
+{% if facebookSignupEnabled %}
+{% render url('facebook_button', {'facebookUserHandleRoute': 'facebook_logging', 'permissions': 'email,publish_stream', 'cssClass' : 'facebook', 'linkText' : 'facebook login'|trans}) %}<br>
+{% endif %}
+{% if googleSignupEnabled %}
+<a onclick="newWindow = window.open('{{ path('google_oauth', {'redirectRoute': 'google_enter', 'popup': 'yes'}) }}', '{% trans %}Google Login{% endtrans %}', 'height=200, width=200');if(window.focus)newWindow.focus();return false;" target="_blank" title="{% trans %}Google Login{% endtrans %}" href="{{ path('google_oauth', {'redirectRoute': 'google_enter'}) }}">{% trans %}Google Login{% endtrans %}</a><br>
+{% endif %}
+{% if twitterSignupEnabled %}
+<a onclick="newWindow = window.open('{{ path('twitter_authentication', {'redirectRoute': 'twitter_enter', 'popup': 'yes'}) }}', '{% trans %}Twitter Login{% endtrans %}', 'height=200, width=200');if(window.focus)newWindow.focus();return false;" target="_blank" title="{% trans %}Twitter Login{% endtrans %}" href="{{ path('twitter_authentication', {'redirectRoute': 'twitter_enter'}) }}">{% trans %}Twitter Login{% endtrans %}</a><br>
+{% endif %}
+{% if linkedinSignupEnabled %}
+<a onclick="newWindow = window.open('{{ path('linkedInButton', {'callbackUrl': 'linkedIn_user_data','popup' : 'yes'}) }}', '{% trans %}LinkedIn Login{% endtrans %}', 'height=400, width=600');if(window.focus)newWindow.focus();return false;" target="_blank" title="{% trans %}LinkedIn Login{% endtrans %}" href="{{ path('linkedInButton', {'callbackUrl': 'linkedIn_user_data'}) }}">{% trans %}LinkedIn Login{% endtrans %}</a><br>
+{% endif %}
+<a title="{% trans %}forgot your password{% endtrans %} {% trans %}?{% endtrans %}" href="{{ path('forgot_password') }}">{% trans %}forgot your password{% endtrans %} {% trans %}?{% endtrans %}</a><br>
+{% trans %}new user{% endtrans %} <a title="{% trans %}Sign up{% endtrans %}" href="{{ path('signup') }}">{% trans %}Sign up{% endtrans %}</a>

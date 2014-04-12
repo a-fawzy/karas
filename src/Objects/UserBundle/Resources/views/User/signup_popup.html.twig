@@ -1,0 +1,75 @@
+{% for flashMessage in app.session.flashbag.get('notice') %}
+<div class="alert alert-info">
+    {{ flashMessage | raw }}
+</div>
+{% endfor %}
+
+{% for flashMessage in app.session.flashbag.get('success') %}
+<div class="alert alert-success">
+    {{ flashMessage | raw }}
+</div>
+{% endfor %}
+
+{% for flashMessage in app.session.flashbag.get('error') %}
+<div class="alert alert-error">
+    {{ flashMessage | raw }}
+</div>
+{% endfor %}
+
+{% if message %}
+<div class="alert-message fail">
+    {{ message | raw }}
+</div>
+{% endif %}
+
+{% for elementError in form.vars.errors %}
+<div class="alert alert-error">
+    {{ elementError.message }}<a href="#" class="close" data-dismiss="alert">&times;</a>
+</div>
+{% endfor %}
+
+{{ form_start(form, {'action': path('signup')}) }}
+
+    {{ form_errors(form.firstName) }}<br>
+    <label>{% trans %}Your Name{% endtrans %}:</label>
+    {{ form_widget(form.firstName) }}<br>
+
+    {% if loginNameRequired %}
+    {{ form_errors(form.loginName) }}<br>
+    <label>{% trans %}Login Name{% endtrans %}:</label>
+    {{ form_widget(form.loginName) }}
+    <span id="loginName-error" style="display: none;"></span>
+    <br>
+    {% endif %}
+
+    {{ form_errors(form.email) }}<br>
+    <label>{% trans %}Email{% endtrans %}:</label>
+    {{ form_widget(form.email) }}<br>
+    <span id="mailcheck-message" style="display: none;"></span>
+
+    {% if not popupFlag %}
+    {{ form_errors(form.userPassword.Password) }}<br>
+    <label>{% trans %}Password{% endtrans %}:</label>
+    {{ form_widget(form.userPassword.Password) }}<br>
+    <label>{% trans %}RePassword{% endtrans %}:</label>
+    {{ form_widget(form.userPassword.RePassword) }}<br>
+    {% else %}
+    {{ form_errors(form.userPassword) }}<br>
+    <label>{% trans %}Password{% endtrans %}:</label>
+    {{ form_widget(form.userPassword) }}<br>
+    {% endif %}
+
+    <input type="submit" title="{% trans %}Sign up{% endtrans %}" value="{% trans %}Sign up{% endtrans %}" id="user-signup"/>
+{{ form_end(form) }}
+{% if facebookSignupEnabled %}
+{% render url('facebook_button', {'facebookUserHandleRoute': 'facebook_logging', 'permissions': 'email,publish_stream', 'cssClass' : 'facebook', 'linkText' : 'facebook signup'|trans}) %}<br>
+{% endif %}
+{% if googleSignupEnabled %}
+<a onclick="newWindow = window.open('{{ path('google_oauth', {'redirectRoute': 'google_enter', 'popup': 'yes'}) }}', '{% trans %}Google Sign up{% endtrans %}', 'height=200, width=200');if(window.focus)newWindow.focus();return false;" target="_blank" title="{% trans %}Google Sign up{% endtrans %}" href="{{ path('google_oauth', {'redirectRoute': 'google_enter'}) }}">{% trans %}Google Sign up{% endtrans %}</a><br>
+{% endif %}
+{% if twitterSignupEnabled %}
+<a onclick="newWindow = window.open('{{ path('twitter_authentication', {'redirectRoute': 'twitter_enter', 'popup': 'yes'}) }}', '{% trans %}Twitter Sign up{% endtrans %}', 'height=200, width=200');if(window.focus)newWindow.focus();return false;" target="_blank" title="{% trans %}Twitter Sign up{% endtrans %}" href="{{ path('twitter_authentication', {'redirectRoute': 'twitter_enter'}) }}">{% trans %}Twitter Sign up{% endtrans %}</a><br>
+{% endif %}
+{% if linkedinSignupEnabled %}
+<a onclick="newWindow = window.open('{{ path('linkedInButton', {'callbackUrl': 'linkedIn_user_data','popup' : 'yes'}) }}', '{% trans %}LinkedIn Sign up{% endtrans %}', 'height=400, width=600');if(window.focus)newWindow.focus();return false;" target="_blank" title="{% trans %}LinkedIn Sign up{% endtrans %}" href="{{ path('linkedInButton', {'callbackUrl': 'linkedIn_user_data'}) }}">{% trans %}LinkedIn Sign up{% endtrans %}</a>
+{% endif %}

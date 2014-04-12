@@ -1,0 +1,15 @@
+services:
+    #use this service if you need to display the number of the logged in users
+#    request.listener.update_user_last_seen:
+#        class: Objects\UserBundle\Listener\UpdateUserLastSeenListener
+#        arguments: [@security.context, @doctrine]
+#        tags:
+#            - { name: kernel.event_listener, event: kernel.request, method: onRequest }
+
+parameters:
+    auto_active: false
+    login_name_required: true
+    twitter_signup_enabled: true
+    facebook_signup_enabled: true
+    linkedin_signup_enabled: true
+    google_signup_enabled: true

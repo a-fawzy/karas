@@ -1,0 +1,7 @@
+parameters:
+#    objects_karas.example.class: Objects\KarasBundle\Example
+
+services:
+#    objects_karas.example:
+#        class: %objects_karas.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

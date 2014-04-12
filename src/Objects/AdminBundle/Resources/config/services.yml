@@ -1,0 +1,21 @@
+services:
+    page_admin:
+      class: Objects\AdminBundle\Admin\PageAdmin
+      tags:
+         - { name: sonata.admin, manager_type: orm, label: Page }
+      arguments: [null, Objects\AdminBundle\Entity\Page, SonataAdminBundle:CRUD]
+    block_admin:
+      class: Objects\AdminBundle\Admin\BlockAdmin
+      tags:
+         - { name: sonata.admin, manager_type: orm, label: Block }
+      arguments: [null, Objects\AdminBundle\Entity\Block, SonataAdminBundle:CRUD]
+    banner_admin:
+      class: Objects\AdminBundle\Admin\BannerAdmin
+      tags:
+         - { name: sonata.admin, manager_type: orm, label: Banner }
+      arguments: [null, Objects\AdminBundle\Entity\Banner, ObjectsAdminBundle:Banner]
+#    user_admin:
+#        class: Objects\AdminBundle\Admin\UserAdmin
+#        arguments: [~, Objects\UserBundle\Entity\User, ObjectsAdminBundle:User]
+#        tags:
+#            - {name: sonata.admin, manager_type: orm, group: admin, label: User}

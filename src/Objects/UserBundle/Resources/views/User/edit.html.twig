@@ -1,0 +1,132 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{% trans %}Edit My Account{% endtrans %}{% endblock %}
+
+{% block body %}
+
+{% for flashMessage in app.session.flashbag.get('notice') %}
+<div class="alert alert-info">
+    {{ flashMessage | raw }}
+</div>
+{% endfor %}
+
+{% for flashMessage in app.session.flashbag.get('success') %}
+<div class="alert alert-success">
+    {{ flashMessage | raw }}
+</div>
+{% endfor %}
+
+{% for flashMessage in app.session.flashbag.get('error') %}
+<div class="alert alert-error">
+    {{ flashMessage | raw }}
+</div>
+{% endfor %}
+
+{% if message %}
+<div class="alert-message success">
+{{ message | trans }}
+</div>
+{% endif %}
+
+{% for elementError in form.vars.errors %}
+<div class="alert alert-error">
+    {{ elementError.message }}<a href="#" class="close" data-dismiss="alert">&times;</a>
+</div>
+{% endfor %}
+
+{{ form_start(form) }}
+
+    {% if oldPassword %}
+        {{ form_errors(form.oldPassword) }}<br>
+        <label>{% trans %}Old Password{% endtrans %}:</label>
+        {{ form_widget(form.oldPassword) }}<br>
+    {% endif %}
+
+    {{ form_errors(form.userPassword.Password) }}<br>
+    <label>{% trans %}New Password{% endtrans %}:</label>
+    {{ form_widget(form.userPassword.Password, {'attr': {'autocomplete': 'off'} }) }}<br>
+
+    <label>{% trans %}Retype New Password{% endtrans %}:</label>
+    {{ form_widget(form.userPassword.RePassword, {'attr': {'autocomplete': 'off'} }) }}<br>
+
+    {% if changeUserName %}
+        {{ form_errors(form.loginName) }}<br>
+        <label>{% trans %}Login Name{% endtrans %}:</label>
+        {{ form_widget(form.loginName) }}<br>
+        <span>{% trans %}You can change your login name only once{% endtrans %}</span><br>
+    {% endif %}
+
+    {{ form_errors(form.email) }}<br>
+    <label>{% trans %}Email{% endtrans %}:</label>
+    {{ form_widget(form.email) }}<br>
+
+    {{ form_errors(form.firstName) }}<br>
+    <label>{% trans %}First Name{% endtrans %}:</label>
+    {{ form_widget(form.firstName) }}<br>
+
+    {{ form_errors(form.lastName) }}<br>
+    <label>{% trans %}Last Name{% endtrans %}:</label>
+    {{ form_widget(form.lastName) }}<br>
+
+    {{ form_errors(form.gender) }}<br>
+    <label>{% trans %}Gender{% endtrans %}:</label>
+    {{ form_widget(form.gender) }}<br>
+
+    {{ form_errors(form.dateOfBirth) }}<br>
+    <label>{% trans %}Date Of Birth{% endtrans %}:</label>
+    {{ form_widget(form.dateOfBirth) }}<br>
+
+    {{ form_errors(form.countryCode) }}<br>
+    <label>{% trans %}Country{% endtrans %}:</label>
+    {{ form_widget(form.countryCode) }}<br>
+
+    {{ form_errors(form.url) }}<br>
+    <label>{% trans %}Url{% endtrans %}:</label>
+    {{ form_widget(form.url) }}<br>
+
+    {{ form_errors(form.about) }}<br>
+    <label>{% trans %}About You{% endtrans %}:</label>
+    {{ form_widget(form.about) }}<br>
+
+    <input type="submit" value="{% trans %}Edit{% endtrans %}" title="{% trans %}Edit{% endtrans %}">
+{{ form_end(form) }}
+
+<br>
+
+{% if facebookSignupEnabled %}
+{% if socialAccounts and socialAccounts.isFacebookLinked() %}
+<a href="{{ path('social_unlink', {'social': 'facebook'}) }}" title="{% trans %}unlink facebook{% endtrans %}">{% trans %}unlink facebook{% endtrans %}</a><br><br>
+{% else %}
+{% render url('facebook_button', {'facebookUserHandleRoute': 'facebook_link', 'permissions': 'email,publish_stream', 'cssClass' : 'facebook', 'linkText' : 'link facebook'|trans}) %}<br>
+{% endif %}
+{% endif %}
+
+{% if linkedinSignupEnabled %}
+{% if socialAccounts and socialAccounts.isLinkedInLinked() %}
+<a href="{{ path('social_unlink', {'social': 'linkedin'}) }}" title="{% trans %}unlink linkedin{% endtrans %}">{% trans %}unlink linkedin{% endtrans %}</a><br/><br/>
+{% else %}
+<a onclick="newWindow = window.open('{{ path('linkedInButton', {'callbackUrl': 'linkedin_link','popup' : 'yes'}) }}', '{% trans %}LinkedIn Link{% endtrans %}', 'height=400, width=600');if(window.focus)newWindow.focus();return false;" target="_blank" title="{% trans %}LinkedIn Link{% endtrans %}" href="{{ path('linkedInButton', {'callbackUrl': 'linkedin_link'}) }}">{% trans %}LinkedIn Link{% endtrans %}</a><br/><br/>
+{% endif %}
+{% endif %}
+
+{% if twitterSignupEnabled %}
+{% if socialAccounts and socialAccounts.isTwitterLinked() %}
+<a href="{{ path('social_unlink', {'social': 'twitter'}) }}" title="{% trans %}unlink twitter{% endtrans %}">{% trans %}unlink twitter{% endtrans %}</a>
+{% else %}
+<a onclick="javascript:startTwitterLink();return false;" target="_blank" title="{% trans %}Twitter Link{% endtrans %}" href="{{ path('twitter_authentication', {'redirectRoute': 'twitter_link'}) }}">{% trans %}Twitter Link{% endtrans %}</a>
+{% endif %}
+
+<script>
+    function startTwitterLink(){
+        newwindow = window.open("{{ path('twitter_authentication', {'redirectRoute': 'twitter_link', 'popup': 'yes'}) }}", '', 'height=200,width=200');
+        if (window.focus) {
+            newwindow.focus();
+        }
+    }
+</script>
+{% endif %}
+
+<br>
+<br>
+<a title="{% trans %}delete your account{% endtrans %}" href="{{ path('user_delete') }}">{% trans %}delete your account{% endtrans %}</a>
+{% endblock %}

@@ -1,0 +1,24 @@
+objects_karas:
+    resource: "@ObjectsKarasBundle/Resources/config/routing.yml"
+    prefix:   /
+
+ObjectsUserBundle:
+    resource: "@ObjectsUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
+objects_admin:
+    resource: "@ObjectsAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+# Login routes
+#login_check:
+#    path:  /login-check
+#
+#logout:
+#    path:  /logout
+#
+#login:
+#    path:  /login
+#    defaults: { _controller: ObjectsAdminBundle:Admin:login }
+
