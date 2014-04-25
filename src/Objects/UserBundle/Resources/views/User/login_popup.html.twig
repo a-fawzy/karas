@@ -26,17 +26,28 @@
 </div>
 {% endif %}
 
-<form action="{{ path('login_check') }}" method="post">
-    <label for="username">{% if loginNameRequired %}{% trans %}Login Name{% endtrans %}{% else %}{% trans %}Email{% endtrans %}{% endif %}:</label>
-    <input type="{% if loginNameRequired %}text{% else %}email{% endif %}" id="username" name="_username" required="" placeholder="{% if loginNameRequired %}{% trans %}Login Name{% endtrans %}{% else %}{% trans %}Email{% endtrans %}{% endif %}" value="{{ last_username }}" /><br>
 
-    <label for="password">{% trans %}Password{% endtrans %}:</label>
-    <input type="password" id="password" name="_password" required="" placeholder="{% trans %}Password{% endtrans %}" /><br>
-
-    <label for="remember_me">{% trans %}Remember me{% endtrans %}:</label>
-    <input type="checkbox" id="remember_me" name="_remember_me" checked="" /><br>
-
-    <input type="submit" title="{% trans %}Login{% endtrans %}" value="{% trans %}Login{% endtrans %}" />
+<form action="{{ path('login_check') }}" method="post" class="form-horizontal">
+    <div class="control-group">
+        <label class="control-label" for="inputEmail">Email</label>
+        <div class="controls">
+            <input type="{% if loginNameRequired %}text{% else %}email{% endif %}" id="username" name="_username" required="" placeholder="{% if loginNameRequired %}{% trans %}Login Name{% endtrans %}{% else %}{% trans %}Email{% endtrans %}{% endif %}" value="{{ last_username }}" /><br>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="inputPassword">Password</label>
+        <div class="controls">
+            <input type="password" id="password" name="_password" required="" placeholder="{% trans %}Password{% endtrans %}" /><br>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <input style="margin-top: 0px" type="checkbox" id="remember_me" name="_remember_me" checked="" />
+            Remember Me <br>
+        </div>
+    </div>
+    <input type="hidden" value="popup" name="popup" />
+    <input style="{% if not error %}display: none{% endif %}" class="btn btn-primary" id="loginBtn" type="submit" title="{% trans %}Login{% endtrans %}" value="{% trans %}Login{% endtrans %}" />
 </form>
 {% if facebookSignupEnabled %}
 {% render url('facebook_button', {'facebookUserHandleRoute': 'facebook_logging', 'permissions': 'email,publish_stream', 'cssClass' : 'facebook', 'linkText' : 'facebook login'|trans}) %}<br>

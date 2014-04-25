@@ -1,0 +1,50 @@
+s/* =================================================
+color guide
+-----------
+#ececec		| light gray	| used for breadcrumbs BG
+#777777 	| dark gray		| used for paging table title
+#ffffff		| white			| generic white color
+#94b52c		| Green			| used for menu
+================================================= */
+
+/* ---------- @HTML tags  -------------------------*/
+body {
+	font-family:Arial, Helvetica, sans-serif;
+	background:#fff;
+	height: 100%;
+    margin: 0 auto;
+}
+html {
+	height: 100%;
+}
+table {
+    border-collapse: collapse;
+}
+/* ---------- @Global Classes --------------------*/
+.clear         { clear:both !important; }
+.noClear	   { clear:none!important;}
+.float-left    { float:left; }
+.float-right   { float:right; }
+.textLeft      { text-align:left; }
+.textRight     { text-align:right; }
+.text-center   { text-align:center; }
+.text-justify  { text-align:justify; }
+.bold          { font-weight:bold; }
+.italic        { font-style:italic; }
+.underline     { border-bottom:1px solid; }
+.highlight     { background:#ffc; }
+.nopadding     { padding:0; }
+.noindent      { margin-left:0;padding-left:0; }
+.nobullet      { list-style:none;list-style-image:none; }
+.left{float:left !important;}
+.right{float:right !important;}
+.show{display:block!important;}
+.hide{display:none;}
+a{text-decoration:none;}
+a:hover{text-decoration:underline;}
+input {
+	color:#333;
+	}
+.lastItem {
+	border-bottom:none !important;
+	}

@@ -1,0 +1,406 @@
+/* CSS Document */
+
+.wrapper970 {
+	width:970px;
+	margin:0 auto;
+	}
+.section1over3 {
+	width:31%;
+	float:left;
+    margin-right:20px
+	}
+.section2over3 {
+	width:66%;
+	float:left;
+	}
+.mainMenu {
+	margin:0;
+	}
+.mainMenu li {
+	float:left;
+	border:1px solid #999;
+	width:104px;
+	height:50px;
+	}
+	.mainMenu li a{
+	display:block;
+	width:100%;
+	height:100%;
+	text-align:center;
+	line-height:50px;
+	color:#000;
+	
+	}
+	.mainMenu li a:hover{
+	text-decoration:none;
+	background:#d1d1d1;
+	
+	}
+	h3 {
+		color:#666;
+        border-bottom:1px solid #ccc;
+		}
+		h4 {
+			font-size:15px;
+			color:#6a6a6a;
+			}
+.homeInput {
+	width:90%;
+	font-size:14px;
+	height:30px !important;
+	}
+.userCtr {
+	float:right;
+    margin:10px 0 10px 20px;
+	color:#666;}
+.fullWidth {
+    width:100%;
+
+}
+.centerBar {
+    height:100px;
+    border-top:1px solid #d8d8d8;
+    border-bottom:1px solid #d8d8d8;
+    margin-top:15px;
+    margin-bottom:15px;
+
+}
+.hr1 {
+margin:14px 0;
+}
+.logo {
+    margin:10px 0 0 0;
+}
+.hrLogo {
+    margin-top:-33px;
+    margin-bottom:30px;
+
+}
+.btn-block i {
+    float:right;margin-right:20px;
+}
+.btn-block:hover i {
+    margin-right:5px;
+}
+.findCareer li a {
+    color:#c70900;
+    display:block;
+    width:185px;
+    text-align:right;
+    font-size:16px;
+    padding:3px 0 3px 0 ;
+}
+.findCareer li a span {
+    font-weight:bold;
+}
+.findCareer li a:hover {
+    background:#ddd;
+    text-decoration:none;
+}
+.latestJobs li {
+    position:relative;
+}
+.latestJobs li span{
+    color:#f48e3c;
+    text-decoration:underline;
+    
+}
+.latestJobs span.lineTwo {
+    display:block;
+    color:#666;
+    text-decoration:none;
+}
+.latestJobs em {
+    position:absolute;
+    left:-20px;
+    color:#f48e3c;
+    font-weight:bold
+}
+.latestJobs a.allLnk {
+    display:block;
+}
+.latestJobs a.allLnk:hover {
+    background:#eeeeee;
+    text-decoration:none;
+}
+.browsePpl img {
+    border:1px solid #999;
+    float:left;
+    width:100px;   
+    margin:0 10px 0 0;
+}
+.browsePpl li{
+    padding:0;
+    border-bottom:1px solid #ccc;
+    margin-bottom:20PX;
+}
+.browsePpl {
+padding:0;
+margin:0;
+}
+.browsePpl .name{
+    display:block;
+    font-size:18px;
+    font-weight:bold;
+    
+}
+.browsePpl .data1{
+    display:block;
+    font-size:14px;
+    margin-bottom:5px;
+    
+}
+.browsePpl .data2{
+    display:block;
+    color:#666;
+    font-size:12px;
+}
+.browsePpl a {
+     color:#f48e3c;
+     font-weight:bold;
+     float:left;
+     margin-bottom:5px;
+}
+.browsePpl a:hover {
+     background:#f48e3c;
+     color:#fff;
+     text-decoration:none;
+}
+.browsePpl div.cont {
+    
+     float:left;
+     width:156px;
+}
+.modal h3 {
+    border:none;
+
+}
+.centerBar img {
+    float:left;
+    margin-top:22px;
+     margin-left: 10px;
+}
+.centerBar img.logo2 {
+    margin-top:22px;
+    margin-left: 81px;
+}
+.puzzle {
+    position:absolute;
+    
+top: -66px;
+left: 532px;
+    height: 180px;
+}
+.fotter1lst li  a{
+    text-align:left;
+    font-size:14px;
+}
+.fotter1lst li  a span{
+    margin-right:10px;
+}
+.footer h3 {
+    font-size:18px;
+}
+.footer .findCareer li a {
+width:206px;
+}
+.lineR {
+height:0;
+border-bottom:1px solid #ccc;
+}
+.jobList>li {
+display:block;
+height:90px;
+padding:10px 0 0 0;
+position:relative;
+
+border-bottom:1px solid #ccc;
+}
+
+.jobList li img{
+border:1px solid #ccc;
+padding:27px;
+float:left;
+margin-right:6PX;
+margin-left:10px;
+}
+.resumes.jobList li img{
+
+padding:0;
+width:94px;
+
+}
+.resumes.jobList li .btn {
+    position:static;
+}
+
+.resumes.jobList>li {
+height:105px;
+}
+
+
+    .jobList li .jobName {
+        font-size: 16px;
+        display: block;
+        color: #c70900;
+        font-weight:bold
+    }
+        .jobList li .jobLocation {
+        display:block;
+        color:#999;
+    }
+                .jobList li .jobDesc {
+       font-size:12px;
+    }
+ .jobList li .btn {
+     position:absolute;
+     right: 21px;
+top: 36px;
+display:none;
+
+ }
+.resumes.jobList li .btn {
+display:block;
+float:right;
+position:static;
+
+ }
+ .jobList li:hover {
+background-color:#f5f6f6;
+-webkit-border-radius: 7px;
+-moz-border-radius: 7px;
+border-radius: 7px;
+
+}
+ .jobList li:hover .btn {
+display:block;
+}
+.btn-group {
+    float:right;
+    margin-right:60px;
+}
+.btn-group .btn {
+float:left !important;
+position:static !important;
+top :0 !important;
+left:0 !important;
+right:0 !important;
+}
+    .btn-group .dropdown-toggle {
+        float: right !important;
+        height:30px;
+    
+}
+.jobName, .jobCategory, .jobLocation, .jobDesc {
+float:left
+}
+.chzn-container-active .chzn-choices {
+border: 1px solid #cccccc;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+}
+.searchSide input.homeInput {
+height:20px !important;
+}
+#map-canvas
+{
+	height : 300px;
+	width:100%;
+}
+.legend {
+	border: 1px solid #cccccc;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+padding-top:15px;
+margin-top:7px;
+}
+.help-block {
+	font-size:12px;
+	color:#666;
+	margin-top:1px !important;
+}
+.chzn-container {
+	width:220px !important;
+	
+}
+.marginBtnZero {
+margin-bottom: 0
+}
+.hundredWidth {
+width:100%
+}
+.aboutHeading1 {
+text-align:center;color: #c70900;
+}
+.footerCont1 {
+width: 31%; float: left; margin-right: 20px
+}
+.marginRightZero {
+margin-right: 0
+}
+.marginBottomZero {
+margin-bottom: 0
+}
+.marginLeft10px {
+margin-left:10px
+}
+.karasAddress {width:190px;float:left;margin:17px 0 0 10px}
+.contactImg{float:right;width:200px;margin-top:15px;}
+.resumes.jobListCourses>li {
+height: 88px;
+}
+.noMinWidth {min-width:initial}
+.advancedS {margin:4px 0 0 0;}
+.darkGray {color:#666;}
+.relative {position:relative}
+.forteeper {width:40%}
+.mystats {margin:2px 16px 0 0;}
+.lightGray {background:#eee}
+#customersLogos img {
+height:55px;
+margin:13px;
+}
+#services img {
+height:115px;
+float:right;
+margin-right:5px;
+}
+#services div {
+width:70%;
+float:left;
+}
+#services li {
+border-bottom:1px solid #2f96b4;
+padding-top:10px;
+}
+#services span {
+font-size:16px;
+color:#c70900;
+font-weight:bold;
+}
+form span.jobData {
+font-weight:bold;
+}
+form span.jobField {
+display:block;
+float:left;
+width:120px;
+}
+form span.jobField {
+display:block;
+float:left;
+width:120px;
+}
+form.jd ul {
+float:left;
+margin:0;
+padding:0;
+}
+.socialLinks {
+float:right;
+}
+.fh {
+width:350px;float:left
+}

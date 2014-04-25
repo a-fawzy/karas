@@ -44,6 +44,9 @@ class UserController extends Controller {
         if ($request->isXmlHttpRequest()) {
             $view = 'ObjectsUserBundle:User:login_popup.html.twig';
         }
+        if (! isset($error)){
+            $view = 'ObjectsUserBundle:User:login_popup.html.twig';
+        }
         $container = $this->container;
         $twitterSignupEnabled = $container->getParameter('twitter_signup_enabled');
         $facebookSignupEnabled = $container->getParameter('facebook_signup_enabled');
@@ -140,7 +143,15 @@ class UserController extends Controller {
                         'validation_groups' => $formValidationGroups
                     ))
                     ->add('email', 'email')
-                    ->add('firstName', null, array('required' => false))
+                    ->add('type', 'choice', array(
+                        'choices'   => array(
+                            'employer'   => 'Employer',
+                            'employee' => 'Employee',
+                        ),
+                        'multiple'  => false,
+                        'expanded' => true,
+                    ))
+                    ->add('firstName')
                     ->add('userPassword', 'repeated', array(
                 'type' => 'password',
                 'first_name' => 'Password',
@@ -157,8 +168,10 @@ class UserController extends Controller {
         }
         //create the form
         $form = $formBuilder->getForm();
+        $view = 'ObjectsUserBundle:User:signup_popup.html.twig';
         //check if this is the user posted his data
         if ($request->getMethod() == 'POST') {
+            $view = 'ObjectsUserBundle:User:signup.html.twig';
             //fill the form data from the request
             $form->handleRequest($request);
             //check if the form values are correct

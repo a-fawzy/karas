@@ -1,13 +1,165 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}"/>
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/base.css') }}"/>
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}"/>
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-responsive.css') }}"/>
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}"/>
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/flexslider.css') }}"/>
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        
+        {% block javascripts %}
+            <script type="text/javascript" src="{{ asset('js/jquery-1.10.1.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/jquery.flexslider-min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/holder.js') }}"></script>
+            <script>
+                $(document).ready(function() {
+                    $('.flexslider').flexslider({
+                        animation: "slide"
+                    });
+                });
+            </script>
+        {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        <div class="wrapper970">
+            {% block sideBar %}
+                <div class="section1over3">
+                    <img class="logo" src="{{ asset('img/logo.png') }}"/>
+                    <hr class="hrLogo"/>
+                    <h3>Find Your Job :</h3>
+                    <h4>ENTER YOUR JOB SPECIALITY HERE</h4>
+                    <input class="homeInput" type="text" placeholder="job speciality ..."/>
+                    <h4>ENTER YOUR INDUSTRY HERE</h4>
+                    <input class="homeInput" type="text" placeholder="email address ..."/>
+                    <div class="clearfix">
+                    </div>
+                    <a href="javascript:void(0)" class="btn btn-warning">RESET</a><a href="javascript:void(0)" class="btn btn-info marginLeft10px">SUBMIT</a>
+                    <hr class="hr1"/>
+                    <button class="btn btn-large btn-block btn-warning" type="button">Post Your Resume<i class="icon-white icon-circle-arrow-right"></i></button>
+                    <button class="btn btn-large btn-block btn-info" type="button">Find Resume<i class="icon-white icon-circle-arrow-right"></i></button>
+                </div>
+            {% endblock %}
+            
+            <div class="section2over3">
+            
+            {% block topNavigation %}
+                {% if not app.user %}
+                    <a href="#" data-target="#login" class="userCtr" data-toggle="modal" style="color:#f89406"><i class="icon-user"></i>sign in</a>
+                    <a href="#" data-target="#register" class="userCtr" data-toggle="modal"  style="color:#49afcd"><i class="icon-play"></i>register</a>
+                {% else  %}
+                    <p class="userCtr">Welcome: {{app.user.firstName}}</p>
+                    <a href="{{ path('logout') }}" class="userCtr" style="color:#f89406"><i class="icon-user"></i>logout</a>
+                    <a href="#" data-target="#register" class="userCtr" data-toggle="modal"  style="color:#49afcd"><i class="icon-play"></i>register</a>
+                {% endif %}
+            {% endblock %}
+            
+            <div class="clearfix"></div>
+                {% block navigation %}
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <ul class="nav">
+                                <li {% block activeHome %}{% endblock %}><a href="index.html">Home</a></li>
+                                <li {% block activeAbout %}{% endblock %}><a href="about.html">ABOUT US</a></li>
+                                <li {% block activeJobs %}{% endblock %}><a href="jobs.html">JOBS</a></li>
+                                <li {% block activeRequest %}{% endblock %}><a href="resumes.html">REQUESTS</a></li>
+                                <li {% block activeService %}{% endblock %}><a href="hrservices.html">HR/SERVICES</a></li>
+                                <li {% block activeContact %}{% endblock %}><a href="contact.html">CONTACT US</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                {% endblock %}    
+                
+                <div class="clearfix"></div>
+                
+                {% block body %}{% endblock %}
+                
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
+        {% block identity %}{% endblock %}
+        {% block indexFooter %}{% endblock %}
+        
+        {% block footer %}
+            <div class="wrapper970">
+                <div class="clear"></div>
+                <div class="fullWidth lineR"></div>
+                <div class="clear"></div>
+
+                <div class="section1over3">
+                    <img class="logo" src="{{ asset('img/logoba.png') }}">
+                </div>
+                <div class="section2over3 footer">
+                    <div style="width: 31%; float: left; margin-right: 20px">
+                        <h3>Career Builder :</h3>
+                        <ul class="findCareer fotter1lst">
+                            <li><a href="javascript:void(0)"><span>&gt;</span>About Us</a></li>
+                            <li><a href="javascript:void(0)"><span>&gt;</span>Work at CareerBuilder</a></li>
+                            <li><a href="javascript:void(0)"><span>&gt;</span>Affiliate Program</a></li>
+                            <li><a href="javascript:void(0)"><span>&gt;</span>CareerBuilder API</a></li>
+                        </ul>
+                    </div>
+                    <div style="width: 31%; float: left; margin-right: 20px">
+                        <h3>Job Seeker :</h3>
+                        <ul class="findCareer fotter1lst">
+                            <li><a href="javascript:void(0)"><span>&gt;</span>Free Career Test</a></li>
+                            <li><a href="javascript:void(0)"><span>&gt;</span>Salary Calculator</a></li>
+                            <li><a href="javascript:void(0)"><span>&gt;</span>Skills Training</a></li>
+                            <li><a href="javascript:void(0)"><span>&gt;</span>College Degrees</a></li>
+                        </ul>
+                    </div>
+                    <div style="width: 31%; float: left">
+                        <h3>Employers :</h3>
+                        <ul class="findCareer fotter1lst">
+                            <li><a href="javascript:void(0)"><span>&gt;</span>Search Resumes</a></li>
+                            <li><a href="javascript:void(0)"><span>&gt;</span>Post Jobs</a></li>
+                            <li><a href="javascript:void(0)"><span>&gt;</span>CareerBuilder Talent Network</a></li>
+                            <li><a href="javascript:void(0)"><span>&gt;</span>Resource Center</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+        
+        {% block register %}
+            <div class="modal hide fade" id="register"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">Register Now</h3>
+                </div>
+                <div class="modal-body">
+                    {{ render(controller('ObjectsUserBundle:User:signup')) }}
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                    <input  onclick="$('#registerBtn').click();" class="btn btn-primary" type="submit" title="{% trans %}Sign up{% endtrans %}" value="Register" id="user-signup"/>
+                </div>
+            </div>
+        {% endblock %}
+        {% block login %}
+            <div id="login" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="H1">Sign In</h3>
+                </div>
+                <div class="modal-body">
+                    {{ render(controller('ObjectsUserBundle:User:login')) }}
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                    <button onclick="$('#loginBtn').click();" class="btn btn-primary">Sign In</button>
+                </div>
+            </div>
+        {% endblock %}
+        
+
     </body>
 </html>

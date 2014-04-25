@@ -126,7 +126,14 @@ class User implements AdvancedUserInterface {
      * @ORM\Column(name="about", type="text", nullable=true)
      */
     private $about;
-
+    
+    /**
+     * @var text $type
+     *
+     * @ORM\Column(name="type", type="text", length=10)
+     */
+    private $type;
+    
     /**
      * @var boolean $gender
      * 0 female, 1 male
@@ -1085,4 +1092,27 @@ class User implements AdvancedUserInterface {
         return $this->userRoles;
     }
 
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return User
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
 }

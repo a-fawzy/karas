@@ -1,0 +1,14 @@
+﻿.btn-block {
+			color:#6c6c6c;
+			font-size:14px;
+		}
+		input[type=text] {
+			font-size:13px;
+		}
+		form {
+			margin:0;
+		}
+		.collapse.in {
+    height: auto;  /* this style already exists in bootstrap.css */
+    overflow: visible;  /* this one doesn't. Add it! */
+}

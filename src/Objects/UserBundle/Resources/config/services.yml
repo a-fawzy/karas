@@ -7,9 +7,9 @@ services:
 #            - { name: kernel.event_listener, event: kernel.request, method: onRequest }
 
 parameters:
-    auto_active: false
+    auto_active: true
     login_name_required: true
-    twitter_signup_enabled: true
-    facebook_signup_enabled: true
-    linkedin_signup_enabled: true
-    google_signup_enabled: true
+    twitter_signup_enabled: false
+    facebook_signup_enabled: false
+    linkedin_signup_enabled: false
+    google_signup_enabled: false
