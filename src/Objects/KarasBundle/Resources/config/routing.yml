@@ -1,3 +1,56 @@
 objects_karas_homepage:
     pattern:  /
     defaults: { _controller: ObjectsKarasBundle:Karas:index }
+
+objects_karas_services:
+    pattern:  /services
+    defaults: { _controller: ObjectsKarasBundle:Karas:services }
+
+objects_karas_contact:
+    pattern:  /contact
+    defaults: { _controller: ObjectsKarasBundle:Karas:contact }
+
+objects_karas_email:
+    pattern:  /email
+    defaults: { _controller: ObjectsKarasBundle:Karas:email }
+
+
+objects_karas_employee_profile:
+    pattern:  /employee/profile
+    defaults: { _controller: ObjectsKarasBundle:Employee:profile }
+
+objects_karas_employee_profile_contact:
+    pattern:  /employee/profile/contact
+    defaults: { _controller: ObjectsKarasBundle:Employee:contact }
+
+objects_karas_employee_profile_summary:
+    pattern:  /employee/profile/summary
+    defaults: { _controller: ObjectsKarasBundle:Employee:summary }
+
+objects_karas_employee_profile_experience:
+    pattern:  /employee/profile/experience
+    defaults: { _controller: ObjectsKarasBundle:Employee:experience }
+
+objects_karas_employee_profile_project:
+    pattern:  /employee/profile/project
+    defaults: { _controller: ObjectsKarasBundle:Employee:project }
+
+objects_karas_employee_profile_course:
+    pattern:  /employee/profile/course
+    defaults: { _controller: ObjectsKarasBundle:Employee:course }
+
+objects_karas_employee_profile_skill:
+    pattern:  /employee/profile/skill
+    defaults: { _controller: ObjectsKarasBundle:Employee:skill }
+
+objects_karas_employee_profile_education:
+    pattern:  /employee/profile/education
+    defaults: { _controller: ObjectsKarasBundle:Employee:education }
+
+objects_karas_employee_profile_additional:
+    pattern:  /employee/profile/additional
+    defaults: { _controller: ObjectsKarasBundle:Employee:additional }
+
+objects_karas_employee_profile_language:
+    pattern:  /employee/profile/language
+    defaults: { _controller: ObjectsKarasBundle:Employee:language }

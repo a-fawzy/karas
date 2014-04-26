@@ -17,15 +17,11 @@
 {% block body %}
     <div class="flexslider">
         <ul class="slides">
-            <li>
-                <img data-src="js/holder.js/656x388" alt="">
-            </li>
-            <li>
-                <img data-src="js/holder.js/656x388" alt="">
-            </li>
-            <li>
-                <img data-src="js/holder.js/656x388" alt="">
-            </li>
+            {% for slide in slides  %}
+                <li>
+                    <img src="{{ asset(slide.getSmallImageUrl(656,388)) }}" />
+                </li>
+            {% endfor %}
         </ul>
     </div>
 {% endblock %}

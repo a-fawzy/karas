@@ -106,6 +106,70 @@ class User implements AdvancedUserInterface {
      */
     private $lastSeen;
 
+    
+    /**
+     * @var string $phone
+     * @ORM\Column(name="phone", type="string", length=20, nullable=true)
+     */
+    private $phone;
+
+    /**
+     * @var string $address
+     * @ORM\Column(name="address", type="string", length=200, nullable=true)
+     */
+    private $address;
+    
+    /**
+     * @var string $city
+     * @ORM\Column(name="city", type="string", length=80, nullable=true)
+     */
+    private $city;
+    
+    /**
+     * @var string $im
+     * @ORM\Column(name="im", type="string", length=180, nullable=true)
+     */
+    private $im;
+    
+    /**
+     * @var string twitter
+     * @ORM\Column(name="twitter", type="string", length=250, nullable=true)
+     */
+    private $twitter;
+    
+    /**
+     * @var string website
+     * @ORM\Column(name="website", type="string", length=250, nullable=true)
+     */
+    private $website;
+    
+    /**
+     * @var string summary
+     * @ORM\Column(name="summary", type="text", nullable=true)
+     */
+    private $summary;
+    
+    /**
+     * @var string interests
+     * @ORM\Column(name="interests", type="text", nullable=true)
+     */
+    private $interests;
+    
+    /**
+     * @var string marital
+     * 0 single, 1 married
+     * @ORM\Column(name="marital", type="boolean", nullable=true )
+     */
+    private $marital;
+    
+    /**
+     * @var string $nationality
+     *
+     * @ORM\Column(name="nationality", type="string", length=2, nullable=true)
+     */
+    private $nationality;
+    
+    
     /**
      * @var string $firstName
      * @Assert\NotBlank(groups={"firstName", "edit"})
@@ -1114,5 +1178,235 @@ class User implements AdvancedUserInterface {
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     * @return User
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string 
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * Set address
+     *
+     * @param string $address
+     * @return User
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return string 
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set city
+     *
+     * @param string $city
+     * @return User
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+    
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return string 
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * Set im
+     *
+     * @param string $im
+     * @return User
+     */
+    public function setIm($im)
+    {
+        $this->im = $im;
+    
+        return $this;
+    }
+
+    /**
+     * Get im
+     *
+     * @return string 
+     */
+    public function getIm()
+    {
+        return $this->im;
+    }
+
+    /**
+     * Set twitter
+     *
+     * @param string $twitter
+     * @return User
+     */
+    public function setTwitter($twitter)
+    {
+        $this->twitter = $twitter;
+    
+        return $this;
+    }
+
+    /**
+     * Get twitter
+     *
+     * @return string 
+     */
+    public function getTwitter()
+    {
+        return $this->twitter;
+    }
+
+    /**
+     * Set website
+     *
+     * @param string $website
+     * @return User
+     */
+    public function setWebsite($website)
+    {
+        $this->website = $website;
+    
+        return $this;
+    }
+
+    /**
+     * Get website
+     *
+     * @return string 
+     */
+    public function getWebsite()
+    {
+        return $this->website;
+    }
+
+    /**
+     * Set summary
+     *
+     * @param string $summary
+     * @return User
+     */
+    public function setSummary($summary)
+    {
+        $this->summary = $summary;
+    
+        return $this;
+    }
+
+    /**
+     * Get summary
+     *
+     * @return string 
+     */
+    public function getSummary()
+    {
+        return $this->summary;
+    }
+
+    /**
+     * Set interests
+     *
+     * @param string $interests
+     * @return User
+     */
+    public function setInterests($interests)
+    {
+        $this->interests = $interests;
+    
+        return $this;
+    }
+
+    /**
+     * Get interests
+     *
+     * @return string 
+     */
+    public function getInterests()
+    {
+        return $this->interests;
+    }
+
+    /**
+     * Set marital
+     *
+     * @param boolean $marital
+     * @return User
+     */
+    public function setMarital($marital)
+    {
+        $this->marital = $marital;
+    
+        return $this;
+    }
+
+    /**
+     * Get marital
+     *
+     * @return boolean 
+     */
+    public function getMarital()
+    {
+        return $this->marital;
+    }
+
+    /**
+     * Set nationality
+     *
+     * @param string $nationality
+     * @return User
+     */
+    public function setNationality($nationality)
+    {
+        $this->nationality = $nationality;
+    
+        return $this;
+    }
+
+    /**
+     * Get nationality
+     *
+     * @return string 
+     */
+    public function getNationality()
+    {
+        return $this->nationality;
     }
 }

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>KARAS RECRUIT : HOME</title>
+        <title>KARAS RECRUIT : ABOUT</title>
         <link rel="stylesheet" type="text/css" href="css/reset.css"/>
         <link rel="stylesheet" type="text/css" href="css/base.css"/>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
@@ -11,21 +11,24 @@
         <link rel="stylesheet" type="text/css" href="css/flexslider.css"/>
         <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
-        <script type="text/javascript" src="js/holder.js"></script>
-        <script>
-            $(document).ready(function() {
-                $('.flexslider').flexslider({
-                    animation: "slide"
-                });
-            });
-        </script>
     </head>
     <body>
-
         <div class="wrapper970">
-            <div class="footerCont1">
-                <h3 class="marginBottomZero">Find Your Career :</h3>
+            <div class="section1over3">
+                <img class="logo" src="img/logo.png"/>
+                <hr class="hrLogo"/>
+                <h3>Find Your Job :</h3>
+                <h4>ENTER YOUR JOB SPECIALITY HERE</h4>
+                <input class="homeInput" type="text" placeholder="job speciality ..."/>
+                <h4>ENTER YOUR EMAIL ADDRESS HERE</h4>
+                <input class="homeInput" type="text" placeholder="email address ..."/>
+                <div class="clearfix">
+                </div>
+                <a href="javascript:void(0)" class="btn btn-warning ">RESET</a><a href="javascript:void(0)" class="btn btn-info marginLeft10px">SUBMIT</a>
+                <hr class="hr1"/>
+                <button class="btn btn-large btn-block btn-warning" type="button">Post Your Resume<i class="icon-white icon-circle-arrow-right"></i></button>
+                <button class="btn btn-large btn-block btn-info" type="button">Find Resume<i class="icon-white icon-circle-arrow-right"></i></button>
+                <h3 class="marginBtnZero">Find Your Career :</h3>
                 <ul class="findCareer">
                     <li><a href="javascript:void(0)">Accounting <span>></span></a></li>
                     <li><a href="javascript:void(0)">Admin& Clerical <span>></span></a></li>
@@ -40,77 +43,87 @@
                     <li><a href="javascript:void(0)">Hospitality <span>></span></a></li>
                 </ul>
             </div>
-            <div class="footerCont1">
-                <h3>Lates Jobs :</h3>
-                <ul class="latestJobs">
-                    <li>
-                        <a class="allLnk" href="javascript:void(0)">
-                            <em>></em><span>Safety& Reliability Group Manager</span>
-                            <span class="lineTwo">Atkins</span>
-                        </a>
-                    </li>
-                    <li><a class="allLnk" href="javascript:void(0)">
-                            <em>></em><span>Product Supervisor (62-547)</span>
-                            <span class="lineTwo">ZOLL</span></a>
-                    </li>
-                    <li><a class="allLnk" href="javascript:void(0)">
-                            <em>></em><span>Advertising / Sales</span>
-                            <span class="lineTwo">DFW AND ASSOCIATES</span></a>
-                    </li>
-                    <li><a class="allLnk" href="javascript:void(0)">
-                            <em>></em><span>JOB FAIR COMING TO YOUR AREA</span>
-                            <span class="lineTwo">Dollar Tree Stores</span></a>
-                    </li>
-                    <li><a class="allLnk" href="javascript:void(0)">
-                            <em>></em><span>Quality Assurance Analyst (305547-763)</span>
-                            <span class="lineTwo">UAFC</span></a>
-                    </li>
-                    <li><a class="allLnk" href="javascript:void(0)">
-                            <em>></em><span>Center Manager</span>
-                            <span class="lineTwo">Advance America</span></a>
-                    </li>
-                    <li><a class="allLnk" href="javascript:void(0)">
-                            <em>></em><span>Part-Time Service Representative</span>
-                            <span class="lineTwo">BMO Harris Bank</span></a>
-                    </li>
-                </ul>
+            <div class="section2over3">
+                <a href="#login" class="userCtr" data-toggle="modal"><i class="icon-user"></i>sign in</a>
+                <a href="#register" class="userCtr" data-toggle="modal"><i class="icon-play"></i>register</a>
+                <div class="clearfix">
+                </div>
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                            <li><a href="index.html">Home</a></li>
+                            <li class="active"><a href="about.html">ABOUT US</a></li>
+                            <li><a href="jobs.html">JOBS</a></li>
+                            <li><a href="resumes.html">RESUMES</a></li>
+                            <li><a href="contact.html">CONTACT US</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tabbable">
+                    <!-- Only required for left/right tabs -->
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab1" data-toggle="tab">Services</a></li>
+                        <li><a href="#tab2" data-toggle="tab">Clients</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab1"> 
+                            <ul id="services">
+                                <li>
+                                    <div><span>1- Local & Overseas Recruitment:</span> we recruit all the required nationalities from te middle east, asia, or any nationality based on the client request, we are specialized in providing recruitment solutions for both local & overseas market, implementing all kinds of strategies, which best suit both candidates and clients.</div>
+                                    <img src="img/servcies/1.jpg" />
+                                    <p class="clear"></p>
+                                </li>
+                                <li>
+                                    <div><span>2- Online Recruitment:</span> we recruit all the required nationalities from te middle east, asia, or any nationality based on the client request, we are specialized in providing recruitment solutions for both local & overseas market, implementing all kinds of strategies, which best suit both candidates and clients.</div>
+                                    <img src="img/servcies/2.jpg" />
+                                    <p class="clear"></p>
+                                </li>
+                                <li>
+                                    <div><span>3- Visa Processing:</span> we recruit all the required nationalities from te middle east, asia, or any nationality based on the client request, we are specialized in providing recruitment solutions for both local & overseas market, implementing all kinds of strategies, which best suit both candidates and clients.</div>
+                                    <img src="img/servcies/3.jpg" />
+                                    <p class="clear"></p>
+                                </li>
+                                <li>
+                                    <div><span>4- Payroll Services:</span> we recruit all the required nationalities from te middle east, asia, or any nationality based on the client request, we are specialized in providing recruitment solutions for both local & overseas market, implementing all kinds of strategies, which best suit both candidates and clients.</div>
+                                    <img src="img/servcies/4.jpg" />
+                                    <p class="clear"></p>
+                                </li>
+                                <li>
+                                    <div><span>5- HR Consultancy:</span> we recruit all the required nationalities from te middle east, asia, or any nationality based on the client request, we are specialized in providing recruitment solutions for both local & overseas market, implementing all kinds of strategies, which best suit both candidates and clients.</div>
+                                    <img src="img/servcies/5.jpg" />
+                                    <p class="clear"></p>
+                                </li>
+                                <li class="lastItem">
+                                    <div><span>6- Conference Rooms Facilities:</span> we recruit all the required nationalities from te middle east, asia, or any nationality based on the client request, we are specialized in providing recruitment solutions for both local & overseas market, implementing all kinds of strategies, which best suit both candidates and clients.</div>
+                                    <img width="175" src="img/servcies/6.jpg" />
+                                    <p class="clear"></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane" id="tab2">
+                            <div id="customersLogos">
+                                <img src="img/customers/1.jpg" />
+                                <img src="img/customers/2.jpg" />
+                                <img src="img/customers/3.jpg" />
+                                <img src="img/customers/4.jpg" />
+                                <img src="img/customers/5.jpg" />
+                                <img src="img/customers/6.jpg" />
+                                <img src="img/customers/7.jpg" />
+                                <img src="img/customers/8.jpg" />
+                                <img src="img/customers/9.jpg" />
+                                <img src="img/customers/10.jpg" />
+                                <img src="img/customers/11.jpg" />
+                                <img src="img/customers/12.jpg" />
+                                <img src="img/customers/13.jpg" />
+                                <img src="img/customers/14.jpg" />
+                                <img src="img/customers/15.jpg" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="footerCont1 marginRightZero">
-                <h3 class="lastItem">&nbsp;</h3>
-                <ul class="latestJobs">
-                    <li>
-                        <a class="allLnk" href="javascript:void(0)">
-                            <em>></em><span>Safety& Reliability Group Manager</span>
-                            <span class="lineTwo">Atkins</span>
-                        </a>
-                    </li>
-                    <li><a class="allLnk" href="javascript:void(0)">
-                            <em>></em><span>Product Supervisor (62-547)</span>
-                            <span class="lineTwo">ZOLL</span></a>
-                    </li>
-                    <li><a class="allLnk" href="javascript:void(0)">
-                            <em>></em><span>Advertising / Sales</span>
-                            <span class="lineTwo">DFW AND ASSOCIATES</span></a>
-                    </li>
-                    <li><a class="allLnk" href="javascript:void(0)">
-                            <em>></em><span>JOB FAIR COMING TO YOUR AREA</span>
-                            <span class="lineTwo">Dollar Tree Stores</span></a>
-                    </li>
-                    <li><a class="allLnk" href="javascript:void(0)">
-                            <em>></em><span>Quality Assurance Analyst (305547-763)</span>
-                            <span class="lineTwo">UAFC</span></a>
-                    </li>
-                    <li><a class="allLnk" href="javascript:void(0)">
-                            <em>></em><span>Center Manager</span>
-                            <span class="lineTwo">Advance America</span></a>
-                    </li>
-                    <li><a class="allLnk" href="javascript:void(0)">
-                            <em>></em><span>Part-Time Service Representative</span>
-                            <span class="lineTwo">BMO Harris Bank</span></a>
-                    </li>
-                </ul>
-
-            </div>
+        </div>
+        <div class="wrapper970">
             <div class="clear">
             </div>
             <div class="fullWidth lineR">
@@ -118,12 +131,115 @@
             <div class="clear">
             </div>
             <div class="section1over3">
-                <img class="logo" src="img/logo.png"/>
+                <img class="logo" src="img/logoba.png"/>
+            </div>
+            <div class="section2over3 footer">
+                <div class="footerCont1">
+                    <h3>Career Builder :</h3>
+                    <ul class="findCareer fotter1lst">
+                        <li><a href="javascript:void(0)"><span>></span>About Us</a></li>
+                        <li><a href="javascript:void(0)"><span>></span>Work at CareerBuilder</a></li>
+                        <li><a href="javascript:void(0)"><span>></span>Affiliate Program</a></li>
+                        <li><a href="javascript:void(0)"><span>></span>CareerBuilder API</a></li>
+                    </ul>
+                </div>
+                <div class="footerCont1">
+                    <h3>Job Seeker :</h3>
+                    <ul class="findCareer fotter1lst">
+                        <li><a href="javascript:void(0)"><span>></span>Free Career Test</a></li>
+                        <li><a href="javascript:void(0)"><span>></span>Salary Calculator</a></li>
+                        <li><a href="javascript:void(0)"><span>></span>Skills Training</a></li>
+                        <li><a href="javascript:void(0)"><span>></span>College Degrees</a></li>
+                    </ul>
+                </div>
+                <div  class="footerCont1 marginRightZero">
+                    <h3>Employers :</h3>
+                    <ul class="findCareer fotter1lst">
+                        <li><a href="javascript:void(0)"><span>></span>Search Resumes</a></li>
+                        <li><a href="javascript:void(0)"><span>></span>Post Jobs</a></li>
+                        <li><a href="javascript:void(0)"><span>></span>CareerBuilder Talent Network</a></li>
+                        <li><a href="javascript:void(0)"><span>></span>Resource Center</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-        
-            
+        <div id="register" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">Register Now</h3>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="control-group">
+                        <label class="control-label" for="inputEmail">Full Name</label>
+                        <div class="controls">
+                            <input type="text" id="inputEmail" placeholder="full name ...">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="control-group">
+                            <label class="control-label" for="inputEmail">Email</label>
+                            <div class="controls">
+                                <input type="text" id="Text2" placeholder="email address ...">
+                            </div>
+                        </div>
+                        <label class="control-label" for="inputEmail">User Name</label>
+                        <div class="controls">
+                            <input type="text" id="Text1" placeholder="user name ...">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputPassword">Password</label>
+                        <div class="controls">
+                            <input type="password" id="inputPassword" placeholder="password ...">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputPassword">Retype Password</label>
+                        <div class="controls">
+                            <input type="password" id="Password1" placeholder="retype password ...">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button class="btn btn-primary">Register</button>
+            </div>
+        </div>
         <!----------------------------->
-        
+        <div id="login" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="H1">Sign In</h3>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="control-group">
+                        <label class="control-label" for="inputEmail">User Name</label>
+                        <div class="controls">
+                            <input type="text" id="Text3" placeholder="user name ...">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputPassword">Password</label>
+                        <div class="controls">
+                            <input type="password" id="Password2" placeholder="password ...">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                    Remember me </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button class="btn btn-primary">Sign In</button>
+            </div>
+        </div>
     </body>
 </html>

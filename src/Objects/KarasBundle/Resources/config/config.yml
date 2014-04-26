@@ -1,0 +1,22 @@
+parameters:
+    email: 'support@karas.com'
+    address: 'Moonshine Street No: 14/05 CenterCity, Alexandria'
+    phone: '02475416587'
+    mobile: '0101234789456'
+    contact_text: 'You can Contact our support team on the following.'
+    facebook_page_url: 'https://www.facebook.com/pepsi'
+    twitter_page_url: 'https://twitter.com/RAKSME'
+    twitter_screen_name: 'Rak-SME'
+    contact_email: 'ahmaad.fawzy@hotmail.com'
+    lat: 31.205428
+    lan: 29.904976
+    # -- pagination
+    max_result: 2
+twig:
+    globals:
+        facebook: %facebook_page_url%
+        twitter:  %twitter_page_url%
+        email:    %email%
+        mobile:   %mobile%
+        phone:    %phone%
+        

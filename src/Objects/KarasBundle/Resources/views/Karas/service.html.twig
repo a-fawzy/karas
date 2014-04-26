@@ -1,0 +1,34 @@
+{% extends '::base.html.twig' %}
+{% block activeService %}class="active"{% endblock %}
+{% block title %}KARAS Services{% endblock %}
+
+
+{% block body %}
+    <div class="tabbable">
+        <!-- Only required for left/right tabs -->
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1" data-toggle="tab">Services</a></li>
+            <li><a href="#tab2" data-toggle="tab">Clients</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1"> 
+                <ul id="services">
+                    {% for service in services %}
+                        <li>
+                            <div><span>{{ service.title }}</span>{{ service.body }}</div>
+                            <img src="{{ asset(service.getSmallImageUrl(115,115)) }}" />
+                            <p class="clear"></p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="tab-pane" id="tab2">
+                <div id="customersLogos">
+                    {% for client in clients %}
+                        <img src="{{ asset(client.getSmallImageUrl(150,75)) }}" />
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

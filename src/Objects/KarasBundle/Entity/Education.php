@@ -49,6 +49,14 @@ class Education
      */
     private $field;
 
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="degree", type="string", length=150)
+     */
+    private $degree;
+    
     /**
      * @var string
      *
@@ -210,5 +218,28 @@ class Education
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set degree
+     *
+     * @param string $degree
+     * @return Education
+     */
+    public function setDegree($degree)
+    {
+        $this->degree = $degree;
+    
+        return $this;
+    }
+
+    /**
+     * Get degree
+     *
+     * @return string 
+     */
+    public function getDegree()
+    {
+        return $this->degree;
     }
 }

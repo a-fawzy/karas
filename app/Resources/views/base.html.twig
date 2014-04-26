@@ -55,9 +55,9 @@
                     <a href="#" data-target="#login" class="userCtr" data-toggle="modal" style="color:#f89406"><i class="icon-user"></i>sign in</a>
                     <a href="#" data-target="#register" class="userCtr" data-toggle="modal"  style="color:#49afcd"><i class="icon-play"></i>register</a>
                 {% else  %}
-                    <p class="userCtr">Welcome: {{app.user.firstName}}</p>
-                    <a href="{{ path('logout') }}" class="userCtr" style="color:#f89406"><i class="icon-user"></i>logout</a>
-                    <a href="#" data-target="#register" class="userCtr" data-toggle="modal"  style="color:#49afcd"><i class="icon-play"></i>register</a>
+                    <p style="float: left; color: green" class="userCtr">Welcome: {{app.user.firstName}}</p>
+                    <a href="{{ path('logout') }}" class="userCtr" style="color:#f89406"><i class="icon-user"></i> Sign-out</a>
+                    <a href="{{ path('objects_karas_employee_profile') }}" class="userCtr" style="color:#49afcd"><i class="icon-play"></i> My Profile</a>
                 {% endif %}
             {% endblock %}
             
@@ -66,12 +66,12 @@
                     <div class="navbar">
                         <div class="navbar-inner">
                             <ul class="nav">
-                                <li {% block activeHome %}{% endblock %}><a href="index.html">Home</a></li>
+                                <li {% block activeHome %}{% endblock %}><a href="{{ path('objects_karas_homepage') }}">Home</a></li>
                                 <li {% block activeAbout %}{% endblock %}><a href="about.html">ABOUT US</a></li>
                                 <li {% block activeJobs %}{% endblock %}><a href="jobs.html">JOBS</a></li>
                                 <li {% block activeRequest %}{% endblock %}><a href="resumes.html">REQUESTS</a></li>
-                                <li {% block activeService %}{% endblock %}><a href="hrservices.html">HR/SERVICES</a></li>
-                                <li {% block activeContact %}{% endblock %}><a href="contact.html">CONTACT US</a></li>
+                                <li {% block activeService %}{% endblock %}><a href="{{ path('objects_karas_services') }}">HR/SERVICES</a></li>
+                                <li {% block activeContact %}{% endblock %}><a href="{{ path('objects_karas_contact') }}">CONTACT US</a></li>
                             </ul>
                         </div>
                     </div>

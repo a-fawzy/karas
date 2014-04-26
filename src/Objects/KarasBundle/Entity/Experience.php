@@ -56,6 +56,34 @@ class Experience
      */
     private $description;
 
+    
+    /**
+     * @var string $countryCode
+     *
+     * @ORM\Column(name="country_code", type="string", length=2)
+     */
+    private $countryCode;
+    
+    /**
+     * @var string $city
+     * @ORM\Column(name="city", type="string", length=80)
+     */
+    private $city;
+    
+    /**
+     * @var string $profession
+     * @ORM\Column(name="profession", type="string", length=50)
+     */
+    private $profession;
+    
+    
+    /**
+     * @var string $industry
+     * @ORM\Column(name="industry", type="string", length=50)
+     */
+    private $industry;
+    
+    
 
     /**
      * Get id
@@ -180,5 +208,97 @@ class Experience
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set countryCode
+     *
+     * @param string $countryCode
+     * @return Experience
+     */
+    public function setCountryCode($countryCode)
+    {
+        $this->countryCode = $countryCode;
+    
+        return $this;
+    }
+
+    /**
+     * Get countryCode
+     *
+     * @return string 
+     */
+    public function getCountryCode()
+    {
+        return $this->countryCode;
+    }
+
+    /**
+     * Set city
+     *
+     * @param string $city
+     * @return Experience
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+    
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return string 
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * Set profession
+     *
+     * @param string $profession
+     * @return Experience
+     */
+    public function setProfession($profession)
+    {
+        $this->profession = $profession;
+    
+        return $this;
+    }
+
+    /**
+     * Get profession
+     *
+     * @return string 
+     */
+    public function getProfession()
+    {
+        return $this->profession;
+    }
+
+    /**
+     * Set industry
+     *
+     * @param string $industry
+     * @return Experience
+     */
+    public function setIndustry($industry)
+    {
+        $this->industry = $industry;
+    
+        return $this;
+    }
+
+    /**
+     * Get industry
+     *
+     * @return string 
+     */
+    public function getIndustry()
+    {
+        return $this->industry;
     }
 }

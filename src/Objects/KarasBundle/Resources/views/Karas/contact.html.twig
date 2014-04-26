@@ -1,0 +1,86 @@
+{% extends '::base.html.twig' %}
+{% block activeContact %}class="active"{% endblock %}
+{% block title %}Contact-Us{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+     <script>
+        function initialize() {
+            myLatlng = new google.maps.LatLng({{lat}},{{lan}});
+            var mapOptions = {
+              zoom: 16,
+              center: myLatlng,
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById('map-canvas'),
+                mapOptions);
+                  var contentString = '<div id="content">'+
+                '<div id="siteNotice">'+
+                '</div>'+
+                '<h4 id="firstHeading" class="firstHeading">KARAS RECRUIT</h4>'+
+                '<div id="bodyContent">'+
+                '<p></p>'+
+                '</div>'+
+                '</div>';
+                 infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+           marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                title: 'Uluru (Ayers Rock)'
+            });
+            infowindow.open(map, marker);
+            google.maps.event.addListener(marker, 'mouseover', function() {
+              infowindow.open(map,marker);
+            });
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+
+{% endblock %}
+
+{% block body %}
+<div class="tabbable">
+    <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Contact Us</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+
+            <form  action="{{ path('objects_karas_email') }}" method="POST" enctype="multipart/form-data" style="float:left">
+                Your name:<br />
+                <input name="name" type="text" value="" size="30"/> <br /> Your email:<br />
+                <input name="email" type="text" value="" size="30"/> <br /> Your message:<br />
+                <textarea name="message" rows="7" cols="30"> </textarea> <br />
+                <input type="submit" value="Send" class="btn btn-success"/>
+            </form> 
+
+            <div style="width:230px;float:left;margin:17px 0 0 10px ">
+                <strong>Karas Recruit</strong><br>
+                {% for branch in branches %}
+                    <address>
+                        
+                        {{ branch.city }}, {{ branch.country }}, P.O BOX {{ branch.poBox }}<br>
+                        <abbr title="Phone">Tel.:</abbr>{{ branch.phone }}<br>
+                        <abbr title="Phone">Fax:</abbr> {{ branch.fax }} <br>
+                        <abbr title="Phone">Mobile:</abbr> {{ branch.mobile }}<br>
+
+                        <a href="mailto:#">{{ branch.email }}</a>
+                    </address>
+                {% endfor %}
+            </div>      
+            <img  style="float:right;width:150px;margin-top:15px;" src="{{ asset('img/hello.jpg') }}" />    
+        </div>
+        <div id="map-canvas"></div>
+    </div>
+</div>
+</div>
+</div>
+
+</div>
+
+{% endblock %}

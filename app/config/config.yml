@@ -1,7 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-
+    - { resource: ../../src/Objects/KarasBundle/Resources/config/config.yml }
 framework:
     esi:             ~
     translator:      { fallback: "%locale%" }
@@ -79,9 +79,13 @@ sonata_admin:
         groups:
             Site:
                 items:
-                    - page_admin
-                    - block_admin
-                    - banner_admin
+#                    - page_admin
+                    - objects_admin.admin.service
+                    - objects_admin.admin.slide
+                    - objects_admin.admin.client
+                    - objects_admin.admin.branch
+#                    - block_admin
+#                    - banner_admin
 #                    - user_admin
 
 sonata_block:

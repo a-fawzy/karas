@@ -19,3 +19,27 @@ services:
 #        arguments: [~, Objects\UserBundle\Entity\User, ObjectsAdminBundle:User]
 #        tags:
 #            - {name: sonata.admin, manager_type: orm, group: admin, label: User}
+
+    objects_admin.admin.client:
+        class: Objects\AdminBundle\Admin\ClientAdmin
+        arguments: [~, Objects\KarasBundle\Entity\Client, ObjectsAdminBundle:Client]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Client}
+
+    objects_admin.admin.slide:
+        class: Objects\AdminBundle\Admin\SlideAdmin
+        arguments: [~, Objects\KarasBundle\Entity\Slide, ObjectsAdminBundle:Slide]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Slide}
+
+    objects_admin.admin.service:
+        class: Objects\AdminBundle\Admin\ServiceAdmin
+        arguments: [~, Objects\KarasBundle\Entity\Service, ObjectsAdminBundle:Service]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Service}
+
+    objects_admin.admin.branch:
+        class: Objects\AdminBundle\Admin\BranchAdmin
+        arguments: [~, Objects\KarasBundle\Entity\Branch, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Branch}
