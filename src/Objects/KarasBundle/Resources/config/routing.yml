@@ -59,3 +59,12 @@ objects_karas_employee_profile_additional:
 objects_karas_employee_profile_language:
     pattern:  /employee/profile/language
     defaults: { _controller: ObjectsKarasBundle:Employee:language }
+
+
+objects_karas_job_new:
+    pattern:  /job/new
+    defaults: { _controller: ObjectsKarasBundle:Job:new}
+
+objects_karas_job_edit:
+    pattern:  /job/edit/{id}
+    defaults: { _controller: ObjectsKarasBundle:Job:edit}

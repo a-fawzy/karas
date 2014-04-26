@@ -49,3 +49,15 @@ services:
         arguments: [~, Objects\KarasBundle\Entity\About, ObjectsAdminBundle:About]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: About}
+
+    objects_admin.admin.industry:
+        class: Objects\AdminBundle\Admin\IndustryAdmin
+        arguments: [~, Objects\KarasBundle\Entity\Industry, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Industry}
+
+    objects_admin.admin.profession:
+        class: Objects\AdminBundle\Admin\ProfessionAdmin
+        arguments: [~, Objects\KarasBundle\Entity\Profession, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Profession}

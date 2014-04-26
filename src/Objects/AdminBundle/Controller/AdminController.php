@@ -18,7 +18,7 @@ class AdminController extends Controller {
     }
 
     public function siteConfigurationsAction() {
-        $configFilePath = __DIR__ . '/../../SiteBundle/Resources/config/config.yml';
+        $configFilePath = __DIR__ . '/../../KarasBundle/Resources/config/config.yml';
         $parsedData = Yaml::parse(file_get_contents($configFilePath));
         if (!isset($parsedData['parameters']) || !$parsedData['parameters']) {
             $parameters = null;

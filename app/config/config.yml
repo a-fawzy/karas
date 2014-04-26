@@ -75,6 +75,7 @@ sonata_admin:
         blocks:
             # display a dashboard block
             - { position: left, type: sonata.admin.block.admin_list, settings: { groups: [Site] } }
+            - { position: center, type: sonata.admin.block.admin_list, settings: { groups: [Jobs] } }
 
         groups:
             Site:
@@ -88,6 +89,11 @@ sonata_admin:
 #                    - block_admin
 #                    - banner_admin
 #                    - user_admin
+
+            Jobs:
+                items:
+                    - objects_admin.admin.industry
+                    - objects_admin.admin.profession
 
 sonata_block:
     default_contexts: [cms]

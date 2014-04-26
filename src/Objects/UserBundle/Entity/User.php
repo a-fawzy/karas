@@ -32,6 +32,17 @@ class User implements AdvancedUserInterface {
     private $id;
 
     /**
+     * @ORM\OneToMany(targetEntity="\Objects\KarasBundle\Entity\Candidate", mappedBy="user")
+     */
+    private $candidates;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="\Objects\KarasBundle\Entity\Candidate", mappedBy="owner")
+     */
+    private $jobs;
+    
+    
+    /**
      * @ORM\OneToOne(targetEntity="\Objects\UserBundle\Entity\SocialAccounts", mappedBy="user",cascade={"remove", "persist"})
      */
     private $socialAccounts;
@@ -485,16 +496,6 @@ class User implements AdvancedUserInterface {
         return false;
     }
 
-    /**
-     * initialize the main default attributes
-     */
-    public function __construct() {
-        $this->createdAt = new \DateTime();
-        $this->lastSeen = new \DateTime();
-        $this->confirmationCode = md5(uniqid(rand()));
-        $this->salt = md5(time());
-        $this->userRoles = new ArrayCollection();
-    }
 
     /**
      * @return string the object name
@@ -1408,5 +1409,84 @@ class User implements AdvancedUserInterface {
     public function getNationality()
     {
         return $this->nationality;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->candidates = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->jobs = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->userRoles = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->createdAt = new \DateTime();
+        $this->lastSeen = new \DateTime();
+        $this->confirmationCode = md5(uniqid(rand()));
+        $this->salt = md5(time());
+    }
+    
+    /**
+     * Add candidates
+     *
+     * @param \Objects\KarasBundle\Entity\Candidate $candidates
+     * @return User
+     */
+    public function addCandidate(\Objects\KarasBundle\Entity\Candidate $candidates)
+    {
+        $this->candidates[] = $candidates;
+    
+        return $this;
+    }
+
+    /**
+     * Remove candidates
+     *
+     * @param \Objects\KarasBundle\Entity\Candidate $candidates
+     */
+    public function removeCandidate(\Objects\KarasBundle\Entity\Candidate $candidates)
+    {
+        $this->candidates->removeElement($candidates);
+    }
+
+    /**
+     * Get candidates
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCandidates()
+    {
+        return $this->candidates;
+    }
+
+    /**
+     * Add jobs
+     *
+     * @param \Objects\KarasBundle\Entity\Candidate $jobs
+     * @return User
+     */
+    public function addJob(\Objects\KarasBundle\Entity\Candidate $jobs)
+    {
+        $this->jobs[] = $jobs;
+    
+        return $this;
+    }
+
+    /**
+     * Remove jobs
+     *
+     * @param \Objects\KarasBundle\Entity\Candidate $jobs
+     */
+    public function removeJob(\Objects\KarasBundle\Entity\Candidate $jobs)
+    {
+        $this->jobs->removeElement($jobs);
+    }
+
+    /**
+     * Get jobs
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getJobs()
+    {
+        return $this->jobs;
     }
 }

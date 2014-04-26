@@ -77,6 +77,26 @@ class Job
      */
     private $allowances;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="approved", type="boolean")
+     */
+    private $approved = FALSE ;
+
+    
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="\Objects\UserBundle\Entity\User", inversedBy="jobs")
+     */
+    private $owner;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Candidate", mappedBy="job")
+     */
+    private $candidates;
+    
+
 
     /**
      * Get id
@@ -270,5 +290,91 @@ class Job
     public function getAllowances()
     {
         return $this->allowances;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->candidates = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Set approved
+     *
+     * @param boolean $approved
+     * @return Job
+     */
+    public function setApproved($approved)
+    {
+        $this->approved = $approved;
+    
+        return $this;
+    }
+
+    /**
+     * Get approved
+     *
+     * @return boolean 
+     */
+    public function getApproved()
+    {
+        return $this->approved;
+    }
+
+    /**
+     * Set owner
+     *
+     * @param \Objects\UserBundle\Entity\User $owner
+     * @return Job
+     */
+    public function setOwner(\Objects\UserBundle\Entity\User $owner = null)
+    {
+        $this->owner = $owner;
+    
+        return $this;
+    }
+
+    /**
+     * Get owner
+     *
+     * @return \Objects\UserBundle\Entity\User 
+     */
+    public function getOwner()
+    {
+        return $this->owner;
+    }
+
+    /**
+     * Add candidates
+     *
+     * @param \Objects\UserBundle\Entity\User $candidates
+     * @return Job
+     */
+    public function addCandidate(\Objects\UserBundle\Entity\User $candidates)
+    {
+        $this->candidates[] = $candidates;
+    
+        return $this;
+    }
+
+    /**
+     * Remove candidates
+     *
+     * @param \Objects\UserBundle\Entity\User $candidates
+     */
+    public function removeCandidate(\Objects\UserBundle\Entity\User $candidates)
+    {
+        $this->candidates->removeElement($candidates);
+    }
+
+    /**
+     * Get candidates
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCandidates()
+    {
+        return $this->candidates;
     }
 }

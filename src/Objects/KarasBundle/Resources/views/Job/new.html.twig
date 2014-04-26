@@ -1,0 +1,57 @@
+{% extends '::base.html.twig' %}
+{% block activeRequest %} active{% endblock %}
+{% block title %}Add New Job{% endblock %}
+{% block body %}
+<div class="tabbable">
+    <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Request Resumes</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+            {% if path == 'edit' %}
+                {{ form_start(form, {'action': path('objects_karas_job_edit',{id: id}), 'attr': {'class': 'jd'}}) }}
+            {% endif %}
+            {{ form_start(form, {'action': path('objects_karas_job_new'), 'attr': {'class': 'jd'}}) }}
+                {{ form_errors(form) }}
+                <h3>Job Details</h3>
+                <div class="clear"></div>
+                <span class="jobField">Job Title:</span>
+                {{ form_widget(form.title) }}
+                <hr />
+                <span class="jobField">Experience:</span>
+                {{ form_widget(form.experience) }}
+                <hr />
+                <span class="jobField">Job Description:</span>
+                {{ form_widget(form.description) }}
+                <hr />
+                <h3>Candidate Information</h3>
+                <span class="jobField">Gender:</span>
+                <ul>
+                    <li><label>{{ form_widget(form.gender.0) }} Male</label></li>
+                    <li><label>{{ form_widget(form.gender.1) }} Female</label></li>
+                    <li><label>{{ form_widget(form.gender.2) }} Both</label></li>
+                </ul>
+                <div class="clear"></div>
+                <hr />
+                <span class="jobField">Skills Required:</span>
+                {{ form_widget(form.skills) }}
+                <hr />
+
+                <span class="jobField">Languages:</span>
+                {{ form_widget(form.languages) }}
+                <hr />
+                <h3>Benefits& Allowances</h3>
+                <span class="jobField">Salary:</span>
+                {{ form_widget(form.salary) }}
+                <hr />
+                <span class="jobField">Allowances:</span>
+                {{ form_widget(form.allowances) }}
+                <hr />
+                <center><input type="submit" class="btn btn-large" value="&nbsp;&nbsp; Submit Request &nbsp;&nbsp;"></center>
+            {{form_end(form)  }}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

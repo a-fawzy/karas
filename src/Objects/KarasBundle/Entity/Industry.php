@@ -5,12 +5,12 @@ namespace Objects\KarasBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Profession
+ * Industry
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Objects\KarasBundle\Entity\ProfessionRepository")
+ * @ORM\Entity(repositoryClass="Objects\KarasBundle\Entity\IndustryRepository")
  */
-class Profession
+class Industry
 {
     /**
      * @var integer
@@ -43,7 +43,7 @@ class Profession
      * Set title
      *
      * @param string $title
-     * @return Profession
+     * @return Industry
      */
     public function setTitle($title)
     {
