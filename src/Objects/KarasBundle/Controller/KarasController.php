@@ -61,25 +61,13 @@ class KarasController extends Controller
         return $this->redirect($this->generateUrl("objects_karas_homepage"));
     }
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+    public function aboutAction(){
+        $em       = $this->getDoctrine()->getManager();
+        $abouts = $em->getRepository('ObjectsKarasBundle:About')->findBy(array(),array('power' => 'ASC'));
+        
+        return $this->render('ObjectsKarasBundle:Karas:about.html.twig', array(
+            'abouts' => $abouts,
+        ));
+    }
             
 }

@@ -84,6 +84,7 @@ sonata_admin:
                     - objects_admin.admin.slide
                     - objects_admin.admin.client
                     - objects_admin.admin.branch
+                    - objects_admin.admin.about
 #                    - block_admin
 #                    - banner_admin
 #                    - user_admin

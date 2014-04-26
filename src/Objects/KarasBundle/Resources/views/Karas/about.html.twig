@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+{% block activeContact %}class="active"{% endblock %}
+{% block title %}Contact-Us{% endblock %}
+{% block body %}
+<div class="tabbable">
+    <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">A few words about us</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+            {% for about in abouts %}
+                <img src="{{ asset('uploads/about/' ~ about.image) }}" style="width:100%" />
+                <div class="clear"></div>
+                <br />
+                <p>
+                    {{ about.body|replace({'\n': '</p><p>' })|raw }}
+                </p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

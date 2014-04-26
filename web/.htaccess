@@ -22,6 +22,7 @@ DirectoryIndex app.php
     RewriteRule ^client-image/([0-9]+)/([0-9]+)/([0-9a-zA-Z\-_]+).([a-zA-Z]{3,4})$ timthumb.php?src=/uploads/clients/$3.$4&w=$1&h=$2&zc=1&q=80 [NC,L]
     RewriteRule ^slider-image/([0-9]+)/([0-9]+)/([0-9a-zA-Z\-_]+).([a-zA-Z]{3,4})$ timthumb.php?src=/uploads/slider/$3.$4&w=$1&h=$2&zc=1&q=80 [NC,L]
     RewriteRule ^service-image/([0-9]+)/([0-9]+)/([0-9a-zA-Z\-_]+).([a-zA-Z]{3,4})$ timthumb.php?src=/uploads/services/$3.$4&w=$1&h=$2&zc=1&q=80 [NC,L]
+    RewriteRule ^about-image/([0-9]+)/([0-9]+)/([0-9a-zA-Z\-_]+).([a-zA-Z]{3,4})$ timthumb.php?src=/uploads/about/$3.$4&w=$1&h=$2&zc=1&q=80 [NC,L]
     # Redirect to URI without front controller to prevent duplicate content
     # (with and without `/app.php`). Only do this redirect on the initial
     # rewrite by Apache and not on subsequent cycles. Otherwise we would get an

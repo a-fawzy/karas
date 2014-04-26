@@ -67,7 +67,7 @@
                         <div class="navbar-inner">
                             <ul class="nav">
                                 <li {% block activeHome %}{% endblock %}><a href="{{ path('objects_karas_homepage') }}">Home</a></li>
-                                <li {% block activeAbout %}{% endblock %}><a href="about.html">ABOUT US</a></li>
+                                <li {% block activeAbout %}{% endblock %}><a href="{{ path('objects_karas_about') }}">ABOUT US</a></li>
                                 <li {% block activeJobs %}{% endblock %}><a href="jobs.html">JOBS</a></li>
                                 <li {% block activeRequest %}{% endblock %}><a href="resumes.html">REQUESTS</a></li>
                                 <li {% block activeService %}{% endblock %}><a href="{{ path('objects_karas_services') }}">HR/SERVICES</a></li>

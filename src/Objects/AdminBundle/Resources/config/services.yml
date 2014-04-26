@@ -43,3 +43,9 @@ services:
         arguments: [~, Objects\KarasBundle\Entity\Branch, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Branch}
+
+    objects_admin.admin.about:
+        class: Objects\AdminBundle\Admin\AboutAdmin
+        arguments: [~, Objects\KarasBundle\Entity\About, ObjectsAdminBundle:About]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: About}

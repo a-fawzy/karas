@@ -9,36 +9,31 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 
-class BranchAdmin extends Admin
+class AboutAdmin extends Admin
 {
     /**
     * this variable holds the route name prefix for this actions
     * @var string
     */
-    protected $baseRouteName = 'branch_admin';
+    protected $baseRouteName = 'about_admin';
 
     /**
     * this variable holds the url route prefix for this actions
     * @var string
     */
-    protected $baseRoutePattern = 'branch';
+    protected $baseRoutePattern = 'about';
+
 
     
-    
-    /**
+        /**
      * @param DatagridMapper $datagridMapper
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
             ->add('id')
-            ->add('country')
-            ->add('city')
-            ->add('poBox')
-            ->add('phone')
-            ->add('mobile')
-            ->add('fax')
-            ->add('email')
+            ->add('image')
+            ->add('body')
             ->add('power')
         ;
     }
@@ -50,13 +45,8 @@ class BranchAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('country')
-            ->add('city')
-            ->add('poBox')
-            ->add('phone')
-            ->add('mobile')
-            ->add('fax')
-            ->add('email')
+            ->add('image', NULL, array('template' => 'ObjectsAdminBundle:General:list_image.html.twig'))
+            ->add('body')
             ->add('power')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -73,14 +63,18 @@ class BranchAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $imageAttributes = array(
+		    'onchange' => 'readURL(this);'
+        );
+        
+        if ($this->getSubject() && $this->getSubject()->getId() && $this->getSubject()->getImage()) {
+            $imageAttributes['data-image-url'] = $this->getRequest()->getBasePath() . '/' . $this->getSubject()->getSmallImageUrl(60, 60);
+            $imageAttributes['data-image-remove-url'] = $this->generateObjectUrl('remove_image', $this->getSubject());
+        }
+
         $formMapper
-            ->add('country')
-            ->add('city')
-            ->add('poBox')
-            ->add('phone')
-            ->add('mobile')
-            ->add('fax')
-            ->add('email')
+            ->add('file', 'file', array('required' => false, 'label' => 'image', 'attr' => $imageAttributes))
+            ->add('body')
             ->add('power')
         ;
     }
@@ -92,14 +86,17 @@ class BranchAdmin extends Admin
     {
         $showMapper
             ->add('id')
-            ->add('country')
-            ->add('city')
-            ->add('poBox')
-            ->add('phone')
-            ->add('mobile')
-            ->add('fax')
-            ->add('email')
+            ->add('image', NULL, array('template' => 'ObjectsAdminBundle:General:show_image.html.twig'))
+            ->add('body')
             ->add('power')
         ;
+    }
+    
+    /**
+    * this function is for editing the routes of this class
+    * @param RouteCollection $collection
+    */
+    protected function configureRoutes(RouteCollection $collection) {
+            $collection->add('remove_image', $this->getRouterIdParameter() . '/remove-image');
     }
 }
