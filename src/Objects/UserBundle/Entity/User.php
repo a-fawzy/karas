@@ -32,12 +32,18 @@ class User implements AdvancedUserInterface {
     private $id;
 
     /**
+     * @ORM\OneToMany(targetEntity="\Objects\KarasBundle\Entity\Experience", mappedBy="user")
+     */
+    private $experiences;
+    
+    
+    /**
      * @ORM\OneToMany(targetEntity="\Objects\KarasBundle\Entity\Candidate", mappedBy="user")
      */
     private $candidates;
     
     /**
-     * @ORM\OneToMany(targetEntity="\Objects\KarasBundle\Entity\Candidate", mappedBy="owner")
+     * @ORM\OneToMany(targetEntity="\Objects\KarasBundle\Entity\Job", mappedBy="owner")
      */
     private $jobs;
     
@@ -1417,6 +1423,7 @@ class User implements AdvancedUserInterface {
     {
         $this->candidates = new \Doctrine\Common\Collections\ArrayCollection();
         $this->jobs = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->experiences = new \Doctrine\Common\Collections\ArrayCollection();
         $this->userRoles = new \Doctrine\Common\Collections\ArrayCollection();
         $this->createdAt = new \DateTime();
         $this->lastSeen = new \DateTime();
@@ -1457,13 +1464,14 @@ class User implements AdvancedUserInterface {
         return $this->candidates;
     }
 
+
     /**
      * Add jobs
      *
-     * @param \Objects\KarasBundle\Entity\Candidate $jobs
+     * @param \Objects\KarasBundle\Entity\Job $jobs
      * @return User
      */
-    public function addJob(\Objects\KarasBundle\Entity\Candidate $jobs)
+    public function addJob(\Objects\KarasBundle\Entity\Job $jobs)
     {
         $this->jobs[] = $jobs;
     
@@ -1473,9 +1481,9 @@ class User implements AdvancedUserInterface {
     /**
      * Remove jobs
      *
-     * @param \Objects\KarasBundle\Entity\Candidate $jobs
+     * @param \Objects\KarasBundle\Entity\Job $jobs
      */
-    public function removeJob(\Objects\KarasBundle\Entity\Candidate $jobs)
+    public function removeJob(\Objects\KarasBundle\Entity\Job $jobs)
     {
         $this->jobs->removeElement($jobs);
     }
@@ -1488,5 +1496,38 @@ class User implements AdvancedUserInterface {
     public function getJobs()
     {
         return $this->jobs;
+    }
+
+    /**
+     * Add experiences
+     *
+     * @param \Objects\UserBundle\Entity\Experience $experiences
+     * @return User
+     */
+    public function addExperience(\Objects\UserBundle\Entity\Experience $experiences)
+    {
+        $this->experiences[] = $experiences;
+    
+        return $this;
+    }
+
+    /**
+     * Remove experiences
+     *
+     * @param \Objects\UserBundle\Entity\Experience $experiences
+     */
+    public function removeExperience(\Objects\UserBundle\Entity\Experience $experiences)
+    {
+        $this->experiences->removeElement($experiences);
+    }
+
+    /**
+     * Get experiences
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getExperiences()
+    {
+        return $this->experiences;
     }
 }

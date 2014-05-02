@@ -8,11 +8,15 @@ class KarasController extends Controller
 {
     public function indexAction()
     {
-        $em     = $this->getDoctrine()->getManager();
-        $slides = $em->getRepository('ObjectsKarasBundle:Slide')->findBy(array(),array('power' => 'ASC'));
+        $em          = $this->getDoctrine()->getManager();
+        $slides      = $em->getRepository('ObjectsKarasBundle:Slide')->findBy(array(),array('power' => 'ASC'));
+        $professions = $em->getRepository('ObjectsKarasBundle:Profession')->findAll();
+        $recentJobs  = $em->getRepository('ObjectsKarasBundle:Job')->getJobs(1, 14);
         
         return $this->render('ObjectsKarasBundle:Karas:index.html.twig', array(
-            'slides' => $slides
+            'slides' => $slides,
+            'professions' => $professions,
+            'recentJobs' => $recentJobs['entities']
         ));
     }
     

@@ -42,6 +42,16 @@ class JobController extends Controller
             ))
             ->add('skills')
             ->add('languages')
+            ->add('countryCode', 'country')
+            ->add('city')
+            ->add('profession', 'entity', array(
+                'class' => 'ObjectsKarasBundle:Profession',
+                'property' => 'title',
+            ))
+            ->add('industry', 'entity', array(
+                'class' => 'ObjectsKarasBundle:Industry',
+                'property' => 'title',
+            ))
             ->add('salary', 'text')
             ->add('allowances')
         ->getForm();
@@ -83,6 +93,35 @@ class JobController extends Controller
             'form' => $form->createView(),
             'path' => 'edit',
             'id' => $id
+        ));
+    }
+    
+    private function fixValues($variable){
+        if($variable == 'all'){
+            return null;
+        }
+        return $variable;
+    }
+
+    public function listAction(Request $request,$type, $profession, $page) {
+
+        $maxResult = $this->container->getParameter('max_result');
+        $em   = $this->getDoctrine()->getManager();
+        $jobs = $em->getRepository('ObjectsKarasBundle:Job')
+                ->getJobs($page, 20, $this->fixValues($profession), $this->fixValues($type));
+                
+        return $this->render('ObjectsKarasBundle:Job:list.html.twig', array(
+            'jobs' => $jobs['entities'],
+            'type' => $type
+        ));
+    }
+    
+    public function showAction($id){
+        $em   = $this->getDoctrine()->getManager();
+        $job = $em->getRepository('ObjectsKarasBundle:Job')->find($id);
+                
+        return $this->render('ObjectsKarasBundle:Job:show.html.twig', array(
+            'job' => $job
         ));
     }
 }

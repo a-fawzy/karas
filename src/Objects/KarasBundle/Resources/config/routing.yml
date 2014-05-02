@@ -68,3 +68,11 @@ objects_karas_job_new:
 objects_karas_job_edit:
     pattern:  /job/edit/{id}
     defaults: { _controller: ObjectsKarasBundle:Job:edit}
+
+objects_karas_job_list:
+    pattern:  /job/list/{type}/{profession}/{page}
+    defaults: { _controller: ObjectsKarasBundle:Job:list, type: all, profession: null, page: 1}
+    
+objects_karas_job_show:
+    pattern:  /job/show/{id}
+    defaults: { _controller: ObjectsKarasBundle:Job:show }

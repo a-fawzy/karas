@@ -1,140 +1,107 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>KARAS RECRUIT : ABOUT</title>
-        <link rel="stylesheet" type="text/css" href="css/reset.css"/>
-        <link rel="stylesheet" type="text/css" href="css/base.css"/>
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
-        <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css"/>
-        <link rel="stylesheet" type="text/css" href="css/main.css"/>
-        <link rel="stylesheet" type="text/css" href="css/flexslider.css"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>KARAS RECRUIT : Contact Us</title>
+        <link rel="stylesheet" type="text/css" href="css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="css/base.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css" />
+        <link rel="stylesheet" type="text/css" href="css/chosen.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+        <link rel="stylesheet" type="text/css" href="css/flexslider.css" />
+        <style>
+            .btn-block {
+                color:#6c6c6c;
+                font-size:14px;
+            }
+            input[type=text] {
+                font-size:13px;
+            }
+            form {
+                margin:0;
+            }
+            .collapse.in {
+                height: auto;  /* this style already exists in bootstrap.css */
+                overflow: visible;  /* this one doesn't. Add it! */
+            }
+        </style>
         <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery-ui.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/chosen.jquery.js"></script>
+        <script>
+            $(document).ready(function() {
+                $(".chzn-select").chosen();
+                $(".datepicker").datepicker();
+            })
+        </script>
     </head>
+
     <body>
         <div class="wrapper970">
             <div class="section1over3">
-                <img class="logo" src="img/logo.png"/>
-                <hr class="hrLogo"/>
-                <h3>Find Your Job :</h3>
-                <h4>ENTER YOUR JOB SPECIALITY HERE</h4>
-                <input class="homeInput" type="text" placeholder="job speciality ..."/>
-                <h4>ENTER YOUR EMAIL ADDRESS HERE</h4>
-                <input class="homeInput" type="text" placeholder="email address ..."/>
-                <div class="clearfix">
+                <img class="logo" src="img/logo.png" />
+                <hr class="hrLogo" />
+                <h3>Profile Complition :</h3>
+                <div class="progress progress-striped active">
+                    <div class="bar" style="width: 40%;"></div>
                 </div>
-                <a href="javascript:void(0)" class="btn btn-warning ">RESET</a><a href="javascript:void(0)" class="btn btn-info marginLeft10px">SUBMIT</a>
-                <hr class="hr1"/>
-                <button class="btn btn-large btn-block btn-warning" type="button">Post Your Resume<i class="icon-white icon-circle-arrow-right"></i></button>
-                <button class="btn btn-large btn-block btn-info" type="button">Find Resume<i class="icon-white icon-circle-arrow-right"></i></button>
-                <h3 class="marginBtnZero">Find Your Career :</h3>
-                <ul class="findCareer">
-                    <li><a href="javascript:void(0)">Accounting <span>></span></a></li>
-                    <li><a href="javascript:void(0)">Admin& Clerical <span>></span></a></li>
-                    <li><a href="javascript:void(0)">Automotive <span>></span></a></li>
-                    <li><a href="javascript:void(0)">Contract& Freelance <span>></span></a></li>
-                    <li><a href="javascript:void(0)">Banking& Finance <span>></span></a></li>
-                    <li><a href="javascript:void(0)">Business Opportunity <span>></span></a></li>
-                    <li><a href="javascript:void(0)">Customer Service <span>></span></a></li>
-                    <li><a href="javascript:void(0)">Engineering <span>></span></a></li>
-                    <li><a href="javascript:void(0)">Government <span>></span></a></li>
-                    <li><a href="javascript:void(0)">Health Care <span>></span></a></li>
-                    <li><a href="javascript:void(0)">Hospitality <span>></span></a></li>
-                </ul>
+                <button class="btn btn-large btn-block" type="button">Upload Your C.V.<span style="margin:2px 16px 0 0;" class="right badge badge-success">+ 20%</span></button>
+                <button class="btn btn-large btn-block" type="button"> Add Work Experience<span style="margin:2px 16px 0 0;" class="right badge badge-success">+ 10%</span></button>
+                <button class="btn btn-large btn-block" type="button"> Add Skills<span style="margin:2px 16px 0 0;" class="right badge badge-success">+ 20%</span></button>
+                <button class="btn btn-large btn-block" type="button"> Add Education<span style="margin:2px 16px 0 0;" class="right badge badge-success">+ 15%</span></button>
+                <button class="btn btn-large btn-block" type="button"> Add Certificates<span style="margin:2px 16px 0 0;" class="right badge badge-success">+ 10%</span></button>
+                <button class="btn btn-large btn-block" type="button"> Add Profile Image<span style="margin:2px 16px 0 0;" class="right badge badge-success">+ 5%</span></button>
             </div>
             <div class="section2over3">
                 <a href="#login" class="userCtr" data-toggle="modal"><i class="icon-user"></i>sign in</a>
                 <a href="#register" class="userCtr" data-toggle="modal"><i class="icon-play"></i>register</a>
-                <div class="clearfix">
-                </div>
+                <div class="clearfix"></div>
+                <!--
+      <ul class="mainMenu">
+            <li><a href="javascript:void(0)">HOME</a></li>
+        <li><a href="javascript:void(0)">ABOUT US</a></li>
+        <li><a href="javascript:void(0)">JOBS</a></li>
+        <li><a href="javascript:void(0)">PAPER ADS.</a></li>
+        <li><a href="javascript:void(0)">JOIN TODAY</a></li>
+        <li><a href="javascript:void(0)">CONTACT US</a></li>
+      </ul>
+                -->
                 <div class="navbar">
                     <div class="navbar-inner">
                         <ul class="nav">
                             <li><a href="index.html">Home</a></li>
-                            <li class="active"><a href="about.html">ABOUT US</a></li>
+                            <li><a href="about.html">ABOUT US</a></li>
                             <li><a href="jobs.html">JOBS</a></li>
                             <li><a href="resumes.html">RESUMES</a></li>
-                            <li><a href="contact.html">CONTACT US</a></li>
+                            <li class="active"><a href="contact.html">CONTACT US</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="tabbable">
-                    <!-- Only required for left/right tabs -->
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab1" data-toggle="tab">Services</a></li>
-                        <li><a href="#tab2" data-toggle="tab">Clients</a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="tab1"> 
-                            <ul id="services">
-                                <li>
-                                    <div><span>1- Local & Overseas Recruitment:</span> we recruit all the required nationalities from te middle east, asia, or any nationality based on the client request, we are specialized in providing recruitment solutions for both local & overseas market, implementing all kinds of strategies, which best suit both candidates and clients.</div>
-                                    <img src="img/servcies/1.jpg" />
-                                    <p class="clear"></p>
-                                </li>
-                                <li>
-                                    <div><span>2- Online Recruitment:</span> we recruit all the required nationalities from te middle east, asia, or any nationality based on the client request, we are specialized in providing recruitment solutions for both local & overseas market, implementing all kinds of strategies, which best suit both candidates and clients.</div>
-                                    <img src="img/servcies/2.jpg" />
-                                    <p class="clear"></p>
-                                </li>
-                                <li>
-                                    <div><span>3- Visa Processing:</span> we recruit all the required nationalities from te middle east, asia, or any nationality based on the client request, we are specialized in providing recruitment solutions for both local & overseas market, implementing all kinds of strategies, which best suit both candidates and clients.</div>
-                                    <img src="img/servcies/3.jpg" />
-                                    <p class="clear"></p>
-                                </li>
-                                <li>
-                                    <div><span>4- Payroll Services:</span> we recruit all the required nationalities from te middle east, asia, or any nationality based on the client request, we are specialized in providing recruitment solutions for both local & overseas market, implementing all kinds of strategies, which best suit both candidates and clients.</div>
-                                    <img src="img/servcies/4.jpg" />
-                                    <p class="clear"></p>
-                                </li>
-                                <li>
-                                    <div><span>5- HR Consultancy:</span> we recruit all the required nationalities from te middle east, asia, or any nationality based on the client request, we are specialized in providing recruitment solutions for both local & overseas market, implementing all kinds of strategies, which best suit both candidates and clients.</div>
-                                    <img src="img/servcies/5.jpg" />
-                                    <p class="clear"></p>
-                                </li>
-                                <li class="lastItem">
-                                    <div><span>6- Conference Rooms Facilities:</span> we recruit all the required nationalities from te middle east, asia, or any nationality based on the client request, we are specialized in providing recruitment solutions for both local & overseas market, implementing all kinds of strategies, which best suit both candidates and clients.</div>
-                                    <img width="175" src="img/servcies/6.jpg" />
-                                    <p class="clear"></p>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tab-pane" id="tab2">
-                            <div id="customersLogos">
-                                <img src="img/customers/1.jpg" />
-                                <img src="img/customers/2.jpg" />
-                                <img src="img/customers/3.jpg" />
-                                <img src="img/customers/4.jpg" />
-                                <img src="img/customers/5.jpg" />
-                                <img src="img/customers/6.jpg" />
-                                <img src="img/customers/7.jpg" />
-                                <img src="img/customers/8.jpg" />
-                                <img src="img/customers/9.jpg" />
-                                <img src="img/customers/10.jpg" />
-                                <img src="img/customers/11.jpg" />
-                                <img src="img/customers/12.jpg" />
-                                <img src="img/customers/13.jpg" />
-                                <img src="img/customers/14.jpg" />
-                                <img src="img/customers/15.jpg" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
+
+        </div>
         <div class="wrapper970">
-            <div class="clear">
-            </div>
+
+
+
+
+            <div class="clear"></div>
+
             <div class="fullWidth lineR">
             </div>
-            <div class="clear">
-            </div>
+
+            <div class="clear"></div>
+
             <div class="section1over3">
-                <img class="logo" src="img/logoba.png"/>
+                <img class="logo" src="img/logoba.png" />
             </div>
             <div class="section2over3 footer">
-                <div class="footerCont1">
+                <div style="width: 31%; float: left; margin-right: 20px">
                     <h3>Career Builder :</h3>
                     <ul class="findCareer fotter1lst">
                         <li><a href="javascript:void(0)"><span>></span>About Us</a></li>
@@ -143,7 +110,7 @@
                         <li><a href="javascript:void(0)"><span>></span>CareerBuilder API</a></li>
                     </ul>
                 </div>
-                <div class="footerCont1">
+                <div style="width: 31%; float: left; margin-right: 20px">
                     <h3>Job Seeker :</h3>
                     <ul class="findCareer fotter1lst">
                         <li><a href="javascript:void(0)"><span>></span>Free Career Test</a></li>
@@ -152,7 +119,7 @@
                         <li><a href="javascript:void(0)"><span>></span>College Degrees</a></li>
                     </ul>
                 </div>
-                <div  class="footerCont1 marginRightZero">
+                <div style="width: 31%; float: left">
                     <h3>Employers :</h3>
                     <ul class="findCareer fotter1lst">
                         <li><a href="javascript:void(0)"><span>></span>Search Resumes</a></li>
@@ -162,7 +129,21 @@
                     </ul>
                 </div>
             </div>
+
+
+
+
+
+
+
+
+
         </div>
+
+
+
+
+
         <div id="register" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -201,6 +182,7 @@
                         </div>
                     </div>
                 </form>
+
             </div>
             <div class="modal-footer">
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -231,15 +213,19 @@
                         <div class="controls">
                             <label class="checkbox">
                                 <input type="checkbox">
-                                    Remember me </label>
+                                    Remember me
+                            </label>
                         </div>
                     </div>
                 </form>
+
+
             </div>
             <div class="modal-footer">
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
                 <button class="btn btn-primary">Sign In</button>
             </div>
         </div>
+
     </body>
 </html>

@@ -1,0 +1,528 @@
+{% extends '::base.html.twig' %}
+{% block activeRequest %} active{% endblock %}
+{% block title %}My Profile{% endblock %}
+{% block body %}
+
+<div class="tabbable">
+    <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Profile</a></li>
+
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+            <div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                            <blockquote style="background: #eee	">
+                                <p>Contact Information</p>
+                            </blockquote>
+                        </a>
+                    </div>
+                    <div id="collapseOne" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <form class="form-horizontal">
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">E-mail</label>
+                                    <div class="controls">
+                                        <input type="text" placeholder="E-mail Here">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Phone</label>
+                                    <div class="controls">
+                                        <input type="text" placeholder="Phone Here">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Current address</label>
+                                    <div class="controls">
+                                        <input type="text" placeholder="Current address Here">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Country</label>
+                                    <div class="controls">
+                                        <select class="chzn-select">
+                                            <option>Egypt</option>
+                                            <option>UAE</option>
+                                            <option>USA</option>
+                                            <option>Canada</option>
+                                            <option>Sudan</option>
+                                        </select></div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">State</label>
+                                    <div class="controls">
+                                        <select class="chzn-select">
+                                            <option>Alexandria</option>
+                                            <option>Cairo</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">IM/Skype</label>
+                                    <div class="controls">
+                                        <input type="text" placeholder="IM/Skype Here">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Twitter</label>
+                                    <div class="controls">
+                                        <input type="text" placeholder="Twitter Here">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Websites</label>
+                                    <div class="controls">
+                                        <textarea rows="6" type="text" placeholder="Websites Here"></textarea>
+                                        <span class="help-block">(separated by a comma)</span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                            <blockquote style="background: #eee	">
+                                <p>Summary</p>
+                            </blockquote>
+                        </a>
+                    </div>
+                    <div id="collapseTwo" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <form class="form-horizontal">
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Summary</label>
+                                    <div class="controls">
+                                        <textarea rows="6" type="text" placeholder="Summary Here"></textarea>
+                                        <span class="help-block">(max 600 characters)</span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse3">
+                            <blockquote style="background: #eee	">
+                                <p>Experience</p>
+                            </blockquote>
+                        </a>
+                    </div>
+                    <div id="collapse3" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <form class="form-horizontal legend">
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Company name</label>
+                                    <div class="controls">
+                                        <input type="text" placeholder="Company name Here">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Company logo</label>
+                                    <div class="controls">
+                                        <input type="file">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Industry</label>
+                                    <div class="controls">
+                                        <select class="chzn-select">
+                                            <option>Engineering</option>
+                                            <option>IT / Technology</option>
+                                            <option>Administration</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Job title</label>
+                                    <div class="controls">
+                                        <input type="text" placeholder="Job title Here">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Position</label>
+                                    <div class="controls">
+                                        <input type="text" placeholder="Position Here">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Profession</label>
+                                    <div class="controls">
+                                        <select class="chzn-select">
+                                            <option>Administration</option>
+                                            <option>Engineering</option>
+                                            <option>IT / Technology</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Country</label>
+                                    <div class="controls">
+                                        <select class="chzn-select">
+                                            <option>Egypt</option>
+                                            <option>UAE</option>
+                                            <option>USA</option>
+                                            <option>Canada</option>
+                                            <option>Sudan</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">State</label>
+                                    <div class="controls">
+                                        <select class="chzn-select">
+                                            <option>Alexandria</option>
+                                            <option>Cairo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Start Date</label>
+                                    <div class="controls">
+                                        <input type="text" class="datepicker">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">End Date</label>
+                                    <div class="controls">
+                                        <input type="text" class="datepicker">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Description</label>
+                                    <div class="controls">
+                                        <textarea rows="6" type="text" placeholder="Description Here"></textarea>
+                                    </div>
+                                </div>
+
+                            </form>
+                            <a href="javascript:void(0)">+ add new experience</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse4">
+                            <blockquote style="background: #eee	">
+                                <p>Projects</p>
+                            </blockquote>
+                        </a>
+                    </div>
+                    <div id="collapse4" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <form class="form-horizontal legend">
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Name</label>
+                                    <div class="controls">
+                                        <input type="text" placeholder="Name Here">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Occupation</label>
+                                    <div class="controls">
+                                        <input type="text" placeholder="Occupation Here">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Start Date</label>
+                                    <div class="controls">
+                                        <input type="text" class="datepicker">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">End Date</label>
+                                    <div class="controls">
+                                        <input type="text" class="datepicker">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Description</label>
+                                    <div class="controls">
+                                        <textarea rows="6" type="text" placeholder="Description Here"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                            <a href="javascript:void(0)">+ add new project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse5">
+                            <blockquote style="background: #eee	">
+                                <p>Courses &amp; Certificates</p>
+                            </blockquote>
+                        </a>
+                    </div>
+                    <div id="collapse5" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <form class="form-horizontal legend">
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Course name</label>
+                                    <div class="controls">
+                                        <input type="text" placeholder="Course name Here">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Association</label>
+                                    <div class="controls">
+                                        <input type="text" placeholder="Association Here">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Certification name</label>
+                                    <div class="controls">
+                                        <input type="text" placeholder="Certification name Here">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Certification authority</label>
+                                    <div class="controls">
+                                        <input type="text" placeholder="Certification authority Here">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">License number</label>
+                                    <div class="controls">
+                                        <input type="text" placeholder="License number Here">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Start Date</label>
+                                    <div class="controls">
+                                        <input type="text" class="datepicker">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">End Date</label>
+                                    <div class="controls">
+                                        <input type="text" class="datepicker">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Certificate</label>
+                                    <div class="controls">
+                                        <input type="file">
+                                    </div>
+                                </div>
+                            </form>
+                            <a href="javascript:void(0)">+ add new course</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse6">
+                            <blockquote style="background: #eee	">
+                                <p>Skills &amp; Expertise</p>
+                            </blockquote>
+                        </a>
+                    </div>
+                    <div id="collapse6" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <form class="form-horizontal legend">
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Skill</label>
+                                    <div class="controls">
+                                        <input type="text" placeholder="Skill Here">
+                                    </div>
+                                </div>
+                            </form>
+                            <a href="javascript:void(0)">+ add new skill</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse7">
+                            <blockquote style="background: #eee	">
+                                <p>Education</p>
+                            </blockquote>
+                        </a>
+                    </div>
+                    <div id="collapse7" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <form class="form-horizontal legend">
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">School/University</label>
+                                    <div class="controls">
+                                        <input type="text" placeholder="School/University Here">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Start year</label>
+                                    <div class="controls">
+                                        <select class="chzn-select">
+                                            <option>2013</option>
+                                            <option>2012</option>
+                                            <option>2011</option>
+                                            <option>2010</option>
+                                            <option>2009</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">End year</label>
+                                    <div class="controls">
+                                        <select class="chzn-select">
+                                            <option>2013</option>
+                                            <option>2012</option>
+                                            <option>2011</option>
+                                            <option>2010</option>
+                                            <option>2009</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Degree</label>
+                                    <div class="controls">
+                                        <select class="chzn-select">
+                                            <option>Bachelor</option>
+                                            <option>Masters</option>
+                                            <option>PHD</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Field of study</label>
+                                    <div class="controls">
+                                        <input type="text" placeholder="Field of study Here">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Grade</label>
+                                    <div class="controls">
+                                        <input type="text" placeholder="Grade Here">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Description</label>
+                                    <div class="controls">
+                                        <textarea rows="6" type="text" placeholder="Description Here"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                            <a href="javascript:void(0)">+ add new education</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse8">
+                            <blockquote style="background: #eee">
+                                <p>Additional Information</p>
+                            </blockquote>
+                        </a>
+                    </div>
+                    <div id="collapse8" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <form class="form-horizontal">
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Interests</label>
+                                    <div class="controls">
+                                        <textarea rows="6" type="text" placeholder="Interests Here"></textarea>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Name</label>
+                                    <div class="controls">
+                                        <input type="text" placeholder="Name Here">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Birthday</label>
+                                    <div class="controls">
+                                        <input type="text" class="datepicker">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Marital Status</label>
+                                    <div class="controls">
+                                        <select class="chzn-select">
+                                            <option>Married</option>
+                                            <option>Single</option>
+                                            <option>Engagaed</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">LKR</label>
+                                    <div class="controls">
+                                        <input type="text" placeholder="LKR Here">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Gender</label>
+                                    <div class="controls">
+                                        <select class="chzn-select">
+                                            <option>Male</option>
+                                            <option>Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Nationality</label>
+                                    <div class="controls">
+                                        <select class="chzn-select">
+                                            <option>Egyptian</option>
+                                            <option>American</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Personal Photo</label>
+                                    <div class="controls">
+                                        <input type="file">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse9">
+                            <blockquote style="background: #eee">
+                                <p>Languages</p>
+                            </blockquote>
+                        </a>
+                    </div>
+                    <div id="collapse9" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <form class="form-horizontal legend">
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Language</label>
+                                    <div class="controls">
+                                        <select class="chzn-select">
+                                            <option>English</option>
+                                            <option>French</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Level</label>
+                                    <div class="controls">
+                                        <select class="chzn-select">
+                                            <option>Basic</option>
+                                            <option>Good</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                            <a href="javascript:void(0)">+ add new language</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

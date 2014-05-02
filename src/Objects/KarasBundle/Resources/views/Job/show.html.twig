@@ -1,0 +1,54 @@
+{% extends '::base.html.twig' %}
+{% block activeRequest %} active{% endblock %}
+{% block title %}Add New Job{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "ur-907d1361-6d39-683f-4894-5d7caa66d41c", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+{% endblock %}
+{% block body %}
+
+<div class="tabbable">
+    <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Job {{job.id}} : {{ job.title }}</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+            <div class="socialLinks">
+                <span class='st_facebook_large' displayText='Facebook'></span>
+                <span class='st_twitter_large' displayText='Tweet'></span>
+                <span class='st_linkedin_large' displayText='LinkedIn'></span>
+                <span class='st_email_large' displayText='Email'></span>
+                <span class='st_sharethis_large' displayText='ShareThis'></span>
+            </div>
+            <h3 class="fh">Job Details</h3>
+            <div class="clear"></div>
+            <span class="jobField">Job Industry:</span><span class="jobData"> {{ job.industry.title }}</span><hr />
+            <span class="jobField">Job Profession:</span><span class="jobData"> {{ job.profession.title }}</span><hr />
+            <span class="jobField">Experience:</span><span class="jobData"> {{ job.experience }}</span><hr />
+            <span class="jobField">Job Description:</span><span class="jobData"> {{ job.description }}</span><hr />
+            <h3>Candidate Information</h3>
+            <span class="jobField">Gender:</span><span class="jobData"> {{ job.gender }}</span><hr />
+            <span class="jobField">Skills Required:</span>
+            <span class="jobData">
+                <ul>
+                    {{ job.skills }}
+                </ul>
+            </span>
+            <div class="clear"></div>
+            <hr />
+
+            <span class="jobField">Languages:</span><span class="jobData"> {{ job.languages }}</span><hr />
+            <h3>Benefits& Allowances</h3>
+            <span class="jobField">Salary:</span><span class="jobData"> {{ job.salary }}</span><hr />
+            <span class="jobField">Allowances:</span><span class="jobData"> {{ job.allowances }}</span><hr />
+            <center><a href="#" class="btn btn-large btn-primary">&nbsp;&nbsp; Apply Now &nbsp;&nbsp;</a></center>
+
+        </div>
+        <div id="map-canvas"></div>
+    </div>
+</div>
+
+{% endblock %}

@@ -12,4 +12,47 @@ use Doctrine\ORM\EntityRepository;
  */
 class JobRepository extends EntityRepository
 {
+    public function getJobs($page = 1, $maxResults = 20, $profession= null, $type= null){
+        $data = array(
+           'count' => 0,
+           'entities' => array()
+        );
+        
+        if ($page >= 1) {
+            $parameters = array();
+            $page--;
+            //Query Creation
+            $selectQuery = "SELECT j " ;
+            $fromQuery =  ' FROM ObjectsKarasBundle:Job j';
+            $joinQuery =  " JOIN j.profession p";
+            $whereQuery = " WHERE j.approved = TRUE ";
+            
+            if ($profession) {
+                $parameters['profession'] = $profession;
+                $whereQuery .= ' AND j.profession = :profession';
+            }
+            
+            if ($type) {
+                $parameters['type'] = $type;
+                $whereQuery .= ' AND j.type = :type';
+            }
+
+            $groupQuery = " ";
+            
+            $queryFinal = "$selectQuery $fromQuery $joinQuery $whereQuery $groupQuery";
+            $query = $this->getEntityManager()->createQuery($queryFinal)->setParameters($parameters);
+            $countQuery = $this->getEntityManager()->createQuery("SELECT COUNT(j.id) $fromQuery $joinQuery $whereQuery $groupQuery")->setParameters($parameters);
+            $query->setFirstResult($page * $maxResults);
+            $query->setMaxResults($maxResults);
+            $result = $countQuery->getResult();
+            if ($result)
+            {
+                $data['count'] = $result[0][1];
+                $data['entities'] = $query->getResult();
+            }
+        }
+        return $data;
+    }
+    
+    
 }

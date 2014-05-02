@@ -71,17 +71,20 @@ class Experience
     private $city;
     
     /**
-     * @var string $profession
-     * @ORM\Column(name="profession", type="string", length=50)
+     * @ORM\ManyToOne(targetEntity="Profession", inversedBy="experiences")
      */
     private $profession;
-    
-    
+
     /**
-     * @var string $industry
-     * @ORM\Column(name="industry", type="string", length=50)
+     * @ORM\ManyToOne(targetEntity="Industry", inversedBy="experiences")
      */
     private $industry;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="\Objects\UserBundle\Entity\User", inversedBy="experiences")
+     */
+    private $user;
+
     
     
 
@@ -256,13 +259,15 @@ class Experience
         return $this->city;
     }
 
+
+
     /**
      * Set profession
      *
-     * @param string $profession
+     * @param \Objects\KarasBundle\Entity\Profession $profession
      * @return Experience
      */
-    public function setProfession($profession)
+    public function setProfession(\Objects\KarasBundle\Entity\Profession $profession = null)
     {
         $this->profession = $profession;
     
@@ -272,7 +277,7 @@ class Experience
     /**
      * Get profession
      *
-     * @return string 
+     * @return \Objects\KarasBundle\Entity\Profession 
      */
     public function getProfession()
     {
@@ -282,10 +287,10 @@ class Experience
     /**
      * Set industry
      *
-     * @param string $industry
+     * @param \Objects\KarasBundle\Entity\Industry $industry
      * @return Experience
      */
-    public function setIndustry($industry)
+    public function setIndustry(\Objects\KarasBundle\Entity\Industry $industry = null)
     {
         $this->industry = $industry;
     
@@ -295,10 +300,34 @@ class Experience
     /**
      * Get industry
      *
-     * @return string 
+     * @return \Objects\KarasBundle\Entity\Industry 
      */
     public function getIndustry()
     {
         return $this->industry;
+    }
+
+
+    /**
+     * Set user
+     *
+     * @param \Objects\UserBundle\Entity\User $user
+     * @return Experience
+     */
+    public function setUser(\Objects\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Objects\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

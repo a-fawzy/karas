@@ -1,0 +1,37 @@
+{% extends '::base.html.twig' %}
+{% block activeRequest %} active{% endblock %}
+{% block title %}Add New Job{% endblock %}
+{% block body %}
+{% set originalParameters = app.request.attributes.get('_route_params') | merge(app.request.query.all()) %}
+
+<div class="tabbable">
+    <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs">
+        <li class="{% if type == 'all' %}active{% endif %}"><a href="{{ path(app.request.attributes.get('_route'), originalParameters | merge({'type': 'all'})) }}">All Jobs</a></li>
+        <li class="{% if type == 'inside' %}active{% endif %}">
+            <a href="{{ path(app.request.attributes.get('_route'), originalParameters | merge({'type': 'inside'})) }}">Jobs Inside</a>
+        </li>
+        <li class="{% if type == 'outside' %}active{% endif %}"><a href="{{ path(app.request.attributes.get('_route'), originalParameters | merge({'type': 'outside'})) }}">Jobs Outside</a></li>
+        <li class="{% if type == 'paper' %}active{% endif %}"><a href="{{ path(app.request.attributes.get('_route'), originalParameters | merge({'type': 'paper'})) }}">Paper Jobs</a></li>
+    </ul>
+    <div class="tab-content">
+        <ul class="jobList">
+            {% for job in jobs %}
+                <li>
+                    <img src="{{ asset('img/glyphicons_341_briefcase.png') }}">
+                    <div class="float-left">
+                        <span class="jobName">{{ job.title }}</span>
+                        <div class="clear"></div>
+                        <span class="jobCategory">{{ job.industry.title }}</span>
+                        <div class="clear"></div>
+                        <span class="jobLocation">{{ job.city }}, {{ job.countryCode }}</span>
+                        <div class="clear"></div>
+                        <span class="jobDesc">{{ job.description }}</span>
+                        <a href="{{ path('objects_karas_job_edit', { id: job.id }) }}" class="btn btn-info"><i class="icon-edit icon-white"></i> Edit</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

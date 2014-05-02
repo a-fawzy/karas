@@ -78,6 +78,28 @@ class Job
     private $allowances;
 
     /**
+     * @var string $countryCode
+     *
+     * @ORM\Column(name="country_code", type="string", length=2)
+     */
+    private $countryCode;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="city", type="string", length=80)
+     */
+    private $city;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=20)
+     */
+    private $type = 'inside';
+
+    
+    /**
      * @var boolean
      *
      * @ORM\Column(name="approved", type="boolean")
@@ -91,6 +113,17 @@ class Job
      */
     private $owner;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Profession", inversedBy="jobs")
+     */
+    private $profession;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Industry", inversedBy="jobs")
+     */
+    private $industry;
+
+    
     /**
      * @ORM\OneToMany(targetEntity="Candidate", mappedBy="job")
      */
@@ -376,5 +409,120 @@ class Job
     public function getCandidates()
     {
         return $this->candidates;
+    }
+
+    /**
+     * Set countryCode
+     *
+     * @param string $countryCode
+     * @return Job
+     */
+    public function setCountryCode($countryCode)
+    {
+        $this->countryCode = $countryCode;
+    
+        return $this;
+    }
+
+    /**
+     * Get countryCode
+     *
+     * @return string 
+     */
+    public function getCountryCode()
+    {
+        return $this->countryCode;
+    }
+
+    /**
+     * Set city
+     *
+     * @param string $city
+     * @return Job
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+    
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return string 
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * Set profession
+     *
+     * @param \Objects\KarasBundle\Entity\Profession $profession
+     * @return Job
+     */
+    public function setProfession(\Objects\KarasBundle\Entity\Profession $profession = null)
+    {
+        $this->profession = $profession;
+    
+        return $this;
+    }
+
+    /**
+     * Get profession
+     *
+     * @return \Objects\KarasBundle\Entity\Profession 
+     */
+    public function getProfession()
+    {
+        return $this->profession;
+    }
+
+    /**
+     * Set industry
+     *
+     * @param \Objects\KarasBundle\Entity\Industry $industry
+     * @return Job
+     */
+    public function setIndustry(\Objects\KarasBundle\Entity\Industry $industry = null)
+    {
+        $this->industry = $industry;
+    
+        return $this;
+    }
+
+    /**
+     * Get industry
+     *
+     * @return \Objects\KarasBundle\Entity\Industry 
+     */
+    public function getIndustry()
+    {
+        return $this->industry;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return Job
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

@@ -33,87 +33,36 @@
         <div class="footerCont1">
             <h3 class="marginBottomZero">Find Your Career :</h3>
             <ul class="findCareer">
-                <li><a href="javascript:void(0)">Accounting <span>&gt;</span></a></li>
-                <li><a href="javascript:void(0)">Admin&amp; Clerical <span>&gt;</span></a></li>
-                <li><a href="javascript:void(0)">Automotive <span>&gt;</span></a></li>
-                <li><a href="javascript:void(0)">Contract&amp; Freelance <span>&gt;</span></a></li>
-                <li><a href="javascript:void(0)">Banking&amp; Finance <span>&gt;</span></a></li>
-                <li><a href="javascript:void(0)">Business Opportunity <span>&gt;</span></a></li>
-                <li><a href="javascript:void(0)">Customer Service <span>&gt;</span></a></li>
-                <li><a href="javascript:void(0)">Engineering <span>&gt;</span></a></li>
-                <li><a href="javascript:void(0)">Government <span>&gt;</span></a></li>
-                <li><a href="javascript:void(0)">Health Care <span>&gt;</span></a></li>
-                <li><a href="javascript:void(0)">Hospitality <span>&gt;</span></a></li>
+                {% for profession in professions %}
+                    <li><a href="{{ path('objects_karas_job_list', { profession: profession.id } ) }}">{{ profession.title }} <span>&gt;</span></a></li>
+                {% endfor %}
             </ul>
         </div>
         <div class="footerCont1">
             <h3>Lates Jobs :</h3>
+            {% set jobLength = (recentJobs|length) / 2 %}
             <ul class="latestJobs">
-                <li>
-                    <a class="allLnk" href="javascript:void(0)">
-                        <em>&gt;</em><span>Safety&amp; Reliability Group Manager</span>
-                        <span class="lineTwo">Atkins</span>
-                    </a>
-                </li>
-                <li><a class="allLnk" href="javascript:void(0)">
-                        <em>&gt;</em><span>Product Supervisor (62-547)</span>
-                        <span class="lineTwo">ZOLL</span></a>
-                </li>
-                <li><a class="allLnk" href="javascript:void(0)">
-                        <em>&gt;</em><span>Advertising / Sales</span>
-                        <span class="lineTwo">DFW AND ASSOCIATES</span></a>
-                </li>
-                <li><a class="allLnk" href="javascript:void(0)">
-                        <em>&gt;</em><span>JOB FAIR COMING TO YOUR AREA</span>
-                        <span class="lineTwo">Dollar Tree Stores</span></a>
-                </li>
-                <li><a class="allLnk" href="javascript:void(0)">
-                        <em>&gt;</em><span>Quality Assurance Analyst (305547-763)</span>
-                        <span class="lineTwo">UAFC</span></a>
-                </li>
-                <li><a class="allLnk" href="javascript:void(0)">
-                        <em>&gt;</em><span>Center Manager</span>
-                        <span class="lineTwo">Advance America</span></a>
-                </li>
-                <li><a class="allLnk" href="javascript:void(0)">
-                        <em>&gt;</em><span>Part-Time Service Representative</span>
-                        <span class="lineTwo">BMO Harris Bank</span></a>
-                </li>
+                {% for i in 0 .. jobLength%}
+                    <li>
+                        <a class="allLnk" href="{{ path('objects_karas_job_show', {id: recentJobs[i].id}) }}">
+                            <em>&gt;</em><span>{{ recentJobs[i].title }}</span>
+                            <span class="lineTwo">{{ recentJobs[i].city }}, {{ recentJobs[i].countryCode }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
             </ul>
         </div>
         <div class="footerCont1 marginRightZero">
             <h3 class="lastItem">&nbsp;</h3>
             <ul class="latestJobs">
-                <li>
-                    <a class="allLnk" href="javascript:void(0)">
-                        <em>&gt;</em><span>Safety&amp; Reliability Group Manager</span>
-                        <span class="lineTwo">Atkins</span>
-                    </a>
-                </li>
-                <li><a class="allLnk" href="javascript:void(0)">
-                        <em>&gt;</em><span>Product Supervisor (62-547)</span>
-                        <span class="lineTwo">ZOLL</span></a>
-                </li>
-                <li><a class="allLnk" href="javascript:void(0)">
-                        <em>&gt;</em><span>Advertising / Sales</span>
-                        <span class="lineTwo">DFW AND ASSOCIATES</span></a>
-                </li>
-                <li><a class="allLnk" href="javascript:void(0)">
-                        <em>&gt;</em><span>JOB FAIR COMING TO YOUR AREA</span>
-                        <span class="lineTwo">Dollar Tree Stores</span></a>
-                </li>
-                <li><a class="allLnk" href="javascript:void(0)">
-                        <em>&gt;</em><span>Quality Assurance Analyst (305547-763)</span>
-                        <span class="lineTwo">UAFC</span></a>
-                </li>
-                <li><a class="allLnk" href="javascript:void(0)">
-                        <em>&gt;</em><span>Center Manager</span>
-                        <span class="lineTwo">Advance America</span></a>
-                </li>
-                <li><a class="allLnk" href="javascript:void(0)">
-                        <em>&gt;</em><span>Part-Time Service Representative</span>
-                        <span class="lineTwo">BMO Harris Bank</span></a>
-                </li>
+                {% for i in (jobLength + 1) ..  (recentJobs|length) %}
+                    <li>
+                        <a class="allLnk" href="{{ path('objects_karas_job_show', {id: recentJobs[i].id}) }}">
+                            <em>&gt;</em><span>{{ recentJobs[i].title }}</span>
+                            <span class="lineTwo">{{ recentJobs[i].city }}, {{ recentJobs[i].countryCode }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
             </ul>
 
         </div>

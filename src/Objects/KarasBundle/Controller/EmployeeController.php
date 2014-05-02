@@ -3,18 +3,22 @@
 namespace Objects\KarasBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Symfony\Component\HttpFoundation\Request;
 class EmployeeController extends Controller
 {
     public function profileAction()
     {
-        return $this->render('ObjectsKarasBundle:Karas:index.html.twig', array(
+        if($this->getUser()->getPhone()){
+            $contact = true;
+        }
+        if($this->getUser()->getSummary())
+        {
+            $summary = true;
+        }
+        
+        return $this->render('ObjectsKarasBundle:Employee:profile.html.twig', array(
             
         ));
-    }
-    
-    public function contactAction(){
-        
     }
     
     

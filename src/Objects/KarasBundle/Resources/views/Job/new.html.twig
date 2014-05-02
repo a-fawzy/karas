@@ -16,6 +16,12 @@
                 {{ form_errors(form) }}
                 <h3>Job Details</h3>
                 <div class="clear"></div>
+                <span class="jobField">Job Industry:</span>
+                {{ form_widget(form.industry) }}
+                <hr />
+                <span class="jobField">Job Profession:</span>
+                {{ form_widget(form.profession) }}
+                <hr />
                 <span class="jobField">Job Title:</span>
                 {{ form_widget(form.title) }}
                 <hr />
@@ -25,6 +31,15 @@
                 <span class="jobField">Job Description:</span>
                 {{ form_widget(form.description) }}
                 <hr />
+
+                <h3>Location</h3>
+                <span class="jobField">Country:</span>
+                {{ form_widget(form.countryCode) }}
+                <hr />
+                <span class="jobField">City:</span>
+                {{ form_widget(form.city) }}
+                <hr />
+                
                 <h3>Candidate Information</h3>
                 <span class="jobField">Gender:</span>
                 <ul>

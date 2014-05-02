@@ -28,6 +28,15 @@ class Profession
      */
     private $title;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Job", mappedBy="profession")
+     */
+    private $jobs;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Experience", mappedBy="profession")
+     */
+    private $experiences;
 
     /**
      * Get id
@@ -66,4 +75,79 @@ class Profession
         return (string) $this->title;
     }
 
+
+    
+    /**
+     * Add jobs
+     *
+     * @param \Objects\KarasBundle\Entity\Job $jobs
+     * @return Profession
+     */
+    public function addJob(\Objects\KarasBundle\Entity\Job $jobs)
+    {
+        $this->jobs[] = $jobs;
+    
+        return $this;
+    }
+
+    /**
+     * Remove jobs
+     *
+     * @param \Objects\KarasBundle\Entity\Job $jobs
+     */
+    public function removeJob(\Objects\KarasBundle\Entity\Job $jobs)
+    {
+        $this->jobs->removeElement($jobs);
+    }
+
+    /**
+     * Get jobs
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getJobs()
+    {
+        return $this->jobs;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->jobs = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->experiences = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add experiences
+     *
+     * @param \Objects\KarasBundle\Entity\Experience $experiences
+     * @return Profession
+     */
+    public function addExperience(\Objects\KarasBundle\Entity\Experience $experiences)
+    {
+        $this->experiences[] = $experiences;
+    
+        return $this;
+    }
+
+    /**
+     * Remove experiences
+     *
+     * @param \Objects\KarasBundle\Entity\Experience $experiences
+     */
+    public function removeExperience(\Objects\KarasBundle\Entity\Experience $experiences)
+    {
+        $this->experiences->removeElement($experiences);
+    }
+
+    /**
+     * Get experiences
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getExperiences()
+    {
+        return $this->experiences;
+    }
 }
