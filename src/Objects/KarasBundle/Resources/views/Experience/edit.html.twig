@@ -1,0 +1,63 @@
+{{ form_start(edit_form, {'action': path('employee_experience_update', {id: entity.id}), 'attr': {'class': 'form-horizontal legend', 'id': 'experienceForm' } } ) }}
+
+    <div class="control-group">
+        <label class="control-label" for="inputEmail">Company Name</label>
+        <div class="controls">
+            {{ form_widget(edit_form.company) }}
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="industry">Industry</label>
+        <div class="controls">
+            {{ form_widget(edit_form.industry, { 'attr': {'class': 'chzn-select'} } ) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="profession">Profession</label>
+        <div class="controls">
+            {{ form_widget(edit_form.profession, { 'attr': {'class': 'chzn-select'} } ) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="title">Job Title</label>
+        <div class="controls">
+            {{ form_widget(edit_form.title) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="countryCode">Country</label>
+        <div class="controls">
+            {{ form_widget(edit_form.countryCode, { 'attr': {'class': 'chzn-select'} } ) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="city">City</label>
+        <div class="controls">
+            {{ form_widget(edit_form.city) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="start">Start Date</label>
+        <div class="controls">
+            {{ form_widget(edit_form.start)}}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="end">End Date</label>
+        <div class="controls">
+            {{ form_widget(edit_form.end) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="description">Description</label>
+        <div class="controls">
+            {{ form_widget(edit_form.description) }}
+        </div>
+    </div>
+    <center>
+        {{ form_widget(edit_form.submit, { 'attr': {'class': 'btn bten-large'} } ) }}
+    </center>
+    <br>
+
+{{ form_end(edit_form) }}

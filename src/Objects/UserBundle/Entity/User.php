@@ -522,6 +522,9 @@ class User implements AdvancedUserInterface {
         $classVars = get_class_vars(__CLASS__);
         // unset all object proxies not the collections
         unset($classVars['socialAccounts']);
+        unset($classVars['jobs']);
+        unset($classVars['experiences']);
+        unset($classVars['candidates']);
         return array_keys($classVars);
     }
 
@@ -1498,13 +1501,14 @@ class User implements AdvancedUserInterface {
         return $this->jobs;
     }
 
+
     /**
      * Add experiences
      *
-     * @param \Objects\UserBundle\Entity\Experience $experiences
+     * @param \Objects\KarasBundle\Entity\Experience $experiences
      * @return User
      */
-    public function addExperience(\Objects\UserBundle\Entity\Experience $experiences)
+    public function addExperience(\Objects\KarasBundle\Entity\Experience $experiences)
     {
         $this->experiences[] = $experiences;
     
@@ -1514,9 +1518,9 @@ class User implements AdvancedUserInterface {
     /**
      * Remove experiences
      *
-     * @param \Objects\UserBundle\Entity\Experience $experiences
+     * @param \Objects\KarasBundle\Entity\Experience $experiences
      */
-    public function removeExperience(\Objects\UserBundle\Entity\Experience $experiences)
+    public function removeExperience(\Objects\KarasBundle\Entity\Experience $experiences)
     {
         $this->experiences->removeElement($experiences);
     }

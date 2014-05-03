@@ -1,6 +1,54 @@
 {% extends '::base.html.twig' %}
 {% block activeRequest %} active{% endblock %}
 {% block title %}My Profile{% endblock %}
+{% block javascripts %}
+    {{ parent()  }}
+    <script type="text/javascript" src="{{ asset('js/jquery-ui.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/chosen.jquery.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $(".chzn-select").chosen();
+            $( ".datepicker" ).datepicker();
+        })
+    </script>
+    
+    
+    <script>
+        $(document).ready(function(){
+            $('.experience').on('click', function(e){
+                e.preventDefault();
+                url = $(this).attr('href');
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    success: function(msg) {
+                        $('#experienceDiv').html(msg);
+                    }
+                });
+            });
+            $('#newExperience').on('click', function(e){
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ path('employee_experience_new') }}',
+                    success: function(msg) {
+                        $('#experienceDiv').html(msg);
+                    }
+                });
+            });
+        })
+    
+    </script>
+    
+    
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/chosen.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery-ui.css') }}"/>
+{% endblock %}
+
+
 {% block body %}
 
 <div class="tabbable">
@@ -117,93 +165,21 @@
                     </div>
                     <div id="collapse3" class="accordion-body collapse">
                         <div class="accordion-inner">
-                            <form class="form-horizontal legend">
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Company name</label>
-                                    <div class="controls">
-                                        <input type="text" placeholder="Company name Here">
-                                    </div>
+                            {% if experiences|length == 0 %}
+                                {{ render(controller('ObjectsKarasBundle:Experience:new')) }}
+                            {% else %}
+                                <div id="experienceDiv" class="jobList">
+                                    <ul class="jobList">
+                                        {% for experience in experiences  %}
+                                        <li>
+                                            {{ render(controller('ObjectsKarasBundle:Experience:show', { id: experience.id } )) }}
+                                        </li>
+                                        <br>
+                                        {% endfor %}
+                                    </ul>
                                 </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Company logo</label>
-                                    <div class="controls">
-                                        <input type="file">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Industry</label>
-                                    <div class="controls">
-                                        <select class="chzn-select">
-                                            <option>Engineering</option>
-                                            <option>IT / Technology</option>
-                                            <option>Administration</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Job title</label>
-                                    <div class="controls">
-                                        <input type="text" placeholder="Job title Here">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Position</label>
-                                    <div class="controls">
-                                        <input type="text" placeholder="Position Here">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Profession</label>
-                                    <div class="controls">
-                                        <select class="chzn-select">
-                                            <option>Administration</option>
-                                            <option>Engineering</option>
-                                            <option>IT / Technology</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Country</label>
-                                    <div class="controls">
-                                        <select class="chzn-select">
-                                            <option>Egypt</option>
-                                            <option>UAE</option>
-                                            <option>USA</option>
-                                            <option>Canada</option>
-                                            <option>Sudan</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">State</label>
-                                    <div class="controls">
-                                        <select class="chzn-select">
-                                            <option>Alexandria</option>
-                                            <option>Cairo</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Start Date</label>
-                                    <div class="controls">
-                                        <input type="text" class="datepicker">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">End Date</label>
-                                    <div class="controls">
-                                        <input type="text" class="datepicker">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Description</label>
-                                    <div class="controls">
-                                        <textarea rows="6" type="text" placeholder="Description Here"></textarea>
-                                    </div>
-                                </div>
-
-                            </form>
-                            <a href="javascript:void(0)">+ add new experience</a>
+                            {% endif %}
+                            <a id="newExperience" href="javascript:void(0)">+ add new experience</a>
                         </div>
                     </div>
                 </div>

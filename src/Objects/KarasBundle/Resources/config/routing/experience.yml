@@ -1,0 +1,30 @@
+employee_experience:
+    pattern:  /
+    defaults: { _controller: "ObjectsKarasBundle:Experience:index" }
+
+employee_experience_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ObjectsKarasBundle:Experience:show" }
+
+employee_experience_new:
+    pattern:  /new
+    defaults: { _controller: "ObjectsKarasBundle:Experience:new" }
+
+employee_experience_create:
+    pattern:  /create
+    defaults: { _controller: "ObjectsKarasBundle:Experience:create" }
+    requirements: { _method: post }
+
+employee_experience_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ObjectsKarasBundle:Experience:edit" }
+
+employee_experience_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ObjectsKarasBundle:Experience:update" }
+    requirements: { _method: post|put }
+
+employee_experience_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ObjectsKarasBundle:Experience:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,26 @@
+<div>
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Company</th>
+                <td>{{ entity.company }}</td>
+                <th>Start</th>
+                <td>{{ entity.start|date('d-m-Y') }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ entity.title }}</td>
+                <th>End</th>
+                <td>{{ entity.end|date('d-m-Y') }}</td>
+            </tr>
+            <tr>
+
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a id="{{ entity.id }}" href="{{path('employee_experience_edit', { id: entity.id })}}" class="experience btn btn-info"><i class="icon-edit icon-white"></i> Edit</a>
+</div>

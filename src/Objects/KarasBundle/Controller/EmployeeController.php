@@ -8,18 +8,11 @@ class EmployeeController extends Controller
 {
     public function profileAction()
     {
-        if($this->getUser()->getPhone()){
-            $contact = true;
-        }
-        if($this->getUser()->getSummary())
-        {
-            $summary = true;
-        }
+        $user = $this->getUser();
+        $experiences = $user->getExperiences();
         
         return $this->render('ObjectsKarasBundle:Employee:profile.html.twig', array(
-            
+            'experiences' => $experiences
         ));
     }
-    
-    
 }
