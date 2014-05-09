@@ -1,0 +1,30 @@
+employee_language:
+    pattern:  /
+    defaults: { _controller: "ObjectsKarasBundle:Language:index" }
+
+employee_language_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ObjectsKarasBundle:Language:show" }
+
+employee_language_new:
+    pattern:  /new
+    defaults: { _controller: "ObjectsKarasBundle:Language:new" }
+
+employee_language_create:
+    pattern:  /create
+    defaults: { _controller: "ObjectsKarasBundle:Language:create" }
+    requirements: { _method: post }
+
+employee_language_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ObjectsKarasBundle:Language:edit" }
+
+employee_language_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ObjectsKarasBundle:Language:update" }
+    requirements: { _method: post|put }
+
+employee_language_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ObjectsKarasBundle:Language:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,30 @@
+employee_education:
+    pattern:  /
+    defaults: { _controller: "ObjectsKarasBundle:Education:index" }
+
+employee_education_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ObjectsKarasBundle:Education:show" }
+
+employee_education_new:
+    pattern:  /new
+    defaults: { _controller: "ObjectsKarasBundle:Education:new" }
+
+employee_education_create:
+    pattern:  /create
+    defaults: { _controller: "ObjectsKarasBundle:Education:create" }
+    requirements: { _method: post }
+
+employee_education_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ObjectsKarasBundle:Education:edit" }
+
+employee_education_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ObjectsKarasBundle:Education:update" }
+    requirements: { _method: post|put }
+
+employee_education_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ObjectsKarasBundle:Education:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,38 @@
+{{ form_start(edit_form, {'action': path('employee_project_update', {id: entity.id}), 'attr': {'class': 'form-horizontal legend', 'id': 'projectForm' } } ) }}
+
+    <div class="control-group">
+        <label class="control-label" for="name">Name</label>
+        <div class="controls">
+            {{ form_widget(edit_form.name) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="occupation">Occupation</label>
+        <div class="controls">
+            {{ form_widget(edit_form.occupation) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="start">Start Date</label>
+        <div class="controls">
+            {{ form_widget(edit_form.start)}}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="end">End Date</label>
+        <div class="controls">
+            {{ form_widget(edit_form.end) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="description">Description</label>
+        <div class="controls">
+            {{ form_widget(edit_form.description) }}
+        </div>
+    </div>
+    <center>
+        {{ form_widget(edit_form.submit, { 'attr': {'class': 'btn bten-large'} } ) }}
+    </center>
+    <br>
+
+{{ form_end(edit_form) }}

@@ -1,0 +1,51 @@
+{{ form_start(form, {'action': path('employee_contact_create'), 'attr': {'class': 'form-horizontal legend', 'id': 'contactForm' } } ) }}
+
+    <div class="control-group">
+        <label class="control-label" for="name">Name</label>
+        <div class="controls">
+            {{ form_widget(form.firstName) }}
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="birthdate">Birthday</label>
+        <div class="controls">
+            {{ form_widget(form.dateOfBirth) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="marital">Marital Status</label>
+        <div class="controls">
+            {{ form_widget(form.marital, { 'attr': {'class': 'chzn-select'} } ) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="gender">Gender</label>
+        <div class="controls">
+            {{ form_widget(form.gender, { 'attr': {'class': 'chzn-select'} } ) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="city">Nationality</label>
+        <div class="controls">
+            {{ form_widget(form.nationality, { 'attr': {'class': 'chzn-select'} } ) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="file">Photo</label>
+        <div class="controls">
+            {{ form_widget(form.file) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="interest">Interests</label>
+        <div class="controls">
+            {{ form_widget(form.interests) }}
+        </div>
+    </div>
+    <center>
+        {{ form_widget(form.submit, { 'attr': {'class': 'btn bten-large'} } ) }}
+    </center>
+    <br>
+
+{{ form_end(form) }}

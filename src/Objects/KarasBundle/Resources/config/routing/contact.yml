@@ -1,0 +1,21 @@
+employee_contact_show:
+    pattern:  /show
+    defaults: { _controller: "ObjectsKarasBundle:Contact:show" }
+
+employee_contact_new:
+    pattern:  /new
+    defaults: { _controller: "ObjectsKarasBundle:Contact:new" }
+
+employee_contact_create:
+    pattern:  /create
+    defaults: { _controller: "ObjectsKarasBundle:Contact:create" }
+    requirements: { _method: post }
+
+employee_contact_edit:
+    pattern:  /edit
+    defaults: { _controller: "ObjectsKarasBundle:Contact:edit" }
+
+employee_contact_update:
+    pattern:  /update
+    defaults: { _controller: "ObjectsKarasBundle:Contact:update" }
+    requirements: { _method: post|put }

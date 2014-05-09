@@ -18,7 +18,7 @@ DirectoryIndex app.php
     RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
     RewriteRule ^(.*) - [E=BASE:%1]
     
-    RewriteRule ^user-image/([0-9]+)/([0-9]+)/([0-9a-zA-Z\-_]+).([a-zA-Z]{3,4})$ timthumb.php?src=/uploads/users-profile-images/$3.$4&w=$1&h=$2&zc=1&q=80 [NC,L]
+    RewriteRule ^user-profile-image/([0-9]+)/([0-9]+)/([0-9a-zA-Z\-_]+).([a-zA-Z]{3,4})$ timthumb.php?src=/uploads/users-profile-images/$3.$4&w=$1&h=$2&zc=1&q=80 [NC,L]
     RewriteRule ^client-image/([0-9]+)/([0-9]+)/([0-9a-zA-Z\-_]+).([a-zA-Z]{3,4})$ timthumb.php?src=/uploads/clients/$3.$4&w=$1&h=$2&zc=1&q=80 [NC,L]
     RewriteRule ^slider-image/([0-9]+)/([0-9]+)/([0-9a-zA-Z\-_]+).([a-zA-Z]{3,4})$ timthumb.php?src=/uploads/slider/$3.$4&w=$1&h=$2&zc=1&q=80 [NC,L]
     RewriteRule ^service-image/([0-9]+)/([0-9]+)/([0-9a-zA-Z\-_]+).([a-zA-Z]{3,4})$ timthumb.php?src=/uploads/services/$3.$4&w=$1&h=$2&zc=1&q=80 [NC,L]

@@ -56,6 +56,11 @@ class Project
      */
     private $description;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="\Objects\UserBundle\Entity\User", inversedBy="projects")
+     */
+    private $user;
+
 
     /**
      * Get id
@@ -180,5 +185,28 @@ class Project
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Objects\UserBundle\Entity\User $user
+     * @return Project
+     */
+    public function setUser(\Objects\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Objects\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

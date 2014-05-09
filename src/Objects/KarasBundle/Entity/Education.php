@@ -22,6 +22,12 @@ class Education
     private $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity="\Objects\UserBundle\Entity\User", inversedBy="educations")
+     */
+    private $user;
+
+    
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=150)
@@ -29,19 +35,18 @@ class Education
     private $name;
 
     /**
-     * @var integer
+     * @var \DateTime
      *
-     * @ORM\Column(name="start", type="integer")
+     * @ORM\Column(name="start", type="date")
      */
     private $start;
 
     /**
-     * @var integer
+     * @var \DateTime
      *
-     * @ORM\Column(name="end", type="integer")
+     * @ORM\Column(name="end", type="date")
      */
     private $end;
-
     /**
      * @var string
      *
@@ -103,52 +108,6 @@ class Education
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set start
-     *
-     * @param integer $start
-     * @return Education
-     */
-    public function setStart($start)
-    {
-        $this->start = $start;
-    
-        return $this;
-    }
-
-    /**
-     * Get start
-     *
-     * @return integer 
-     */
-    public function getStart()
-    {
-        return $this->start;
-    }
-
-    /**
-     * Set end
-     *
-     * @param integer $end
-     * @return Education
-     */
-    public function setEnd($end)
-    {
-        $this->end = $end;
-    
-        return $this;
-    }
-
-    /**
-     * Get end
-     *
-     * @return integer 
-     */
-    public function getEnd()
-    {
-        return $this->end;
     }
 
     /**
@@ -241,5 +200,74 @@ class Education
     public function getDegree()
     {
         return $this->degree;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Objects\UserBundle\Entity\User $user
+     * @return Education
+     */
+    public function setUser(\Objects\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Objects\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set start
+     *
+     * @param \DateTime $start
+     * @return Education
+     */
+    public function setStart($start)
+    {
+        $this->start = $start;
+    
+        return $this;
+    }
+
+    /**
+     * Get start
+     *
+     * @return \DateTime 
+     */
+    public function getStart()
+    {
+        return $this->start;
+    }
+
+    /**
+     * Set end
+     *
+     * @param \DateTime $end
+     * @return Education
+     */
+    public function setEnd($end)
+    {
+        $this->end = $end;
+    
+        return $this;
+    }
+
+    /**
+     * Get end
+     *
+     * @return \DateTime 
+     */
+    public function getEnd()
+    {
+        return $this->end;
     }
 }

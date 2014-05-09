@@ -1,0 +1,12 @@
+{{ form_start(edit_form, {'action': path('employee_skill_update', {id: entity.id}), 'attr': {'class': 'form-horizontal legend', 'id': 'skillForm' } } ) }}
+    <div class="control-group">
+        <label class="control-label" for="name">Skill</label>
+        <div class="controls">
+            {{ form_widget(edit_form.name) }}
+        </div>
+    </div>
+    <center>
+        {{ form_widget(edit_form.submit, { 'attr': {'class': 'btn bten-large'} } ) }}
+    </center>
+    <br>
+{{ form_end(edit_form) }}

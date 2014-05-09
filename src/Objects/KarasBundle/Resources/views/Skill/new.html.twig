@@ -1,0 +1,13 @@
+{{ form_start(form, {'action': path('employee_skill_create'), 'attr': {'class': 'form-horizontal legend', 'id': 'skillForm' } } ) }}
+
+    <div class="control-group">
+        <label class="control-label" for="name">Skill</label>
+        <div class="controls">
+            {{ form_widget(form.name) }}
+        </div>
+    </div>
+    <center>
+        {{ form_widget(form.submit, { 'attr': {'class': 'btn bten-large'} } ) }}
+    </center>
+    <br>
+{{ form_end(form) }}

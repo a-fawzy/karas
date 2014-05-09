@@ -1,0 +1,28 @@
+<div>
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Course</th>
+                <td>{{ entity.name }}</td>
+                <th>Start</th>
+                <td>{{ entity.start|date('d-m-Y') }}</td>
+            </tr>
+            <tr>
+                <th>Association</th>
+                <td>{{ entity.association }}</td>
+                <th>End</th>
+                <td>{{ entity.end|date('d-m-Y') }}</td>
+            </tr>
+            <tr>
+
+            </tr>
+            <tr>
+                <th>Certificate</th>
+                <td>{{ entity.certificate }}</td>
+                <th>License</th>
+                <td>{{ entity.license }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a id="{{ entity.id }}" href="{{path('employee_course_edit', { id: entity.id })}}" class="course btn btn-info"><i class="icon-edit icon-white"></i> Edit</a>
+</div>

@@ -1,0 +1,30 @@
+employee_skill:
+    pattern:  /
+    defaults: { _controller: "ObjectsKarasBundle:Skill:index" }
+
+employee_skill_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ObjectsKarasBundle:Skill:show" }
+
+employee_skill_new:
+    pattern:  /new
+    defaults: { _controller: "ObjectsKarasBundle:Skill:new" }
+
+employee_skill_create:
+    pattern:  /create
+    defaults: { _controller: "ObjectsKarasBundle:Skill:create" }
+    requirements: { _method: post }
+
+employee_skill_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ObjectsKarasBundle:Skill:edit" }
+
+employee_skill_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ObjectsKarasBundle:Skill:update" }
+    requirements: { _method: post|put }
+
+employee_skill_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ObjectsKarasBundle:Skill:delete" }
+    requirements: { _method: post|delete }

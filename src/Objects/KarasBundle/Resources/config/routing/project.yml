@@ -1,0 +1,30 @@
+employee_project:
+    pattern:  /
+    defaults: { _controller: "ObjectsKarasBundle:Project:index" }
+
+employee_project_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ObjectsKarasBundle:Project:show" }
+
+employee_project_new:
+    pattern:  /new
+    defaults: { _controller: "ObjectsKarasBundle:Project:new" }
+
+employee_project_create:
+    pattern:  /create
+    defaults: { _controller: "ObjectsKarasBundle:Project:create" }
+    requirements: { _method: post }
+
+employee_project_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ObjectsKarasBundle:Project:edit" }
+
+employee_project_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ObjectsKarasBundle:Project:update" }
+    requirements: { _method: post|put }
+
+employee_project_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ObjectsKarasBundle:Project:delete" }
+    requirements: { _method: post|delete }

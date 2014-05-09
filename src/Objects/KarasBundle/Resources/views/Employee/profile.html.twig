@@ -36,6 +36,140 @@
                     }
                 });
             });
+            
+            $('.project').on('click', function(e){
+                e.preventDefault();
+                url = $(this).attr('href');
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    success: function(msg) {
+                        $('#projectDiv').html(msg);
+                    }
+                });
+            });
+            $('#newProject').on('click', function(e){
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ path('employee_project_new') }}',
+                    success: function(msg) {
+                        $('#projectDiv').html(msg);
+                    }
+                });
+            });
+            
+            $('.course').on('click', function(e){
+                e.preventDefault();
+                url = $(this).attr('href');
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    success: function(msg) {
+                        $('#courseDiv').html(msg);
+                    }
+                });
+            });
+            $('#newCourse').on('click', function(e){
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ path('employee_course_new') }}',
+                    success: function(msg) {
+                        $('#courseDiv').html(msg);
+                    }
+                });
+            });
+            
+            $('.skill').on('click', function(e){
+                e.preventDefault();
+                url = $(this).attr('href');
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    success: function(msg) {
+                        $('#skillDiv').html(msg);
+                    }
+                });
+            });
+            $('#newSkill').on('click', function(e){
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ path('employee_skill_new') }}',
+                    success: function(msg) {
+                        $('#skillDiv').html(msg);
+                    }
+                });
+            });
+            
+            $('.education').on('click', function(e){
+                e.preventDefault();
+                url = $(this).attr('href');
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    success: function(msg) {
+                        $('#educationDiv').html(msg);
+                    }
+                });
+            });
+            $('#newEducation').on('click', function(e){
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ path('employee_education_new') }}',
+                    success: function(msg) {
+                        $('#educationDiv').html(msg);
+                    }
+                });
+            });
+            
+            $('.language').on('click', function(e){
+                e.preventDefault();
+                url = $(this).attr('href');
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    success: function(msg) {
+                        $('#languageDiv').html(msg);
+                    }
+                });
+            });
+            $('#newLanguage').on('click', function(e){
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ path('employee_language_new') }}',
+                    success: function(msg) {
+                        $('#languageDiv').html(msg);
+                    }
+                });
+            });
+            
+            $('.contact').on('click', function(e){
+                e.preventDefault();
+                url = $(this).attr('href');
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    success: function(msg) {
+                        $('#contactDiv').html(msg);
+                    }
+                });
+            });
+            $('.additional').on('click', function(e){
+                e.preventDefault();
+                url = $(this).attr('href');
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    success: function(msg) {
+                        $('#additionalDiv').html(msg);
+                    }
+                });
+            });
+            
         })
     
     </script>
@@ -70,88 +204,17 @@
                     </div>
                     <div id="collapseOne" class="accordion-body collapse">
                         <div class="accordion-inner">
-                            <form class="form-horizontal">
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">E-mail</label>
-                                    <div class="controls">
-                                        <input type="text" placeholder="E-mail Here">
-                                    </div>
+                            {% if app.user.phone is null %}
+                                {{ render(controller('ObjectsKarasBundle:Contact:new')) }}
+                            {% else %}
+                                <div id="contactDiv" class="jobList">
+                                    <ul class="jobList">
+                                        <li>
+                                            {{ render(controller('ObjectsKarasBundle:Contact:show') ) }}
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Phone</label>
-                                    <div class="controls">
-                                        <input type="text" placeholder="Phone Here">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Current address</label>
-                                    <div class="controls">
-                                        <input type="text" placeholder="Current address Here">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Country</label>
-                                    <div class="controls">
-                                        <select class="chzn-select">
-                                            <option>Egypt</option>
-                                            <option>UAE</option>
-                                            <option>USA</option>
-                                            <option>Canada</option>
-                                            <option>Sudan</option>
-                                        </select></div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">State</label>
-                                    <div class="controls">
-                                        <select class="chzn-select">
-                                            <option>Alexandria</option>
-                                            <option>Cairo</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">IM/Skype</label>
-                                    <div class="controls">
-                                        <input type="text" placeholder="IM/Skype Here">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Twitter</label>
-                                    <div class="controls">
-                                        <input type="text" placeholder="Twitter Here">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Websites</label>
-                                    <div class="controls">
-                                        <textarea rows="6" type="text" placeholder="Websites Here"></textarea>
-                                        <span class="help-block">(separated by a comma)</span>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-group">
-                    <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                            <blockquote style="background: #eee	">
-                                <p>Summary</p>
-                            </blockquote>
-                        </a>
-                    </div>
-                    <div id="collapseTwo" class="accordion-body collapse">
-                        <div class="accordion-inner">
-                            <form class="form-horizontal">
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Summary</label>
-                                    <div class="controls">
-                                        <textarea rows="6" type="text" placeholder="Summary Here"></textarea>
-                                        <span class="help-block">(max 600 characters)</span>
-                                    </div>
-                                </div>
-                            </form>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -193,39 +256,21 @@
                     </div>
                     <div id="collapse4" class="accordion-body collapse">
                         <div class="accordion-inner">
-                            <form class="form-horizontal legend">
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Name</label>
-                                    <div class="controls">
-                                        <input type="text" placeholder="Name Here">
-                                    </div>
+                            {% if projects|length == 0 %}
+                                {{ render(controller('ObjectsKarasBundle:Project:new')) }}
+                            {% else %}
+                                <div id="projectDiv" class="jobList">
+                                    <ul class="jobList">
+                                        {% for project in projects %}
+                                        <li>
+                                            {{ render(controller('ObjectsKarasBundle:Project:show', { id: project.id } )) }}
+                                        </li>
+                                        <br>
+                                        {% endfor %}
+                                    </ul>
                                 </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Occupation</label>
-                                    <div class="controls">
-                                        <input type="text" placeholder="Occupation Here">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Start Date</label>
-                                    <div class="controls">
-                                        <input type="text" class="datepicker">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">End Date</label>
-                                    <div class="controls">
-                                        <input type="text" class="datepicker">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Description</label>
-                                    <div class="controls">
-                                        <textarea rows="6" type="text" placeholder="Description Here"></textarea>
-                                    </div>
-                                </div>
-                            </form>
-                            <a href="javascript:void(0)">+ add new project</a>
+                            {% endif %}
+                            <a id="newProject" href="javascript:void(0)">+ add new Project</a>
                         </div>
                     </div>
                 </div>
@@ -239,57 +284,21 @@
                     </div>
                     <div id="collapse5" class="accordion-body collapse">
                         <div class="accordion-inner">
-                            <form class="form-horizontal legend">
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Course name</label>
-                                    <div class="controls">
-                                        <input type="text" placeholder="Course name Here">
-                                    </div>
+                            {% if courses|length == 0 %}
+                                {{ render(controller('ObjectsKarasBundle:Course:new')) }}
+                            {% else %}
+                                <div id="courseDiv" class="jobList">
+                                    <ul class="jobList">
+                                        {% for course in courses %}
+                                        <li>
+                                            {{ render(controller('ObjectsKarasBundle:Course:show', { id: course.id } )) }}
+                                        </li>
+                                        <br>
+                                        {% endfor %}
+                                    </ul>
                                 </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Association</label>
-                                    <div class="controls">
-                                        <input type="text" placeholder="Association Here">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Certification name</label>
-                                    <div class="controls">
-                                        <input type="text" placeholder="Certification name Here">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Certification authority</label>
-                                    <div class="controls">
-                                        <input type="text" placeholder="Certification authority Here">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">License number</label>
-                                    <div class="controls">
-                                        <input type="text" placeholder="License number Here">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Start Date</label>
-                                    <div class="controls">
-                                        <input type="text" class="datepicker">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">End Date</label>
-                                    <div class="controls">
-                                        <input type="text" class="datepicker">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Certificate</label>
-                                    <div class="controls">
-                                        <input type="file">
-                                    </div>
-                                </div>
-                            </form>
-                            <a href="javascript:void(0)">+ add new course</a>
+                            {% endif %}
+                            <a id="newCourse" href="javascript:void(0)">+ add new Course</a>
                         </div>
                     </div>
                 </div>
@@ -303,15 +312,21 @@
                     </div>
                     <div id="collapse6" class="accordion-body collapse">
                         <div class="accordion-inner">
-                            <form class="form-horizontal legend">
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Skill</label>
-                                    <div class="controls">
-                                        <input type="text" placeholder="Skill Here">
-                                    </div>
+                            {% if skills|length == 0 %}
+                                {{ render(controller('ObjectsKarasBundle:Skill:new')) }}
+                            {% else %}
+                                <div id="skillDiv" class="jobList">
+                                    <ul class="jobList">
+                                        {% for skill in skills %}
+                                        <li>
+                                            {{ render(controller('ObjectsKarasBundle:Skill:show', { id: skill.id } )) }}
+                                        </li>
+                                        <br>
+                                        {% endfor %}
+                                    </ul>
                                 </div>
-                            </form>
-                            <a href="javascript:void(0)">+ add new skill</a>
+                            {% endif %}
+                            <a id="newSkill" href="javascript:void(0)">+ add new Skill</a>
                         </div>
                     </div>
                 </div>
@@ -325,67 +340,21 @@
                     </div>
                     <div id="collapse7" class="accordion-body collapse">
                         <div class="accordion-inner">
-                            <form class="form-horizontal legend">
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">School/University</label>
-                                    <div class="controls">
-                                        <input type="text" placeholder="School/University Here">
-                                    </div>
+                            {% if educations|length == 0 %}
+                                {{ render(controller('ObjectsKarasBundle:Education:new')) }}
+                            {% else %}
+                                <div id="educationDiv" class="jobList">
+                                    <ul class="jobList">
+                                        {% for education in educations %}
+                                        <li>
+                                            {{ render(controller('ObjectsKarasBundle:Education:show', { id: education.id } )) }}
+                                        </li>
+                                        <br>
+                                        {% endfor %}
+                                    </ul>
                                 </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Start year</label>
-                                    <div class="controls">
-                                        <select class="chzn-select">
-                                            <option>2013</option>
-                                            <option>2012</option>
-                                            <option>2011</option>
-                                            <option>2010</option>
-                                            <option>2009</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">End year</label>
-                                    <div class="controls">
-                                        <select class="chzn-select">
-                                            <option>2013</option>
-                                            <option>2012</option>
-                                            <option>2011</option>
-                                            <option>2010</option>
-                                            <option>2009</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Degree</label>
-                                    <div class="controls">
-                                        <select class="chzn-select">
-                                            <option>Bachelor</option>
-                                            <option>Masters</option>
-                                            <option>PHD</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Field of study</label>
-                                    <div class="controls">
-                                        <input type="text" placeholder="Field of study Here">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Grade</label>
-                                    <div class="controls">
-                                        <input type="text" placeholder="Grade Here">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Description</label>
-                                    <div class="controls">
-                                        <textarea rows="6" type="text" placeholder="Description Here"></textarea>
-                                    </div>
-                                </div>
-                            </form>
-                            <a href="javascript:void(0)">+ add new education</a>
+                            {% endif %}
+                            <a id="newEducation" href="javascript:void(0)">+ add new Education</a>
                         </div>
                     </div>
                 </div>
@@ -399,66 +368,17 @@
                     </div>
                     <div id="collapse8" class="accordion-body collapse">
                         <div class="accordion-inner">
-                            <form class="form-horizontal">
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Interests</label>
-                                    <div class="controls">
-                                        <textarea rows="6" type="text" placeholder="Interests Here"></textarea>
-                                    </div>
+                            {% if app.user.firstName is null %}
+                                {{ render(controller('ObjectsKarasBundle:Additional:new')) }}
+                            {% else %}
+                                <div id="additionalDiv" class="jobList">
+                                    <ul class="jobList">
+                                        <li>
+                                            {{ render(controller('ObjectsKarasBundle:Additional:show') ) }}
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Name</label>
-                                    <div class="controls">
-                                        <input type="text" placeholder="Name Here">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Birthday</label>
-                                    <div class="controls">
-                                        <input type="text" class="datepicker">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Marital Status</label>
-                                    <div class="controls">
-                                        <select class="chzn-select">
-                                            <option>Married</option>
-                                            <option>Single</option>
-                                            <option>Engagaed</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">LKR</label>
-                                    <div class="controls">
-                                        <input type="text" placeholder="LKR Here">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Gender</label>
-                                    <div class="controls">
-                                        <select class="chzn-select">
-                                            <option>Male</option>
-                                            <option>Female</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Nationality</label>
-                                    <div class="controls">
-                                        <select class="chzn-select">
-                                            <option>Egyptian</option>
-                                            <option>American</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Personal Photo</label>
-                                    <div class="controls">
-                                        <input type="file">
-                                    </div>
-                                </div>
-                            </form>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -472,27 +392,21 @@
                     </div>
                     <div id="collapse9" class="accordion-body collapse">
                         <div class="accordion-inner">
-                            <form class="form-horizontal legend">
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Language</label>
-                                    <div class="controls">
-                                        <select class="chzn-select">
-                                            <option>English</option>
-                                            <option>French</option>
-                                        </select>
-                                    </div>
+                            {% if languages|length == 0 %}
+                                {{ render(controller('ObjectsKarasBundle:Language:new')) }}
+                            {% else %}
+                                <div id="languageDiv" class="jobList">
+                                    <ul class="jobList">
+                                        {% for language in languages %}
+                                        <li>
+                                            {{ render(controller('ObjectsKarasBundle:Language:show', { id: language.id } )) }}
+                                        </li>
+                                        <br>
+                                        {% endfor %}
+                                    </ul>
                                 </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Level</label>
-                                    <div class="controls">
-                                        <select class="chzn-select">
-                                            <option>Basic</option>
-                                            <option>Good</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </form>
-                            <a href="javascript:void(0)">+ add new language</a>
+                            {% endif %}
+                            <a id="newLanguage" href="javascript:void(0)">+ add new Language</a>
                         </div>
                     </div>
                 </div>

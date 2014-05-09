@@ -1,0 +1,51 @@
+{{ form_start(form, {'action': path('employee_course_create'), 'attr': {'class': 'form-horizontal legend', 'id': 'courseForm' } } ) }}
+
+    <div class="control-group">
+        <label class="control-label" for="name">Course Name</label>
+        <div class="controls">
+            {{ form_widget(form.name) }}
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="association">Association</label>
+        <div class="controls">
+            {{ form_widget(form.association) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="certificate">Certification name</label>
+        <div class="controls">
+            {{ form_widget(form.certificate) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="authority">Certification Authority</label>
+        <div class="controls">
+            {{ form_widget(form.authority) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="license">License Number</label>
+        <div class="controls">
+            {{ form_widget(form.license) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="start">Start Date</label>
+        <div class="controls">
+            {{ form_widget(form.start)}}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="end">End Date</label>
+        <div class="controls">
+            {{ form_widget(form.end) }}
+        </div>
+    </div>
+    <center>
+        {{ form_widget(form.submit, { 'attr': {'class': 'btn bten-large'} } ) }}
+    </center>
+    <br>
+
+{{ form_end(form) }}

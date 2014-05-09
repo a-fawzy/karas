@@ -1,0 +1,52 @@
+{{ form_start(edit_form, {'action': path('employee_additional_update'), 'attr': {'class': 'form-horizontal legend', 'id': 'additionalForm' } } ) }}
+
+    <div class="control-group">
+        <label class="control-label" for="name">Name</label>
+        <div class="controls">
+            {{ form_widget(edit_form.firstName) }}
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="birthdate">Birthday</label>
+        <div class="controls">
+            {{ form_widget(edit_form.dateOfBirth) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="marital">Marital Status</label>
+        <div class="controls">
+            {{ form_widget(edit_form.marital, { 'attr': {'class': 'chzn-select'} } ) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="gender">Gender</label>
+        <div class="controls">
+            {{ form_widget(edit_form.gender, { 'attr': {'class': 'chzn-select'} } ) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="city">Nationality</label>
+        <div class="controls">
+            {{ form_widget(edit_form.nationality, { 'attr': {'class': 'chzn-select'} } ) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="file">Photo</label>
+        <div class="controls">
+            {{ form_widget(edit_form.file) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="interest">Interests</label>
+        <div class="controls">
+            {{ form_widget(edit_form.interests) }}
+        </div>
+    </div>
+    <center>
+        {{ form_widget(edit_form.submit, { 'attr': {'class': 'btn bten-large'} } ) }}
+    </center>
+    <br>
+
+
+{{ form_end(edit_form) }}

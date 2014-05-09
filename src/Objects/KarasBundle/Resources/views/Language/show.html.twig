@@ -1,0 +1,15 @@
+<div>
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Language</th>
+                <td>{{ entity.name }}</td>
+            </tr>
+            <tr>
+                <th>Level</th>
+                <td>{{ entity.level}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a id="{{ entity.id }}" href="{{path('employee_language_edit', { id: entity.id })}}" class="language btn btn-info"><i class="icon-edit icon-white"></i> Edit</a>
+</div>

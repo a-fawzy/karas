@@ -22,6 +22,12 @@ class Language
     private $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity="\Objects\UserBundle\Entity\User", inversedBy="languages")
+     */
+    private $user;
+
+    
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=25)
@@ -90,5 +96,28 @@ class Language
     public function getLevel()
     {
         return $this->level;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Objects\UserBundle\Entity\User $user
+     * @return Language
+     */
+    public function setUser(\Objects\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Objects\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

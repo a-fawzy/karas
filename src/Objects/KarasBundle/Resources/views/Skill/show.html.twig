@@ -1,0 +1,11 @@
+<div>
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Skill</th>
+                <td>{{ entity.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a id="{{ entity.id }}" href="{{path('employee_skill_edit', { id: entity.id })}}" class="skill btn btn-info"><i class="icon-edit icon-white"></i> Edit</a>
+</div>

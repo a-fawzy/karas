@@ -2,6 +2,34 @@ ObjectsKarasBundle_employee_experience:
     resource: "@ObjectsKarasBundle/Resources/config/routing/experience.yml"
     prefix:   /employee/experience
 
+ObjectsKarasBundle_employee_project:
+    resource: "@ObjectsKarasBundle/Resources/config/routing/project.yml"
+    prefix:   /employee/project
+
+ObjectsKarasBundle_employee_course:
+    resource: "@ObjectsKarasBundle/Resources/config/routing/course.yml"
+    prefix:   /employee/course
+
+ObjectsKarasBundle_employee_skill:
+    resource: "@ObjectsKarasBundle/Resources/config/routing/skill.yml"
+    prefix:   /employee/skill
+
+ObjectsKarasBundle_employee_education:
+    resource: "@ObjectsKarasBundle/Resources/config/routing/education.yml"
+    prefix:   /employee/education
+
+ObjectsKarasBundle_employee_language:
+    resource: "@ObjectsKarasBundle/Resources/config/routing/language.yml"
+    prefix:   /employee/language
+    
+ObjectsKarasBundle_employee_contact:
+    resource: "@ObjectsKarasBundle/Resources/config/routing/contact.yml"
+    prefix:   /employee/contact
+
+ObjectsKarasBundle_employee_additional:
+    resource: "@ObjectsKarasBundle/Resources/config/routing/additional.yml"
+    prefix:   /employee/additional
+
 objects_karas_homepage:
     pattern:  /
     defaults: { _controller: ObjectsKarasBundle:Karas:index }

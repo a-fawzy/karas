@@ -1,0 +1,30 @@
+employee_additional:
+    pattern:  /
+    defaults: { _controller: "ObjectsKarasBundle:Additional:index" }
+
+employee_additional_show:
+    pattern:  /show
+    defaults: { _controller: "ObjectsKarasBundle:Additional:show" }
+
+employee_additional_new:
+    pattern:  /new
+    defaults: { _controller: "ObjectsKarasBundle:Additional:new" }
+
+employee_additional_create:
+    pattern:  /create
+    defaults: { _controller: "ObjectsKarasBundle:Additional:create" }
+    requirements: { _method: post }
+
+employee_additional_edit:
+    pattern:  /edit
+    defaults: { _controller: "ObjectsKarasBundle:Additional:edit" }
+
+employee_additional_update:
+    pattern:  /update
+    defaults: { _controller: "ObjectsKarasBundle:Additional:update" }
+    requirements: { _method: post|put }
+
+employee_additional_delete:
+    pattern:  /delete
+    defaults: { _controller: "ObjectsKarasBundle:Additional:delete" }
+    requirements: { _method: post|delete }

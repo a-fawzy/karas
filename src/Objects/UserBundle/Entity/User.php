@@ -36,6 +36,31 @@ class User implements AdvancedUserInterface {
      */
     private $experiences;
     
+    /**
+     * @ORM\OneToMany(targetEntity="\Objects\KarasBundle\Entity\Project", mappedBy="user")
+     */
+    private $projects;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="\Objects\KarasBundle\Entity\Course", mappedBy="user")
+     */
+    private $courses;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="\Objects\KarasBundle\Entity\Skill", mappedBy="user")
+     */
+    private $skills;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="\Objects\KarasBundle\Entity\Education", mappedBy="user")
+     */
+    private $educations;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="\Objects\KarasBundle\Entity\Language", mappedBy="user")
+     */
+    private $languages;
+    
     
     /**
      * @ORM\OneToMany(targetEntity="\Objects\KarasBundle\Entity\Candidate", mappedBy="user")
@@ -524,6 +549,11 @@ class User implements AdvancedUserInterface {
         unset($classVars['socialAccounts']);
         unset($classVars['jobs']);
         unset($classVars['experiences']);
+        unset($classVars['projects']);
+        unset($classVars['courses']);
+        unset($classVars['skills']);
+        unset($classVars['educations']);
+        unset($classVars['languages']);
         unset($classVars['candidates']);
         return array_keys($classVars);
     }
@@ -1427,6 +1457,11 @@ class User implements AdvancedUserInterface {
         $this->candidates = new \Doctrine\Common\Collections\ArrayCollection();
         $this->jobs = new \Doctrine\Common\Collections\ArrayCollection();
         $this->experiences = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->projects = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->courses = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->skills = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->educations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->languages = new \Doctrine\Common\Collections\ArrayCollection();
         $this->userRoles = new \Doctrine\Common\Collections\ArrayCollection();
         $this->createdAt = new \DateTime();
         $this->lastSeen = new \DateTime();
@@ -1533,5 +1568,170 @@ class User implements AdvancedUserInterface {
     public function getExperiences()
     {
         return $this->experiences;
+    }
+
+    /**
+     * Add projects
+     *
+     * @param \Objects\KarasBundle\Entity\Project $projects
+     * @return User
+     */
+    public function addProject(\Objects\KarasBundle\Entity\Project $projects)
+    {
+        $this->projects[] = $projects;
+    
+        return $this;
+    }
+
+    /**
+     * Remove projects
+     *
+     * @param \Objects\KarasBundle\Entity\Project $projects
+     */
+    public function removeProject(\Objects\KarasBundle\Entity\Project $projects)
+    {
+        $this->projects->removeElement($projects);
+    }
+
+    /**
+     * Get projects
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProjects()
+    {
+        return $this->projects;
+    }
+
+    /**
+     * Add courses
+     *
+     * @param \Objects\KarasBundle\Entity\Course $courses
+     * @return User
+     */
+    public function addCourse(\Objects\KarasBundle\Entity\Course $courses)
+    {
+        $this->courses[] = $courses;
+    
+        return $this;
+    }
+
+    /**
+     * Remove courses
+     *
+     * @param \Objects\KarasBundle\Entity\Course $courses
+     */
+    public function removeCourse(\Objects\KarasBundle\Entity\Course $courses)
+    {
+        $this->courses->removeElement($courses);
+    }
+
+    /**
+     * Get courses
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCourses()
+    {
+        return $this->courses;
+    }
+
+    /**
+     * Add skills
+     *
+     * @param \Objects\KarasBundle\Entity\Skill $skills
+     * @return User
+     */
+    public function addSkill(\Objects\KarasBundle\Entity\Skill $skills)
+    {
+        $this->skills[] = $skills;
+    
+        return $this;
+    }
+
+    /**
+     * Remove skills
+     *
+     * @param \Objects\KarasBundle\Entity\Skill $skills
+     */
+    public function removeSkill(\Objects\KarasBundle\Entity\Skill $skills)
+    {
+        $this->skills->removeElement($skills);
+    }
+
+    /**
+     * Get skills
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSkills()
+    {
+        return $this->skills;
+    }
+
+    /**
+     * Add educations
+     *
+     * @param \Objects\KarasBundle\Entity\Education $educations
+     * @return User
+     */
+    public function addEducation(\Objects\KarasBundle\Entity\Education $educations)
+    {
+        $this->educations[] = $educations;
+    
+        return $this;
+    }
+
+    /**
+     * Remove educations
+     *
+     * @param \Objects\KarasBundle\Entity\Education $educations
+     */
+    public function removeEducation(\Objects\KarasBundle\Entity\Education $educations)
+    {
+        $this->educations->removeElement($educations);
+    }
+
+    /**
+     * Get educations
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEducations()
+    {
+        return $this->educations;
+    }
+
+    /**
+     * Add languages
+     *
+     * @param \Objects\KarasBundle\Entity\Language $languages
+     * @return User
+     */
+    public function addLanguage(\Objects\KarasBundle\Entity\Language $languages)
+    {
+        $this->languages[] = $languages;
+    
+        return $this;
+    }
+
+    /**
+     * Remove languages
+     *
+     * @param \Objects\KarasBundle\Entity\Language $languages
+     */
+    public function removeLanguage(\Objects\KarasBundle\Entity\Language $languages)
+    {
+        $this->languages->removeElement($languages);
+    }
+
+    /**
+     * Get languages
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getLanguages()
+    {
+        return $this->languages;
     }
 }
