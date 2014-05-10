@@ -182,6 +182,68 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery-ui.css') }}"/>
 {% endblock %}
 
+{% block sideBar %}
+    {% set percentage = 0  %}
+    {% if experiences|length > 0  %}
+        {% set percentage = percentage + 15  %}
+    {% endif %}
+    {% if courses|length > 0  %}
+        {% set percentage = percentage + 15  %}
+    {% endif %}
+    {% if educations|length > 0  %}
+        {% set percentage = percentage + 15  %}
+    {% endif %}
+    {% if projects|length > 0  %}
+        {% set percentage = percentage + 10  %}
+    {% endif %}
+    {% if skills|length > 0  %}
+        {% set percentage = percentage + 10  %}
+    {% endif %}
+    {% if languages|length > 0  %}
+        {% set percentage = percentage + 5  %}
+    {% endif %}
+    {% if app.user.phone is not null %}
+        {% set percentage = percentage + 15  %}
+    {% endif %}
+    {% if app.user.dateOfBirth is not null %}
+        {% set percentage = percentage + 15  %}
+    {% endif %}
+    <div class="section1over3">
+        <img class="logo" src="{{ asset('img/logo.png') }}"/>
+        <hr class="hrLogo"/>
+        <h3>Profile Complition :</h3>
+        <div class="progress progress-striped active">
+          <div class="bar" style="width: {{ percentage }}%;"></div>
+        </div>
+        <button class="btn btn-large btn-block" type="button"> Complete<span style="margin:2px 16px 0 0;" class="right badge badge-success">{{ percentage }}%</span></button>
+        {% if app.user.phone is null %}
+            <button class="btn btn-large btn-block" type="button"> Add Contact Information<span style="margin:2px 16px 0 0;" class="right badge badge-important">+ 15%</span></button>
+        {% endif %}
+        {% if experiences|length == 0  %}
+            <button class="btn btn-large btn-block" type="button"> Add Work Experience<span style="margin:2px 16px 0 0;" class="right badge badge-important">+ 15%</span></button>
+        {% endif %}
+        {% if projects|length == 0  %}
+            <button class="btn btn-large btn-block" type="button"> Add Work Projects<span style="margin:2px 16px 0 0;" class="right badge badge-important">+ 10%</span></button>
+        {% endif %}
+        {% if courses|length == 0  %}
+            <button class="btn btn-large btn-block" type="button"> Add Courses<span style="margin:2px 16px 0 0;" class="right badge badge-important">+ 15%</span></button>
+        {% endif %}
+        {% if skills|length == 0  %}
+            <button class="btn btn-large btn-block" type="button"> Add Skills<span style="margin:2px 16px 0 0;" class="right badge badge-important">+ 10%</span></button>
+        {% endif %}
+        {% if educations|length == 0  %}
+            <button class="btn btn-large btn-block" type="button"> Add Education<span style="margin:2px 16px 0 0;" class="right badge badge-important">+ 15%</span></button>
+        {% endif %}
+        {% if app.user.dateOfBirth is null %}
+            <button class="btn btn-large btn-block" type="button"> Add Additional Information<span style="margin:2px 16px 0 0;" class="right badge badge-important">+ 15%</span></button>
+        {% endif %}
+        {% if languages|length == 0  %}
+            <button class="btn btn-large btn-block" type="button"> Add Languages<span style="margin:2px 16px 0 0;" class="right badge badge-important">+ 5%</span></button>
+        {% endif %}
+    </div>
+{% endblock %}
+    
+    
 
 {% block body %}
 
@@ -368,7 +430,7 @@
                     </div>
                     <div id="collapse8" class="accordion-body collapse">
                         <div class="accordion-inner">
-                            {% if app.user.firstName is null %}
+                            {% if app.user.dateOfBirth is null %}
                                 {{ render(controller('ObjectsKarasBundle:Additional:new')) }}
                             {% else %}
                                 <div id="additionalDiv" class="jobList">
