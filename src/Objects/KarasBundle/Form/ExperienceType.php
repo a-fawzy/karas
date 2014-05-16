@@ -20,10 +20,12 @@ class ExperienceType extends AbstractType
             ->add('start', 'date', array(
                 'input'  => 'datetime',
                 'widget' => 'single_text',
+                'attr'=> array('class'=>'datepicker')
             ))
             ->add('end', 'date', array(
                 'input'  => 'datetime',
                 'widget' => 'single_text',
+                'attr'=> array('class'=>'datepicker')
             ))
             ->add('description')
             ->add('countryCode', 'country')

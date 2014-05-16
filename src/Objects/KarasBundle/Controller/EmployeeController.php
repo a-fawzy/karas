@@ -23,7 +23,8 @@ class EmployeeController extends Controller
             'courses' => $courses,
             'skills' => $skills,
             'educations' => $educations,
-            'languages' => $languages
+            'languages' => $languages,
+            'user' => $this->getUser()
         ));
     }
     

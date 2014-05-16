@@ -9,9 +9,9 @@
         $(document).ready(function () {
             $(".chzn-select").chosen();
             $( ".datepicker" ).datepicker();
+            $('#showProfile a').hide();
         })
     </script>
-    
     
     <script>
         $(document).ready(function(){
@@ -235,7 +235,7 @@
             <button class="btn btn-large btn-block" type="button"> Add Education<span style="margin:2px 16px 0 0;" class="right badge badge-important">+ 15%</span></button>
         {% endif %}
         {% if app.user.dateOfBirth is null %}
-            <button class="btn btn-large btn-block" type="button"> Add Additional Information<span style="margin:2px 16px 0 0;" class="right badge badge-important">+ 15%</span></button>
+            <button class="btn btn-large btn-block" type="button"> Add Basic Information<span style="margin:2px 16px 0 0;" class="right badge badge-important">+ 15%</span></button>
         {% endif %}
         {% if languages|length == 0  %}
             <button class="btn btn-large btn-block" type="button"> Add Languages<span style="margin:2px 16px 0 0;" class="right badge badge-important">+ 5%</span></button>
@@ -250,29 +250,32 @@
 <div class="tabbable">
     <!-- Only required for left/right tabs -->
     <ul class="nav nav-tabs">
-        <li class="active"><a href="#tab1" data-toggle="tab">Profile</a></li>
-
+        <li class="active"><a href="#show" data-toggle="tab">Show Profile</a></li>
+        <li class=""><a href="#tab1" data-toggle="tab">Edit Profile</a></li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane active" id="tab1">
+        <div class="tab-pane active" id="show">
+            {{ include('ObjectsKarasBundle:Employee:show.html.twig') }}
+        </div>
+        <div class="tab-pane" id="tab1">
             <div class="accordion" id="accordion2">
                 <div class="accordion-group">
                     <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                            <blockquote style="background: #eee	">
-                                <p>Contact Information</p>
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse8">
+                            <blockquote style="background: #eee">
+                                <p>Basic Information</p>
                             </blockquote>
                         </a>
                     </div>
-                    <div id="collapseOne" class="accordion-body collapse">
+                    <div id="collapse8" class="accordion-body collapse">
                         <div class="accordion-inner">
-                            {% if app.user.phone is null %}
-                                {{ render(controller('ObjectsKarasBundle:Contact:new')) }}
+                            {% if app.user.dateOfBirth is null %}
+                                {{ render(controller('ObjectsKarasBundle:Additional:new')) }}
                             {% else %}
-                                <div id="contactDiv" class="jobList">
+                                <div id="additionalDiv" class="jobList">
                                     <ul class="jobList">
-                                        <li style="height: auto">
-                                            {{ render(controller('ObjectsKarasBundle:Contact:show') ) }}
+                                        <li>
+                                            {{ render(controller('ObjectsKarasBundle:Additional:show') ) }}
                                         </li>
                                     </ul>
                                 </div>
@@ -296,7 +299,7 @@
                                 <div id="experienceDiv" class="jobList">
                                     <ul class="jobList">
                                         {% for experience in experiences  %}
-                                        <li>
+                                        <li style="height: auto;" >
                                             {{ render(controller('ObjectsKarasBundle:Experience:show', { id: experience.id } )) }}
                                         </li>
                                         <br>
@@ -324,7 +327,7 @@
                                 <div id="projectDiv" class="jobList">
                                     <ul class="jobList">
                                         {% for project in projects %}
-                                        <li>
+                                        <li style="height: auto;" >
                                             {{ render(controller('ObjectsKarasBundle:Project:show', { id: project.id } )) }}
                                         </li>
                                         <br>
@@ -352,7 +355,7 @@
                                 <div id="courseDiv" class="jobList">
                                     <ul class="jobList">
                                         {% for course in courses %}
-                                        <li>
+                                        <li style="height: auto;" >
                                             {{ render(controller('ObjectsKarasBundle:Course:show', { id: course.id } )) }}
                                         </li>
                                         <br>
@@ -380,7 +383,7 @@
                                 <div id="skillDiv" class="jobList">
                                     <ul class="jobList">
                                         {% for skill in skills %}
-                                        <li>
+                                        <li style="height: 70px;" >
                                             {{ render(controller('ObjectsKarasBundle:Skill:show', { id: skill.id } )) }}
                                         </li>
                                         <br>
@@ -408,7 +411,7 @@
                                 <div id="educationDiv" class="jobList">
                                     <ul class="jobList">
                                         {% for education in educations %}
-                                        <li>
+                                        <li style="height: auto;" >
                                             {{ render(controller('ObjectsKarasBundle:Education:show', { id: education.id } )) }}
                                         </li>
                                         <br>
@@ -417,30 +420,6 @@
                                 </div>
                             {% endif %}
                             <a id="newEducation" href="javascript:void(0)">+ add new Education</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-group">
-                    <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse8">
-                            <blockquote style="background: #eee">
-                                <p>Additional Information</p>
-                            </blockquote>
-                        </a>
-                    </div>
-                    <div id="collapse8" class="accordion-body collapse">
-                        <div class="accordion-inner">
-                            {% if app.user.dateOfBirth is null %}
-                                {{ render(controller('ObjectsKarasBundle:Additional:new')) }}
-                            {% else %}
-                                <div id="additionalDiv" class="jobList">
-                                    <ul class="jobList">
-                                        <li>
-                                            {{ render(controller('ObjectsKarasBundle:Additional:show') ) }}
-                                        </li>
-                                    </ul>
-                                </div>
-                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -460,7 +439,7 @@
                                 <div id="languageDiv" class="jobList">
                                     <ul class="jobList">
                                         {% for language in languages %}
-                                        <li>
+                                        <li style="height: auto;" >
                                             {{ render(controller('ObjectsKarasBundle:Language:show', { id: language.id } )) }}
                                         </li>
                                         <br>
@@ -469,6 +448,30 @@
                                 </div>
                             {% endif %}
                             <a id="newLanguage" href="javascript:void(0)">+ add new Language</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                            <blockquote style="background: #eee	">
+                                <p>Contact Information</p>
+                            </blockquote>
+                        </a>
+                    </div>
+                    <div id="collapseOne" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            {% if app.user.phone is null %}
+                                {{ render(controller('ObjectsKarasBundle:Contact:new')) }}
+                            {% else %}
+                                <div id="contactDiv" class="jobList">
+                                    <ul class="jobList">
+                                        <li style="height: auto">
+                                            {{ render(controller('ObjectsKarasBundle:Contact:show') ) }}
+                                        </li>
+                                    </ul>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

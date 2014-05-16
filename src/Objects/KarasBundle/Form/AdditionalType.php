@@ -23,8 +23,8 @@ class AdditionalType extends AbstractType
             ))
             ->add('marital', 'choice', array(
                 'choices'   => array(
-                    'married'   => 'Married',
-                    'single'    => 'Single',
+                    '0'   => 'Married',
+                    '1'    => 'Single',
                 )
             ))
             ->add('nationality', 'country')

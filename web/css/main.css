@@ -404,3 +404,6 @@ float:right;
 .fh {
 width:350px;float:left
 }
+th{
+    padding: 10px;
+}
