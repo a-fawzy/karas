@@ -14,11 +14,11 @@ services:
       tags:
          - { name: sonata.admin, manager_type: orm, label: Banner }
       arguments: [null, Objects\AdminBundle\Entity\Banner, ObjectsAdminBundle:Banner]
-#    user_admin:
-#        class: Objects\AdminBundle\Admin\UserAdmin
-#        arguments: [~, Objects\UserBundle\Entity\User, ObjectsAdminBundle:User]
-#        tags:
-#            - {name: sonata.admin, manager_type: orm, group: admin, label: User}
+    user_admin:
+        class: Objects\AdminBundle\Admin\UserAdmin
+        arguments: [~, Objects\UserBundle\Entity\User, ObjectsAdminBundle:User]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: User}
 
     objects_admin.admin.client:
         class: Objects\AdminBundle\Admin\ClientAdmin
@@ -61,3 +61,45 @@ services:
         arguments: [~, Objects\KarasBundle\Entity\Profession, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Profession}
+
+    objects_admin.admin.experience:
+        class: Objects\AdminBundle\Admin\ExperienceAdmin
+        arguments: [~, Objects\KarasBundle\Entity\Experience, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Experience}
+
+    objects_admin.admin.project:
+        class: Objects\AdminBundle\Admin\ProjectAdmin
+        arguments: [~, Objects\KarasBundle\Entity\Project, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Project}
+
+    objects_admin.admin.course:
+        class: Objects\AdminBundle\Admin\CourseAdmin
+        arguments: [~, Objects\KarasBundle\Entity\Course, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Course}
+
+    objects_admin.admin.skill:
+        class: Objects\AdminBundle\Admin\SkillAdmin
+        arguments: [~, Objects\KarasBundle\Entity\Skill, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Skill}
+
+    objects_admin.admin.education:
+        class: Objects\AdminBundle\Admin\EducationAdmin
+        arguments: [~, Objects\KarasBundle\Entity\Education, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Education}
+
+    objects_admin.admin.language:
+        class: Objects\AdminBundle\Admin\LanguageAdmin
+        arguments: [~, Objects\KarasBundle\Entity\Language, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Language}
+
+    objects_admin.admin.job:
+        class: Objects\AdminBundle\Admin\JobAdmin
+        arguments: [~, Objects\KarasBundle\Entity\Job, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Job}

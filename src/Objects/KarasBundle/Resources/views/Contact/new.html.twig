@@ -1,5 +1,18 @@
 {{ form_start(form, {'action': path('employee_contact_create'), 'attr': {'class': 'form-horizontal legend', 'id': 'contactForm' } } ) }}
 
+
+    <div class="control-group">
+        <label class="control-label" for="industry">Main Industry</label>
+        <div class="controls">
+            {{ form_widget(form.industry, { 'attr': {'class': 'chzn-select'} } ) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="countryCode">Main Profession</label>
+        <div class="controls">
+            {{ form_widget(form.profession, { 'attr': {'class': 'chzn-select'} } ) }}
+        </div>
+    </div>
     <div class="control-group">
         <label class="control-label" for="email">E-mail</label>
         <div class="controls">

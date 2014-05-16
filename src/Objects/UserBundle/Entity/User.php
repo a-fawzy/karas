@@ -37,6 +37,16 @@ class User implements AdvancedUserInterface {
     private $experiences;
     
     /**
+     * @ORM\ManyToOne(targetEntity="\Objects\KarasBundle\Entity\Profession", inversedBy="user")
+     */
+    private $profession;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="\Objects\KarasBundle\Entity\Industry", inversedBy="user")
+     */
+    private $industry;
+    
+    /**
      * @ORM\OneToMany(targetEntity="\Objects\KarasBundle\Entity\Project", mappedBy="user")
      */
     private $projects;
@@ -555,6 +565,8 @@ class User implements AdvancedUserInterface {
         unset($classVars['educations']);
         unset($classVars['languages']);
         unset($classVars['candidates']);
+        unset($classVars['profession']);
+        unset($classVars['industry']);
         return array_keys($classVars);
     }
 
@@ -1449,25 +1461,6 @@ class User implements AdvancedUserInterface {
     {
         return $this->nationality;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->candidates = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->jobs = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->experiences = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->projects = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->courses = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->skills = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->educations = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->languages = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->userRoles = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->createdAt = new \DateTime();
-        $this->lastSeen = new \DateTime();
-        $this->confirmationCode = md5(uniqid(rand()));
-        $this->salt = md5(time());
-    }
     
     /**
      * Add candidates
@@ -1734,4 +1727,70 @@ class User implements AdvancedUserInterface {
     {
         return $this->languages;
     }
+
+    /**
+     * Set profession
+     *
+     * @param \Objects\KarasBundle\Entity\Profession $profession
+     * @return User
+     */
+    public function setProfession(\Objects\KarasBundle\Entity\Profession $profession = null)
+    {
+        $this->profession = $profession;
+    
+        return $this;
+    }
+
+    /**
+     * Get profession
+     *
+     * @return \Objects\KarasBundle\Entity\Profession 
+     */
+    public function getProfession()
+    {
+        return $this->profession;
+    }
+
+    /**
+     * Set industry
+     *
+     * @param \Objects\KarasBundle\Entity\Industry $industry
+     * @return User
+     */
+    public function setIndustry(\Objects\KarasBundle\Entity\Industry $industry = null)
+    {
+        $this->industry = $industry;
+    
+        return $this;
+    }
+
+    /**
+     * Get industry
+     *
+     * @return \Objects\KarasBundle\Entity\Industry 
+     */
+    public function getIndustry()
+    {
+        return $this->industry;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->candidates = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->jobs = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->experiences = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->projects = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->courses = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->skills = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->educations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->languages = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->userRoles = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->createdAt = new \DateTime();
+        $this->lastSeen = new \DateTime();
+        $this->confirmationCode = md5(uniqid(rand()));
+        $this->salt = md5(time());
+    }
+    
 }

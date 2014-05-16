@@ -32,8 +32,9 @@ class UserAdmin extends Admin {
         $listMapper
                 ->addIdentifier('id')
                 ->add('firstName')
-                ->add('lastName')
                 ->add('loginName')
+                ->add('phone')
+                ->add('type')
                 ->add('email', null, array('template' => 'ObjectsAdminBundle:General:list_email.html.twig'))
                 ->add('image', null, array('template' => 'ObjectsAdminBundle:General:list_image.html.twig'))
                 ->add('gender', null, array('template' => 'ObjectsAdminBundle:General:list_gender.html.twig'))
@@ -59,14 +60,22 @@ class UserAdmin extends Admin {
         $showMapper
                 ->add('id')
                 ->add('firstName')
-                ->add('lastName')
                 ->add('loginName')
+                ->add('type')
+                ->add('phone')
                 ->add('email', null, array('template' => 'ObjectsAdminBundle:General:show_email.html.twig'))
                 ->add('image', null, array('template' => 'ObjectsAdminBundle:General:show_image.html.twig'))
                 ->add('gender', null, array('template' => 'ObjectsAdminBundle:General:show_gender.html.twig'))
                 ->add('createdAt')
                 ->add('locked')
                 ->add('enabled')
+                ->add('experiences')
+                ->add('projects')
+                ->add('educations')
+                ->add('courses')
+                ->add('skills')
+                ->add('languages')
+                
         ;
     }
 
@@ -80,11 +89,10 @@ class UserAdmin extends Admin {
         $datagridMapper
                 ->add('id')
                 ->add('firstName')
-                ->add('lastName')
+                ->add('type')
                 ->add('loginName')
                 ->add('email')
                 ->add('gender')
-                ->add('createdAt')
                 ->add('locked')
                 ->add('enabled')
         ;

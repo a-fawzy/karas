@@ -37,7 +37,12 @@ class Industry
      * @ORM\OneToMany(targetEntity="Experience", mappedBy="industry")
      */
     private $experiences;
-
+    
+    /**
+     * @ORM\OneToMany(targetEntity="\Objects\UserBundle\Entity\User", mappedBy="industry")
+     */
+    private $users;
+    
     
     /**
      * Get id
@@ -109,14 +114,7 @@ class Industry
     {
         return $this->jobs;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->jobs = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->experiences = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    
     
     /**
      * Add experiences
@@ -150,4 +148,47 @@ class Industry
     {
         return $this->experiences;
     }
+
+    /**
+     * Add users
+     *
+     * @param \Objects\UserBundle\Entity\User $users
+     * @return Industry
+     */
+    public function addUser(\Objects\UserBundle\Entity\User $users)
+    {
+        $this->users[] = $users;
+    
+        return $this;
+    }
+
+    /**
+     * Remove users
+     *
+     * @param \Objects\UserBundle\Entity\User $users
+     */
+    public function removeUser(\Objects\UserBundle\Entity\User $users)
+    {
+        $this->users->removeElement($users);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->jobs = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->experiences = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
 }

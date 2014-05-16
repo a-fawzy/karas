@@ -330,4 +330,9 @@ class Experience
     {
         return $this->user;
     }
+    
+    public function __toString() {
+        return $this->company;
+    }
+    
 }

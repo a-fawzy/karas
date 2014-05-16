@@ -153,4 +153,73 @@ class UserRepository extends EntityRepository implements UserProviderInterface {
         return $user;
     }
 
+    public function getEmployees($page = 1, $maxResults = 24, 
+            $industry = null, $profession = null, $location = null,
+            $nationality = null, $languages = null, $dob= null)
+    {
+        $data = array(
+           'count' => 0,
+           'entities' => array()
+        );
+        
+        if ($page >= 1) {
+            $parameters = array();
+            $page--;
+            //Query Creation
+            $selectQuery = "SELECT u" ;
+            $fromQuery =  ' FROM ObjectsUserBundle:User u';
+            $whereQuery = " WHERE u.enabled = TRUE ";
+            $joinQuery = " ";
+            if($industry){
+                $whereQuery .=  " AND u.industry = :industry ";
+                $parameters['industry'] = $industry;
+            }
+            
+            if($profession){
+                $whereQuery .=  " AND u.profession = :profession ";
+                $parameters['profession'] = $profession;
+            }
+            
+            if($location){
+                $whereQuery .=  " AND u.countryCode = :location ";
+                $parameters['location'] = $location;
+            }
+            
+            if($nationality){
+                $whereQuery .=  " AND u.nationality = :nationality ";
+                $parameters['nationality'] = $nationality;
+            }
+            
+            if($dob){
+                $whereQuery .=  " AND u.dateOfBirth >= :dob ";
+                $parameters['dob'] = $dob;
+            }
+            
+            if($languages){
+                $whereQuery .=  " AND EXISTS ("
+                                    . "SELECT l.name FROM ObjectsKarasBundle:Language l "
+                                    . "WHERE l.user = u.id AND l.name IN (:languages)"
+                                . ")  ";
+                $parameters['languages'] = $languages;
+            }
+            
+
+            $groupQuery = " ";
+            
+            $queryFinal = "$selectQuery $fromQuery $joinQuery $whereQuery $groupQuery";
+            $query = $this->getEntityManager()->createQuery($queryFinal)->setParameters($parameters);
+            $countQuery = $this->getEntityManager()->createQuery("SELECT COUNT(u.id) $fromQuery $joinQuery $whereQuery $groupQuery")->setParameters($parameters);
+            $query->setFirstResult($page * $maxResults);
+            $query->setMaxResults($maxResults);
+            $result = $countQuery->getResult();
+            if ($result)
+            {
+                $data['count'] = $result[0][1];
+                $data['entities'] = $query->getResult();
+            }
+        }
+        return $data;
+    }
+    
+    
 }

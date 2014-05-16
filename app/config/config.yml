@@ -88,12 +88,14 @@ sonata_admin:
                     - objects_admin.admin.about
 #                    - block_admin
 #                    - banner_admin
-#                    - user_admin
+                    
 
             Jobs:
                 items:
                     - objects_admin.admin.industry
                     - objects_admin.admin.profession
+                    - objects_admin.admin.job
+                    - user_admin
 
 sonata_block:
     default_contexts: [cms]

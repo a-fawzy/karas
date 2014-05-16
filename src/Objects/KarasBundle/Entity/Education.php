@@ -270,4 +270,8 @@ class Education
     {
         return $this->end;
     }
+    
+    public function __toString() {
+        return $this->field;
+    }
 }

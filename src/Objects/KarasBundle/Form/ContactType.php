@@ -24,6 +24,14 @@ class ContactType extends AbstractType
             ->add('twitter')
             ->add('website')
             ->add('summary')
+            ->add('profession', 'entity', array(
+                'class' => 'ObjectsKarasBundle:Profession',
+                'property' => 'title',
+            ))
+            ->add('industry', 'entity', array(
+                'class' => 'ObjectsKarasBundle:Industry',
+                'property' => 'title',
+            ))
         ;
     }
     
