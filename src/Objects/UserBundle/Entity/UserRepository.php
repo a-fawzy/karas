@@ -171,12 +171,12 @@ class UserRepository extends EntityRepository implements UserProviderInterface {
             $whereQuery = " WHERE u.enabled = TRUE ";
             $joinQuery = " ";
             if($industry){
-                $whereQuery .=  " AND u.industry = :industry ";
+                $whereQuery .=  " AND EXISTS (SELECT e FROM ObjectsKarasBundle:Experience e WHERE e.user = u.id AND e.industry = :industry ) ";
                 $parameters['industry'] = $industry;
             }
             
             if($profession){
-                $whereQuery .=  " AND u.profession = :profession ";
+                $whereQuery .=  " AND EXISTS (SELECT e FROM ObjectsKarasBundle:Experience e WHERE e.user = u.id AND e.profession = :profession ) ";
                 $parameters['profession'] = $profession;
             }
             

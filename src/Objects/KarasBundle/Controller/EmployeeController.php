@@ -85,11 +85,12 @@ class EmployeeController extends Controller
         if (($count % $maxResults) > 0) {
             $lastPageNumber++;
         }
-        
+        $countries = \Symfony\Component\Locale\Locale::getDisplayCountries('en');
         return $this->render('ObjectsKarasBundle:Employee:filter.html.twig', array(
             'employees' => $employees,
             'page' => $page,
-            'lastPageNumber' => $lastPageNumber
+            'lastPageNumber' => $lastPageNumber,
+            'countries' => $countries
         ));
         
     }

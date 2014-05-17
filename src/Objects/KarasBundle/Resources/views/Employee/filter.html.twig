@@ -12,14 +12,19 @@
     <div class="tab-content">
         <ul class="jobList">
             {% for employee in employees %}
-                <li>
+                <li style="height: 120px;">
                     <img style="padding: 0px" src="{{ asset(employee.getSmallImageUrl(80,80)) }}">
                     <div class="float-left">
                         <span class="jobName">{{ employee.firstName }}</span>
                         <div class="clear"></div>
-                        <span class="jobCategory">{{ employee.profession.title }}</span>
+                        <span class="jobLocation">ID: #{{ employee.id }}</span>
                         <div class="clear"></div>
-                        <span class="jobLocation">{{ employee.nationality }}</span>
+                        <span class="jobCategory">
+                            From: {{ countries[employee.nationality]}}
+                            Location: {{ countries[employee.countryCode] }}
+                        </span>
+                        <div class="clear"></div>
+                        <span class="jobCategory"></span>
                         <div class="clear"></div>
                         <span class="jobDesc">{{ employee.loginName}}</span>
                         <a href="" class="btn btn-info"><i class="icon-user icon-white"></i> Bookmark</a>
