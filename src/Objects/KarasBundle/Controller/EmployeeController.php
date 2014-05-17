@@ -53,6 +53,11 @@ class EmployeeController extends Controller
             $nationality = ($request->request->get('nationality') == 'any' ? null : $request->request->get('nationality')) ;
             $languages   = $request->request->get('languages') ;
             $dob         = ($request->request->get('dob') == '' ? null : $request->request->get('dob')) ;
+            $keywords    = ($request->request->get('keywords') == '' ? null : $request->request->get('keywords')) ;
+            $title       = ($request->request->get('title') == '' ? null : $request->request->get('title')) ;
+            $company     = ($request->request->get('company') == '' ? null : $request->request->get('company')) ;
+            $experience1 = ($request->request->get('experience1') == '' ? null : $request->request->get('experience1')) ;
+            $experience2 = ($request->request->get('experience2') == '' ? null : $request->request->get('experience2')) ;
             
             $session->set('industry', $industry);
             $session->set('profession', $profession);
@@ -60,21 +65,36 @@ class EmployeeController extends Controller
             $session->set('nationality', $nationality);
             $session->set('languages', $languages);
             $session->set('dob', $dob);
+            $session->set('keywords', $keywords);
+            $session->set('title', $title);
+            $session->set('company', $company);
+            $session->set('experience1', $experience1);
+            $session->set('experience2', $experience2);
         } else {
-            $industry = $session->get('industry');
-            $profession = $session->get('profession');
-            $location = $session->get('location');
+            $industry    = $session->get('industry');
+            $profession  = $session->get('profession');
+            $location    = $session->get('location');
             $nationality = $session->get('nationality');
-            $languages = $session->get('languages');
-            $dob = $session->get('dob');
+            $languages   = $session->get('languages');
+            $dob         = $session->get('dob');
+            $keywords    = $session->get('keywords');
+            $title       = $session->get('title');
+            $company     = $session->get('company');
+            $experience1 = $session->get('experience1');
+            $experience2 = $session->get('experience2');
         }
         
-        
+        if(isset($keywords)){
+            $keywords = explode(',', $keywords);
+        }
         $maxResults = $this->container->getParameter('max_result');
-        
+        $experience1 = $experience1 * 365 ;
+        $experience2 = $experience2 * 365 ;
         $em = $this->getDoctrine()->getManager();
         $results = $em->getRepository('ObjectsUserBundle:User')->getEmployees(
-                $page, $maxResults, $industry,$profession,$location,$nationality,$languages,$dob
+                $page, $maxResults, $industry,$profession,$location,
+                $nationality,$languages,$dob,$keywords,$title,$company,
+                $experience1, $experience2
         );
         
         $employees = $results['entities'];

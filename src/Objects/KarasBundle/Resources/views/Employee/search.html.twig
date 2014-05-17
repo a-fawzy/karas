@@ -5,18 +5,24 @@
     {{ parent()  }}
     <script type="text/javascript" src="{{ asset('js/jquery-ui.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/chosen.jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/tag-it.min.js') }}"></script>
     <script>
         $(document).ready(function () {
             $(".search-chzn-select").chosen({
                 width: "100%"
             });
             $('.chzn-container-multi').attr('style', 'width: 80% !important')
+            $('#keywords').tagit();
+            $('.tagit').css('margin', '0px');
         })
     </script>
+    
 {% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.tagit.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/tagit.ui-zendesk.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/chosen.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery-ui.css') }}"/>
 {% endblock %}
@@ -84,6 +90,38 @@
             <div class="span3">
                 <h4>Born After</h4>
                 <input type="date" name="dob" />
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="span3">
+                <h4>Title</h4>
+                <input  type="text" name="title" />
+            </div>
+            <div class="span3">
+                <h4>Company</h4>
+                <input type="text" name="company" placeholder="Company name" />
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="span3">
+                <h4>Experience-From</h4>
+                <input  type="number" name="experience1" placeholder="Experience Years Number"/>
+            </div>
+            <div class="span3">
+                <h4>Experience-To</h4>
+                <input type="number" name="experience2" placeholder="Experience Years Number" />
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="span6">
+                    <h4>Keywords</h4>
+                    <input id="keywords" type="text" name="keywords" />
             </div>
         </div>
     </div>

@@ -155,7 +155,9 @@ class UserRepository extends EntityRepository implements UserProviderInterface {
 
     public function getEmployees($page = 1, $maxResults = 24, 
             $industry = null, $profession = null, $location = null,
-            $nationality = null, $languages = null, $dob= null)
+            $nationality = null, $languages = null, $dob= null, 
+            $keywords = null, $title = null, $company = null,
+            $experience1 = null, $experience2 = null)
     {
         $data = array(
            'count' => 0,
@@ -176,7 +178,7 @@ class UserRepository extends EntityRepository implements UserProviderInterface {
             }
             
             if($profession){
-                $whereQuery .=  " AND EXISTS (SELECT e FROM ObjectsKarasBundle:Experience e WHERE e.user = u.id AND e.profession = :profession ) ";
+                $whereQuery .=  " AND EXISTS (SELECT e2 FROM ObjectsKarasBundle:Experience e2 WHERE e2.user = u.id AND e2.profession = :profession ) ";
                 $parameters['profession'] = $profession;
             }
             
@@ -203,7 +205,51 @@ class UserRepository extends EntityRepository implements UserProviderInterface {
                 $parameters['languages'] = $languages;
             }
             
-
+            if($keywords){
+                $whereQuery .= " AND (" ;
+                foreach($keywords as $key=>$keyword) {
+                    if($key != 0)
+                    {
+                        $whereQuery .= " OR " ;
+                    }
+                    $whereQuery .=  " u.summary LIKE :keyword ";
+                    $parameters['keyword'] = "%$keyword%";
+                }
+                $whereQuery .= ") ";
+            }
+            
+            if($title){
+                $whereQuery .= " AND EXISTS ("
+                                    . "SELECT e3.title FROM ObjectsKarasBundle:Experience e3 "
+                                    . "WHERE e3.user = u.id AND e3.title LIKE :title"
+                                . ") ";
+                $parameters['title'] = "%$title%";
+            }
+            
+            if($company){
+                $whereQuery .= " AND EXISTS ("
+                                    . "SELECT e4.company FROM ObjectsKarasBundle:Experience e4 "
+                                    . "WHERE e4.user = u.id AND e4.company LIKE :company"
+                                . ") ";
+                $parameters['company'] = "%$company%";
+            }
+            
+            if($experience1 && $experience2){
+                $whereQuery .= " AND :experience1 < ("
+                                    . " SELECT SUM(DATE_DIFF(e5.end, e5.start)) "
+                                    . " FROM ObjectsKarasBundle:Experience e5 "
+                                    . " WHERE e5.user = u.id "
+                                    . " GROUP BY e5.user "
+                                . ") "
+                                . " AND :experience2 >= ("
+                                    . " SELECT SUM(DATE_DIFF(e6.end, e6.start)) "
+                                    . " FROM ObjectsKarasBundle:Experience e6 "
+                                    . " WHERE e6.user = u.id "
+                                    . " GROUP BY e6.user "
+                                . ") " ;
+                $parameters['experience1'] = $experience1;
+                $parameters['experience2'] = $experience2;
+            }
             $groupQuery = " ";
             
             $queryFinal = "$selectQuery $fromQuery $joinQuery $whereQuery $groupQuery";
