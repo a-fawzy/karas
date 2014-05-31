@@ -1,0 +1,85 @@
+{% extends '::base.html.twig' %}
+{% block activeBookmark %} active{% endblock %}
+{% block title %}Bookmarks{% endblock %}
+{% block body %}
+
+<div class="tabbable">
+    <!-- Only required for left/right tabs -->
+    <h3>
+        My Bookmarks
+    </h3>
+    <div class="tab-content">
+        <ul class="jobList">
+            {% for employee in employees %}
+                <li style="height: 120px;">
+                    <img style="padding: 0px" src="{{ asset(employee.getSmallImageUrl(80,80)) }}">
+                    <div class="float-left">
+                        <span class="jobName">{{ employee.maskFirstName() }}</span>
+                        <a style="float: right" href="#" class="btn-link inquiry" data-id="{{ employee.id }}" >
+                            {% if ids[employee.id] == false %}
+                                <i class="icon-check"></i> Inquire
+                            {% else %}
+                                <i class="icon-user icon-refresh"></i> Re-Inquire
+                            {% endif %}
+                        </a>
+                        <div class="clear"></div>
+                        <span class="jobLocation">ID: #{{ employee.id }}</span>
+                        <div class="clear"></div>
+                        <span class="jobCategory">
+                            From: {{ countries[employee.nationality]}}
+                            Location: {{ countries[employee.countryCode] }}
+                        </span>
+                        <div class="clear"></div>
+                        <span class="jobCategory"></span>
+                        <div class="clear"></div>
+                        <span class="jobDesc">{{ employee.loginName}}</span>
+                        <a href="#" class="btn btn-info bookmark" data-id="{{ employee.id }}" >
+                            <i class="icon-remove"></i> Remove
+                        </a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $('document').ready(function(){
+            $('.bookmark').on('click', function(){
+                node = $(this);
+                employeeId = $(this).attr('data-id');
+                url = "{{ path('objects_karas_bundle_add_to_bookmark') }}" ;
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: {employeeId: employeeId },
+                    success: function(msg) {
+                        if(msg === 'added'){
+                            node.html('<i class="icon-user icon-remove"></i> Remove');
+                        } else {
+                            node.html('<i class="icon-user icon-check"></i> Bookmark');
+                        }
+                        
+                     }
+                 });
+            });
+            
+            $('.inquiry').on('click', function(){
+                node = $(this);
+                employeeId = $(this).attr('data-id');
+                url = "{{ path('objects_karas_bundle_bookmark_inquire') }}" ;
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: { employeeId: employeeId },
+                    success: function(msg) {
+                        node.html('<i class="icon-user icon-refresh"></i> Re-Inquire');
+                    }
+                 });
+            });
+        })
+    </script>
+{% endblock %}

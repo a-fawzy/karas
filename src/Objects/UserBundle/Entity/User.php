@@ -37,6 +37,16 @@ class User implements AdvancedUserInterface {
     private $experiences;
     
     /**
+     * @ORM\OneToMany(targetEntity="\Objects\KarasBundle\Entity\Bookmark", mappedBy="employer")
+     */
+    private $bookmarks;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="\Objects\KarasBundle\Entity\Bookmark", mappedBy="employee")
+     */
+    private $bookmarkeds;
+    
+    /**
      * @ORM\OneToMany(targetEntity="\Objects\KarasBundle\Entity\Project", mappedBy="user")
      */
     private $projects;
@@ -556,6 +566,8 @@ class User implements AdvancedUserInterface {
         unset($classVars['company']);
         unset($classVars['jobs']);
         unset($classVars['experiences']);
+        unset($classVars['bookmarks']);
+        unset($classVars['bookmarkeds']);
         unset($classVars['projects']);
         unset($classVars['courses']);
         unset($classVars['skills']);
@@ -1724,27 +1736,6 @@ class User implements AdvancedUserInterface {
     }
 
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->candidates = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->jobs = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->experiences = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->projects = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->courses = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->skills = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->educations = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->languages = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->userRoles = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->createdAt = new \DateTime();
-        $this->lastSeen = new \DateTime();
-        $this->confirmationCode = md5(uniqid(rand()));
-        $this->salt = md5(time());
-    }
-    
-
-    /**
      * Set company
      *
      * @param \Objects\KarasBundle\Entity\Company $company
@@ -1765,5 +1756,108 @@ class User implements AdvancedUserInterface {
     public function getCompany()
     {
         return $this->company;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->experiences = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->bookmarks = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->bookmarkeds = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->projects = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->courses = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->skills = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->educations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->languages = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->candidates = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->jobs = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->userRoles = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->createdAt = new \DateTime();
+        $this->lastSeen = new \DateTime();
+        $this->confirmationCode = md5(uniqid(rand()));
+        $this->salt = md5(time());
+    }
+    
+    /**
+     * Add bookmarks
+     *
+     * @param \Objects\KarasBundle\Entity\Bookmark $bookmarks
+     * @return User
+     */
+    public function addBookmark(\Objects\KarasBundle\Entity\Bookmark $bookmarks)
+    {
+        $this->bookmarks[] = $bookmarks;
+    
+        return $this;
+    }
+
+    /**
+     * Remove bookmarks
+     *
+     * @param \Objects\KarasBundle\Entity\Bookmark $bookmarks
+     */
+    public function removeBookmark(\Objects\KarasBundle\Entity\Bookmark $bookmarks)
+    {
+        $this->bookmarks->removeElement($bookmarks);
+    }
+
+    /**
+     * Get bookmarks
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBookmarks()
+    {
+        return $this->bookmarks;
+    }
+
+    /**
+     * Add bookmarkeds
+     *
+     * @param \Objects\KarasBundle\Entity\Bookmark $bookmarkeds
+     * @return User
+     */
+    public function addBookmarked(\Objects\KarasBundle\Entity\Bookmark $bookmarkeds)
+    {
+        $this->bookmarkeds[] = $bookmarkeds;
+    
+        return $this;
+    }
+
+    /**
+     * Remove bookmarkeds
+     *
+     * @param \Objects\KarasBundle\Entity\Bookmark $bookmarkeds
+     */
+    public function removeBookmarked(\Objects\KarasBundle\Entity\Bookmark $bookmarkeds)
+    {
+        $this->bookmarkeds->removeElement($bookmarkeds);
+    }
+
+    /**
+     * Get bookmarkeds
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBookmarkeds()
+    {
+        return $this->bookmarkeds;
+    }
+    
+    public function isBookmarked($employeeId){
+        foreach ($this->getBookmarks() as $bookmark) {
+            if($bookmark->getEmployee()->getId() == $employeeId){
+                return true;
+            }
+        } 
+    }
+    
+    public function maskFirstName(){
+        $firstname = explode(" ", $this->getFirstName());
+        if(! isset($firstname[1])){
+            $firstname[1] = "";
+        }
+        return substr($firstname[0], 0, 1) . ". " . $firstname[1];
     }
 }

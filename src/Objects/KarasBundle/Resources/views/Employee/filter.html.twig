@@ -27,7 +27,13 @@
                         <span class="jobCategory"></span>
                         <div class="clear"></div>
                         <span class="jobDesc">{{ employee.loginName}}</span>
-                        <a href="" class="btn btn-info"><i class="icon-user icon-white"></i> Bookmark</a>
+                        <a href="#" class="btn btn-info bookmark" data-id="{{ employee.id }}" >
+                            {% if not app.user.isBookmarked(employee.id) %}
+                                <i class="icon-check"></i> Bookmark
+                            {% else %}
+                                <i class="icon-remove"></i> Remove
+                            {% endif %}
+                        </a>
                     </div>
                 </li>
             {% endfor %}
@@ -88,4 +94,30 @@
         </div>
     {% endif %}
 </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $('document').ready(function(){
+            $('.bookmark').on('click', function(){
+                node = $(this);
+                employeeId = $(this).attr('data-id');
+                url = "{{ path('objects_karas_bundle_add_to_bookmark') }}" ;
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: {employeeId: employeeId },
+                    success: function(msg) {
+                        if(msg === 'added'){
+                            node.html('<i class="icon-user icon-remove"></i> Remove');
+                        } else {
+                            node.html('<i class="icon-user icon-check"></i> Bookmark');
+                        }
+                        
+                     }
+                 });
+             });
+        })
+    </script>
 {% endblock %}

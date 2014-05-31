@@ -4,9 +4,9 @@ parameters:
     phone: '02475416587'
     mobile: '0101234789456'
     contact_text: 'You can Contact our support team on the following.'
-    facebook_page_url: 'https://www.facebook.com/pepsi'
-    twitter_page_url: 'https://twitter.com/RAKSME'
-    twitter_screen_name: 'Rak-SME'
+    facebook_page_url: 'https://www.facebook.com/karas'
+    twitter_page_url: 'https://twitter.com/karas'
+    twitter_screen_name: 'KARAS'
     contact_email: 'ahmaad.fawzy@hotmail.com'
     lat: 31.205428
     lan: 29.904976

@@ -33,6 +33,18 @@ ObjectsKarasBundle_employee_additional:
 ObjectsKarasBundle_employer_prrofile:
     resource: "@ObjectsKarasBundle/Resources/config/routing/company.yml"
     prefix:   /employer/profile
+    
+objects_karas_bundle_add_to_bookmark:
+    pattern:  /employer/bookmark/add
+    defaults: { _controller: ObjectsKarasBundle:Bookmark:add }
+
+objects_karas_bundle_show_bookmark:
+    pattern:  /employer/bookmark/show
+    defaults: { _controller: ObjectsKarasBundle:Bookmark:show }
+
+objects_karas_bundle_bookmark_inquire:
+    pattern:  /employer/bookmark/inquire
+    defaults: { _controller: ObjectsKarasBundle:Bookmark:inquire }
 
 objects_karas_homepage:
     pattern:  /
