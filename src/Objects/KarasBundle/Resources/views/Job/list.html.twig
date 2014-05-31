@@ -20,14 +20,18 @@
                 <li>
                     <img src="{{ asset('img/glyphicons_341_briefcase.png') }}">
                     <div class="float-left">
-                        <span class="jobName">{{ job.title }}</span>
+                        <a href="{{ path('objects_karas_job_show', {id: job.id}) }}"
+                            <span class="jobName">{{ job.title }}</span>
+                        </a>
                         <div class="clear"></div>
                         <span class="jobCategory">{{ job.industry.title }}</span>
                         <div class="clear"></div>
                         <span class="jobLocation">{{ job.city }}, {{ job.countryCode }}</span>
                         <div class="clear"></div>
                         <span class="jobDesc">{{ job.description }}</span>
-                        <a href="{{ path('objects_karas_job_edit', { id: job.id }) }}" class="btn btn-info"><i class="icon-edit icon-white"></i> Edit</a>
+                        {% if app.user.id == job.owner.id %}
+                            <a href="{{ path('objects_karas_job_edit', { id: job.id }) }}" class="btn btn-info"><i class="icon-edit icon-white"></i> Edit</a>
+                        {% endif %}
                     </div>
                 </li>
             {% endfor %}

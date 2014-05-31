@@ -44,7 +44,7 @@
             <h3>Benefits& Allowances</h3>
             <span class="jobField">Salary:</span><span class="jobData"> {{ job.salary }}</span><hr />
             <span class="jobField">Allowances:</span><span class="jobData"> {{ job.allowances }}</span><hr />
-            <center><a href="#" class="btn btn-large btn-primary">&nbsp;&nbsp; Apply Now &nbsp;&nbsp;</a></center>
+            <center><a href="{{path('objects_karas_job_apply', {id: job.id} ) }}" class="btn btn-large btn-primary">&nbsp;&nbsp; Apply Now &nbsp;&nbsp;</a></center>
 
         </div>
         <div id="map-canvas"></div>

@@ -68,7 +68,13 @@
                             <ul class="nav">
                                 <li {% block activeHome %}{% endblock %}><a href="{{ path('objects_karas_homepage') }}">Home</a></li>
                                 <li {% block activeAbout %}{% endblock %}><a href="{{ path('objects_karas_about') }}">ABOUT</a></li>
-                                <li {% block activeJobs %}{% endblock %}><a href="jobs.html">JOBS</a></li>
+                                <li {% block activeSearch %}{% endblock %}>
+                                    {% if app.user and app.user.type == "employee" %}
+                                        <a href="jobs.html">Search</a>
+                                    {% elseif app.user and app.user.type == "employer" %}
+                                        <a href="{{ objects_karas_employee_search }}">Search</a>
+                                    {% endif %}
+                                </li>
                                 <li class="dropdown {% block activeRequest %}{% endblock %}" >
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         REQUESTS

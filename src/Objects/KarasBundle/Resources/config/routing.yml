@@ -100,3 +100,7 @@ objects_karas_job_list:
 objects_karas_job_show:
     pattern:  /job/show/{id}
     defaults: { _controller: ObjectsKarasBundle:Job:show }
+
+objects_karas_job_apply:
+    pattern:  /job/apply/{id}
+    defaults: { _controller: ObjectsKarasBundle:Job:apply }

@@ -124,4 +124,21 @@ class JobController extends Controller
             'job' => $job
         ));
     }
+    
+    public function applyAction($id){
+        //prepare the body of the email
+        $body  = "Employee with Id: " . $this->getUser()->getId() . " applies to ";
+        $body .= "Job with Id: " . $id ;
+        //prepare the message object
+        $message = \Swift_Message::newInstance()
+                ->setSubject("Employee Applied to Job")
+                ->setFrom($this->getUser()->getEmail())
+                ->setTo($this->container->getParameter('contact_email'))
+                ->setBody($body)
+        ;
+        //send the activation mail to the user
+        $this->get('mailer')->send($message);
+        
+        return $this->redirect($this->generateUrl('objects_karas_homepage'));
+    }
 }
