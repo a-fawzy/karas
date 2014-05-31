@@ -1,0 +1,155 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Add Profile</h1>
+    {{ form_start(form, {'action': path('employer_profile_create'), 'attr': {'class': 'form-horizontal legend', 'id': 'profileForm' } } ) }}
+        <div class="control-group">
+            <label class="control-label" for="name">Name</label>
+            <div class="controls">
+                {{ form_widget(form.name) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="industry">Industry</label>
+            <div class="controls">
+                {{ form_widget(form.industry) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="about">About</label>
+            <div class="controls">
+                {{ form_widget(form.about) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="country">Contry</label>
+            <div class="controls">
+                {{ form_widget(form.countryCode) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="city">City</label>
+            <div class="controls">
+                {{ form_widget(form.city) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="address">Address</label>
+            <div class="controls">
+                {{ form_widget(form.address) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="type">Type</label>
+            <div class="controls">
+                {{ form_widget(form.type) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="phone">Phone</label>
+            <div class="controls">
+                {{ form_widget(form.phone) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="fax">Fax</label>
+            <div class="controls">
+                {{ form_widget(form.fax) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="website">Website</label>
+            <div class="controls">
+                {{ form_widget(form.website) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="name">Work From</label>
+            <div class="controls">
+                {{ form_widget(form.workFrom) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="workTo">WorkTo</label>
+            <div class="controls">
+                {{ form_widget(form.workTo) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="poBox">P.O Box</label>
+            <div class="controls">
+                {{ form_widget(form.poBox) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="public">Public Profile?</label>
+            <div class="controls">
+                {{ form_widget(form.public) }}
+            </div>
+        </div>
+        <h3 style="margin-left: 20px">Contact Details</h3>
+        <div class="control-group">
+            <label class="control-label" for="name">Name</label>
+            <div class="controls">
+                {{ form_widget(form.contactName) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="name">Position</label>
+            <div class="controls">
+                {{ form_widget(form.contactPosition) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="name">E-mail</label>
+            <div class="controls">
+                {{ form_widget(form.contactEmail) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="name">Phone</label>
+            <div class="controls">
+                {{ form_widget(form.contactPhone) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="name">Mobile</label>
+            <div class="controls">
+                {{ form_widget(form.contactMobile) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="name">Address</label>
+            <div class="controls">
+                {{ form_widget(form.contactAddress) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" style="padding-top: 0px" for="name">
+                <input type="checkbox" id="terms"/>
+            </label>
+            <div class="controls">
+                I agree to the terms and conditions
+                <span id="termsError" style="display: none" class="label label-warning">Must agree to terms and conditions</span>
+            </div>
+        </div>
+        <center>
+            {{ form_widget(form.submit, { 'attr': {'class': 'btn bten-large'} } ) }}
+        </center>
+        <br/>
+        {{ form_end(form) }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+        <script>
+            $('document').ready(function(){
+                $('#profileForm').on('submit', function(e){
+                    if(! $('#terms').is(':checked') ){
+                        e.preventDefault();
+                        $('#termsError').show()
+                    }
+                })
+            })
+        </script>
+        
+{% endblock %}

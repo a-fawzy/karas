@@ -1,0 +1,30 @@
+employer_profile:
+    pattern:  /
+    defaults: { _controller: "ObjectsKarasBundle:Company:index" }
+
+employer_profile_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ObjectsKarasBundle:Company:show" }
+
+employer_profile_new:
+    pattern:  /new
+    defaults: { _controller: "ObjectsKarasBundle:Company:new" }
+
+employer_profile_create:
+    pattern:  /create
+    defaults: { _controller: "ObjectsKarasBundle:Company:create" }
+    requirements: { _method: post }
+
+employer_profile_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ObjectsKarasBundle:Company:edit" }
+
+employer_profile_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ObjectsKarasBundle:Company:update" }
+    requirements: { _method: post|put }
+
+employer_profile_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ObjectsKarasBundle:Company:delete" }
+    requirements: { _method: post|delete }

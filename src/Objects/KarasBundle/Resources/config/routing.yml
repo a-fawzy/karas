@@ -30,6 +30,10 @@ ObjectsKarasBundle_employee_additional:
     resource: "@ObjectsKarasBundle/Resources/config/routing/additional.yml"
     prefix:   /employee/additional
 
+ObjectsKarasBundle_employer_prrofile:
+    resource: "@ObjectsKarasBundle/Resources/config/routing/company.yml"
+    prefix:   /employer/profile
+
 objects_karas_homepage:
     pattern:  /
     defaults: { _controller: ObjectsKarasBundle:Karas:index }

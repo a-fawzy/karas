@@ -34,6 +34,11 @@ class Industry
     private $jobs;
 
     /**
+     * @ORM\OneToMany(targetEntity="Company", mappedBy="industry")
+     */
+    private $companies;
+    
+    /**
      * @ORM\OneToMany(targetEntity="Experience", mappedBy="industry")
      */
     private $experiences;
@@ -153,4 +158,37 @@ class Industry
         $this->experiences = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
+
+    /**
+     * Add companies
+     *
+     * @param \Objects\KarasBundle\Entity\Company $companies
+     * @return Industry
+     */
+    public function addCompanie(\Objects\KarasBundle\Entity\Company $companies)
+    {
+        $this->companies[] = $companies;
+    
+        return $this;
+    }
+
+    /**
+     * Remove companies
+     *
+     * @param \Objects\KarasBundle\Entity\Company $companies
+     */
+    public function removeCompanie(\Objects\KarasBundle\Entity\Company $companies)
+    {
+        $this->companies->removeElement($companies);
+    }
+
+    /**
+     * Get companies
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCompanies()
+    {
+        return $this->companies;
+    }
 }

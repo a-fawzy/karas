@@ -1,0 +1,132 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Add Profile</h1>
+    {{ form_start(edit_form, {'action': path('employer_profile_update', {id: entity.id}), 'attr': {'class': 'form-horizontal legend', 'id': 'employerProfile' } } ) }}
+        <div class="control-group">
+            <label class="control-label" for="name">Name</label>
+            <div class="controls">
+                {{ form_widget(edit_form.name) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="industry">Industry</label>
+            <div class="controls">
+                {{ form_widget(edit_form.industry) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="about">About</label>
+            <div class="controls">
+                {{ form_widget(edit_form.about) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="country">Contry</label>
+            <div class="controls">
+                {{ form_widget(edit_form.countryCode) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="city">City</label>
+            <div class="controls">
+                {{ form_widget(edit_form.city) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="address">Address</label>
+            <div class="controls">
+                {{ form_widget(edit_form.address) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="type">Type</label>
+            <div class="controls">
+                {{ form_widget(edit_form.type) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="phone">Phone</label>
+            <div class="controls">
+                {{ form_widget(edit_form.phone) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="fax">Fax</label>
+            <div class="controls">
+                {{ form_widget(edit_form.fax) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="website">Website</label>
+            <div class="controls">
+                {{ form_widget(edit_form.website) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="name">Work From</label>
+            <div class="controls">
+                {{ form_widget(edit_form.workFrom) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="workTo">WorkTo</label>
+            <div class="controls">
+                {{ form_widget(edit_form.workTo) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="poBox">P.O Box</label>
+            <div class="controls">
+                {{ form_widget(edit_form.poBox) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="public">Public Profile?</label>
+            <div class="controls">
+                {{ form_widget(edit_form.public) }}
+            </div>
+        </div>
+        <h3 style="margin-left: 20px">Contact Details</h3>
+        <div class="control-group">
+            <label class="control-label" for="name">Name</label>
+            <div class="controls">
+                {{ form_widget(edit_form.contactName) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="name">Position</label>
+            <div class="controls">
+                {{ form_widget(edit_form.contactPosition) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="name">E-mail</label>
+            <div class="controls">
+                {{ form_widget(edit_form.contactEmail) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="name">Phone</label>
+            <div class="controls">
+                {{ form_widget(edit_form.contactPhone) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="name">Mobile</label>
+            <div class="controls">
+                {{ form_widget(edit_form.contactMobile) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="name">Address</label>
+            <div class="controls">
+                {{ form_widget(edit_form.contactAddress) }}
+            </div>
+        </div>
+        <center>
+            {{ form_widget(edit_form.submit, { 'attr': {'class': 'btn bten-large'} } ) }}
+        </center>
+        <br/>
+        {{ form_end(edit_form) }}
+{% endblock %}

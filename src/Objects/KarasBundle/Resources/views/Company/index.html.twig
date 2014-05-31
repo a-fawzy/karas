@@ -1,0 +1,77 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Company list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>About</th>
+                <th>Countrycode</th>
+                <th>City</th>
+                <th>Address</th>
+                <th>Type</th>
+                <th>Phone</th>
+                <th>Fax</th>
+                <th>Website</th>
+                <th>Workfrom</th>
+                <th>Workto</th>
+                <th>Pobox</th>
+                <th>Public</th>
+                <th>Contactname</th>
+                <th>Contactposition</th>
+                <th>Contactemail</th>
+                <th>Contactphone</th>
+                <th>Contactmobile</th>
+                <th>Contactaddress</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('employer_profile_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.name }}</td>
+                <td>{{ entity.about }}</td>
+                <td>{{ entity.countryCode }}</td>
+                <td>{{ entity.city }}</td>
+                <td>{{ entity.address }}</td>
+                <td>{{ entity.type }}</td>
+                <td>{{ entity.phone }}</td>
+                <td>{{ entity.fax }}</td>
+                <td>{{ entity.website }}</td>
+                <td>{{ entity.workFrom }}</td>
+                <td>{{ entity.workTo }}</td>
+                <td>{{ entity.poBox }}</td>
+                <td>{{ entity.public }}</td>
+                <td>{{ entity.contactName }}</td>
+                <td>{{ entity.contactPosition }}</td>
+                <td>{{ entity.contactEmail }}</td>
+                <td>{{ entity.contactPhone }}</td>
+                <td>{{ entity.contactMobile }}</td>
+                <td>{{ entity.contactAddress }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('employer_profile_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('employer_profile_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('employer_profile_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

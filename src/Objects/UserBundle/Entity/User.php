@@ -77,6 +77,12 @@ class User implements AdvancedUserInterface {
      * @ORM\OneToOne(targetEntity="\Objects\UserBundle\Entity\SocialAccounts", mappedBy="user",cascade={"remove", "persist"})
      */
     private $socialAccounts;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="\Objects\KarasBundle\Entity\Company", mappedBy="user",cascade={"remove", "persist"})
+     */
+    private $company;
+
 
     /**
      * @ORM\ManyToMany(targetEntity="\Objects\UserBundle\Entity\Role")
@@ -547,6 +553,7 @@ class User implements AdvancedUserInterface {
         $classVars = get_class_vars(__CLASS__);
         // unset all object proxies not the collections
         unset($classVars['socialAccounts']);
+        unset($classVars['company']);
         unset($classVars['jobs']);
         unset($classVars['experiences']);
         unset($classVars['projects']);
@@ -1736,4 +1743,27 @@ class User implements AdvancedUserInterface {
         $this->salt = md5(time());
     }
     
+
+    /**
+     * Set company
+     *
+     * @param \Objects\KarasBundle\Entity\Company $company
+     * @return User
+     */
+    public function setCompany(\Objects\KarasBundle\Entity\Company $company = null)
+    {
+        $this->company = $company;
+    
+        return $this;
+    }
+
+    /**
+     * Get company
+     *
+     * @return \Objects\KarasBundle\Entity\Company 
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
 }
