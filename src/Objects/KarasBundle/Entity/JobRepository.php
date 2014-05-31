@@ -33,8 +33,16 @@ class JobRepository extends EntityRepository
             }
             
             if ($type) {
-                $parameters['type'] = $type;
-                $whereQuery .= ' AND j.type = :type';
+                if($type == "inside"){
+                    $whereQuery .= ' AND j.countryCode = :country';
+                    $parameters['country'] = "EG" ;
+                } elseif($type == "outside")  {
+                    $whereQuery .= ' AND j.countryCode != :country';
+                    $parameters['country'] = "EG" ;
+                } else {
+                    $whereQuery .= ' AND j.type = :type';
+                    $parameters['type'] = "paper" ;
+                }
             }
 
             $groupQuery = " ";
