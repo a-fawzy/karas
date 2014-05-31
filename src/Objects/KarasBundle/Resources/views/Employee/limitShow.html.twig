@@ -1,0 +1,137 @@
+<div id="showProfile">
+
+    {% if user.summary %}
+        <h3>Summary</h3>
+        <div id="" class="jobList">
+            <ul class="jobList">
+                <li style="height: auto;" >{{user.summary}}</li>
+            </ul>
+        </div>
+    {% else %}
+        Not Completed Yet.
+    {% endif %}
+
+    <h3>Basic Info</h3>
+    <div>
+        {% if user.dateOfBirth is null %}
+                Not Completed Yet.
+        {% else %}
+                <div class="jobList">
+                    <ul class="jobList">
+                        <li>
+                        {{ render(controller('ObjectsKarasBundle:Additional:limitShow', {employeeId: user.id} ) ) }}
+                        </li>
+                    </ul>
+                </div>
+        {% endif %}
+    </div>
+
+
+    <h3>Experiences</h3>
+    <div>
+    {% if experiences|length == 0 %}
+        Not Completed Yet.
+    {% else %}
+        <div id="" class="jobList">
+            <ul class="jobList">
+                {% for experience in experiences  %}
+                <li style="height: auto;" >
+                    {{ render(controller('ObjectsKarasBundle:Experience:show', { id: experience.id } )) }}
+                </li>
+                <br>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    </div>
+    <h3>Projects</h3>
+    <div>
+    {% if projects|length == 0 %}
+        Not Completed Yet.
+    {% else %}
+        <div class="jobList">
+            <ul class="jobList">
+                {% for project in projects %}
+                <li style="height: auto;" >
+                    {{ render(controller('ObjectsKarasBundle:Project:show', { id: project.id } )) }}
+                </li>
+                <br>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    </div>
+
+    <h3>Courses & Certificates</h3>
+    <div>
+    {% if courses|length == 0 %}
+        Not Completed Yet.
+    {% else %}
+        <div class="jobList">
+            <ul class="jobList">
+                {% for course in courses %}
+                <li style="height: auto;" >
+                    {{ render(controller('ObjectsKarasBundle:Course:show', { id: course.id } )) }}
+                </li>
+                <br>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    </div>
+
+    <h3>Skills</h3>
+    <div>
+    {% if skills|length == 0 %}
+        Not Completed Yet.
+    {% else %}
+        <div class="jobList">
+            <ul class="jobList">
+                {% for skill in skills %}
+                <li style="height: 50px;">
+                    {{ render(controller('ObjectsKarasBundle:Skill:show', { id: skill.id } )) }}
+                </li>
+                <br>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    </div>
+
+    <h3>Education</h3>
+    <div>
+    {% if educations|length == 0 %}
+        Not Completed Yet.
+    {% else %}
+        <div class="jobList">
+            <ul class="jobList">
+                {% for education in educations %}
+                <li style="height: auto;" >
+                    {{ render(controller('ObjectsKarasBundle:Education:show', { id: education.id } )) }}
+                </li>
+                <br>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    </div>
+
+    <h3>Languages</h3>
+    <div>
+    {% if languages|length == 0 %}
+        Not Completed Yet.
+    {% else %}
+        <div class="jobList">
+            <ul class="jobList">
+                {% for language in languages %}
+                <li style="height: auto;" >
+                    {{ render(controller('ObjectsKarasBundle:Language:show', { id: language.id } )) }}
+                </li>
+                <br>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    </div>
+</div>

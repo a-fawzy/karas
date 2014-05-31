@@ -83,6 +83,16 @@ class AdditionalController extends Controller
         ));
     }
 
+    public function limitShowAction($employeeId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('ObjectsUserBundle:User')->find($employeeId);
+
+        return $this->render('ObjectsKarasBundle:Additional:limitShow.html.twig', array(
+            'entity'      => $entity,
+        ));
+    }
+    
     /**
      * Displays a form to edit an existing Additional entity.
      *

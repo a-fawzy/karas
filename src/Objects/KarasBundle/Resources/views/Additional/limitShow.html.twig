@@ -1,0 +1,13 @@
+<img style="padding: 0px" src="{{ asset(entity.getSmallImageUrl(80,80)) }}">
+<div class="float-left">
+    <span class="jobName">{{ entity.maskFirstName }}</span>
+    <div class="clear"></div>
+    <span class="jobCategory">
+        {% if entity.gender == 0  %}Female{% else %}Male{% endif %} {{ entity.marital }}
+    </span>
+    <div class="clear"></div>
+    <span class="jobCategory">{{ entity.dateOfBirth|date('d-m-Y') }}</span>
+    <div class="clear"></div>
+    <span class="jobLocation">{{ entity.nationality }}</span>
+    <a id="{{ entity.id }}" href="{{path('employee_additional_edit', { id: entity.id })}}" class="additional btn btn-info"><i class="icon-edit icon-white"></i> Edit</a>
+</div>

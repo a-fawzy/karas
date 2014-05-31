@@ -71,6 +71,10 @@ objects_karas_about:
 objects_karas_employee_profile:
     pattern:  /employee/profile
     defaults: { _controller: ObjectsKarasBundle:Employee:profile }
+    
+objects_karas_employer_show_employee_profile:
+    pattern:  /employer/user/view/{employeeId}
+    defaults: { _controller: ObjectsKarasBundle:Employee:view }
 
 objects_karas_employee_search:
     pattern:  /employee/search

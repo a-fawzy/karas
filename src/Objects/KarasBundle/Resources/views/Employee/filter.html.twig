@@ -15,7 +15,11 @@
                 <li style="height: 120px;">
                     <img style="padding: 0px" src="{{ asset(employee.getSmallImageUrl(80,80)) }}">
                     <div class="float-left">
-                        <span class="jobName">{{ employee.firstName }}</span>
+                        <a href="{{ path('objects_karas_employer_show_employee_profile', {employeeId: employee.id}  ) }}" >
+                            <span class="jobName">
+                                {{ employee.firstName }}
+                            </span>
+                        </a>
                         <div class="clear"></div>
                         <span class="jobLocation">ID: #{{ employee.id }}</span>
                         <div class="clear"></div>

@@ -28,6 +28,29 @@ class EmployeeController extends Controller
         ));
     }
     
+    public function viewAction($employeeId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('ObjectsUserBundle:User')->find($employeeId);
+        
+        $experiences = $user->getExperiences();
+        $projects    = $user->getProjects();
+        $courses     = $user->getCourses();
+        $skills      = $user->getSkills();
+        $educations  = $user->getEducations();
+        $languages   = $user->getLanguages();
+        
+        return $this->render('ObjectsKarasBundle:Employee:view.html.twig', array(
+            'experiences' => $experiences,
+            'projects' => $projects,
+            'courses' => $courses,
+            'skills' => $skills,
+            'educations' => $educations,
+            'languages' => $languages,
+            'user' => $user
+        ));
+    }
+    
     public function searchAction(){
 
         $em = $this->getDoctrine()->getManager();

@@ -14,7 +14,11 @@
                 <li style="height: 120px;">
                     <img style="padding: 0px" src="{{ asset(employee.getSmallImageUrl(80,80)) }}">
                     <div class="float-left">
-                        <span class="jobName">{{ employee.maskFirstName() }}</span>
+                        <a href="{{ path('objects_karas_employer_show_employee_profile', {employeeId: employee.id}  ) }}" >
+                            <span class="jobName">
+                                {{ employee.maskFirstName() }}
+                            </span>
+                        </a>
                         <a style="float: right" href="#" class="btn-link inquiry" data-id="{{ employee.id }}" >
                             {% if ids[employee.id] == false %}
                                 <i class="icon-check"></i> Inquire

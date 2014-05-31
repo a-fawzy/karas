@@ -1,0 +1,95 @@
+{% extends '::base.html.twig' %}
+{% block activeRequest %} active{% endblock %}
+{% block title %}My Profile{% endblock %}
+{% block javascripts %}
+    {{ parent()  }}
+    <script type="text/javascript" src="{{ asset('js/jquery-ui.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/chosen.jquery.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $(".chzn-select").chosen();
+            $( ".datepicker" ).datepicker();
+            $('#showProfile a').hide();
+            $('#bookmark').on('click', function(){
+                node = $(this);
+                employeeId = $(this).attr('data-id');
+                url = "{{ path('objects_karas_bundle_add_to_bookmark') }}" ;
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: {employeeId: employeeId },
+                    success: function(msg) {
+                        window.location = "{{ path('objects_karas_bundle_show_bookmark') }}" ;
+                    }
+                });
+            });
+            
+        })
+    </script>
+    
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/chosen.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery-ui.css') }}"/>
+{% endblock %}
+
+{% block sideBar %}
+    {% set percentage = 0  %}
+    {% if experiences|length > 0  %}
+        {% set percentage = percentage + 15  %}
+    {% endif %}
+    {% if courses|length > 0  %}
+        {% set percentage = percentage + 15  %}
+    {% endif %}
+    {% if educations|length > 0  %}
+        {% set percentage = percentage + 15  %}
+    {% endif %}
+    {% if projects|length > 0  %}
+        {% set percentage = percentage + 10  %}
+    {% endif %}
+    {% if skills|length > 0  %}
+        {% set percentage = percentage + 10  %}
+    {% endif %}
+    {% if languages|length > 0  %}
+        {% set percentage = percentage + 5  %}
+    {% endif %}
+    {% if user.phone is not null %}
+        {% set percentage = percentage + 15  %}
+    {% endif %}
+    {% if user.dateOfBirth is not null %}
+        {% set percentage = percentage + 15  %}
+    {% endif %}
+    <div class="section1over3">
+        <img class="logo" src="{{ asset('img/logo.png') }}"/>
+        <hr class="hrLogo"/>
+        <h3>Profile Complition :</h3>
+        <div class="progress progress-striped active">
+          <div class="bar" style="width: {{ percentage }}%;"></div>
+        </div>
+        <button class="btn btn-large btn-block" type="button"> Complete<span style="margin:2px 16px 0 0;" class="right badge badge-success">{{ percentage }}%</span></button>
+    </div>
+{% endblock %}
+    
+    
+
+{% block body %}
+
+<div class="tabbable">
+    <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#show" data-toggle="tab">Show Profile</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="show">
+            {{ include('ObjectsKarasBundle:Employee:limitShow.html.twig') }}
+        </div>
+    </div>
+    <br/>
+    <center>
+        <a href="#" data-id="{{ user.id }}" id="bookmark" class="btn btn-success">Bookmark</a>
+    </center>
+    <br/>
+</div>
+
+{% endblock %}
