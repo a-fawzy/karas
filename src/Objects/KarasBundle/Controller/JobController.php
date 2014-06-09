@@ -61,7 +61,9 @@ class JobController extends Controller
     
     public function saveJob($job){
         $em = $this->getDoctrine()->getManager();
+        $company = $em->getRepository('ObjectsKarasBundle:Company')->findOneBy(array('user' => $this->getUser()->getId()));
         $job->setOwner($this->getUser());
+        $job->setSize($company->getType());
         $em->persist($job);
         $em->flush();
         return $this->redirect($this->generateUrl('objects_karas_homepage'));
@@ -113,7 +115,7 @@ class JobController extends Controller
             $ownerId = $this->getUser()->getId();
         }
         $jobs = $em->getRepository('ObjectsKarasBundle:Job')
-                ->getJobs($page, 20, $this->fixValues($profession), $this->fixValues($type), $ownerId);
+                ->getJobs($page, $maxResult, $this->fixValues($profession), $this->fixValues($type), $ownerId);
                 
         return $this->render('ObjectsKarasBundle:Job:list.html.twig', array(
             'jobs' => $jobs['entities'],
@@ -146,5 +148,80 @@ class JobController extends Controller
         $this->get('mailer')->send($message);
         
         return $this->redirect($this->generateUrl('objects_karas_homepage'));
+    }
+    
+    
+    public function searchAction(Request $request) {
+        $countries = \Symfony\Component\Locale\Locale::getDisplayCountries('en');
+        $em = $this->getDoctrine()->getManager();
+        $industries = $em->getRepository('ObjectsKarasBundle:Industry')->findBy(array(),array('title' => 'ASC'));
+        $professions = $em->getRepository('ObjectsKarasBundle:Profession')->findBy(array(),array('title' => 'ASC'));
+
+        return $this->render('ObjectsKarasBundle:Job:search.html.twig', array(
+            'industries' => $industries,
+            'professions' => $professions,
+            'countries' => $countries    
+        ));
+        
+    }
+    public function filterAction(Request $request, $page){
+        $em  = $this->getDoctrine()->getManager();
+        $session = $request->getSession();
+        if($request->getMethod() == "POST"){
+            $keywords    = ($request->request->get('keywords') == '' ? null : $request->request->get('keywords')) ;
+            $gender      = $request->request->get('gender') ;
+            $type        = $request->request->get('type') ;
+            $locations   = $request->request->get('locations') ;
+            $salary      = $request->request->get('salary') ;
+            $industries  = $request->request->get('industries') ;
+            $professions = $request->request->get('professions') ;
+            $company     = $request->request->get('company') ;
+
+            $session->set('keywords', $keywords);
+            $session->set('gender', $gender);
+            $session->set('type', $type);
+            $session->set('locations', $locations);
+            $session->set('salary', $salary);
+            $session->set('industries', $industries);
+            $session->set('professions', $professions);
+            $session->set('company', $company);
+
+        } else {
+            $keywords    = $session->get('keywords');
+            $gender      = $session->get('gender');
+            $type        = $session->get('type');
+            $locations   = $session->get('locations');
+            $salary      = $session->get('salary');
+            $industries  = $session->get('industries');
+            $professions = $session->get('professions');
+            $company     = $session->get('company');
+        }
+        
+        if(isset($keywords)){
+            $keywords = explode(',', $keywords);
+        }
+        $maxResults = $this->container->getParameter('max_result');
+        
+        $results = $em->getRepository('ObjectsKarasBundle:Job')->searchJobs(
+                $page, $maxResults, $this->fixValues($type), $keywords,$gender,$locations,
+                $salary, $industries, $professions, $company
+        );
+        $jobs = $results['entities'];
+        $count = $results['count'];
+        
+        $lastPageNumber = (int) ($count / $maxResults);
+        
+        if (($count % $maxResults) > 0) {
+            $lastPageNumber++;
+        }
+        
+        return $this->render('ObjectsKarasBundle:Job:filter.html.twig', array(
+            'jobs' => $jobs,
+            'type' => $type,
+            'owner' => null,
+            'type' => $type,
+            'lastPageNumber' => $lastPageNumber,
+            'page' => $page
+        ));
     }
 }

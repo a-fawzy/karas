@@ -94,6 +94,13 @@ class Job
     /**
      * @var string
      *
+     * @ORM\Column(name="size", type="string", length=80)
+     */
+    private $size;
+    
+    /**
+     * @var string
+     *
      * @ORM\Column(name="type", type="string", length=20)
      */
     private $type = 'inside';
@@ -524,5 +531,28 @@ class Job
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set size
+     *
+     * @param string $size
+     * @return Job
+     */
+    public function setSize($size)
+    {
+        $this->size = $size;
+    
+        return $this;
+    }
+
+    /**
+     * Get size
+     *
+     * @return string 
+     */
+    public function getSize()
+    {
+        return $this->size;
     }
 }

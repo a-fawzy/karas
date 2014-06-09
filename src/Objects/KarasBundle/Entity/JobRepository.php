@@ -68,4 +68,94 @@ class JobRepository extends EntityRepository
     }
     
     
+    public function searchJobs($page = 1, $maxResults = 24, $type = null , 
+                                $keywords = null,$gender = null,$locations = null,
+                                $salary = null, $industries = null, $professions = null, $company = null){
+        $data = array(
+           'count' => 0,
+           'entities' => array()
+        );
+        
+        if ($page >= 1) {
+            $parameters = array();
+            $page--;
+            //Query Creation
+            $selectQuery = "SELECT j " ;
+            $fromQuery   =  ' FROM ObjectsKarasBundle:Job j' ;
+            $joinQuery   =  " JOIN j.profession p" ;
+            $joinQuery  .=  " JOIN j.industry i" ;
+            $whereQuery = " WHERE j.approved = TRUE " ;
+            
+            if($keywords){
+                $whereQuery .= " AND (" ;
+                foreach($keywords as $key=>$keyword) {
+                    if($key != 0)
+                    {
+                        $whereQuery .= " OR " ;
+                    }
+                    $whereQuery .=  " j.description LIKE :keyword ";
+                    $parameters['keyword'] = "%$keyword%";
+                }
+                $whereQuery .= ") ";
+            }
+            
+            if ($gender) {
+                $parameters['gender'] = $gender;
+                $whereQuery .= ' AND j.gender = :gender ';
+            }
+            
+            if ($locations) {
+                $parameters['locations'] = $locations;
+                $whereQuery .= ' AND j.countryCode IN (:locations) ';
+            }
+            
+            if ($salary) {
+                $parameters['salary'] = $salary;
+                $whereQuery .= ' AND j.salary >= :salary ';
+            }
+            
+            if ($professions) {
+                $parameters['professions'] = $professions;
+                $whereQuery .= ' AND j.profession IN (:professions)';
+            }
+            
+            if ($industries) {
+                $parameters['industries'] = $industries;
+                $whereQuery .= ' AND j.industry in (:industries) ';
+            }
+            
+            if ($company) {
+                $parameters['company'] = $company;
+                $whereQuery .= ' AND j.size in (:company) ';
+            }
+            
+            if ($type) {
+                if($type == "inside"){
+                    $whereQuery .= ' AND j.countryCode = :country';
+                    $parameters['country'] = "EG" ;
+                } elseif($type == "outside")  {
+                    $whereQuery .= ' AND j.countryCode != :country';
+                    $parameters['country'] = "EG" ;
+                } else {
+                    $whereQuery .= ' AND j.type = :type';
+                    $parameters['type'] = "paper" ;
+                }
+            }
+
+            $groupQuery = " ";
+            
+            $queryFinal = "$selectQuery $fromQuery $joinQuery $whereQuery $groupQuery";
+            $query = $this->getEntityManager()->createQuery($queryFinal)->setParameters($parameters);
+            $countQuery = $this->getEntityManager()->createQuery("SELECT COUNT(j.id) $fromQuery $joinQuery $whereQuery $groupQuery")->setParameters($parameters);
+            $query->setFirstResult($page * $maxResults);
+            $query->setMaxResults($maxResults);
+            $result = $countQuery->getResult();
+            if ($result)
+            {
+                $data['count'] = $result[0][1];
+                $data['entities'] = $query->getResult();
+            }
+        }
+        return $data;
+    }
 }

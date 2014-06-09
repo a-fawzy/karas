@@ -104,3 +104,11 @@ objects_karas_job_show:
 objects_karas_job_apply:
     pattern:  /job/apply/{id}
     defaults: { _controller: ObjectsKarasBundle:Job:apply }
+
+objects_karas_job_search:
+    pattern:  /job/search
+    defaults: { _controller: ObjectsKarasBundle:Job:search}
+
+objects_karas_job_filter:
+    pattern:  /job/filter/{page}
+    defaults: { _controller: ObjectsKarasBundle:Job:filter, page: 1 }
