@@ -1,5 +1,5 @@
 {% extends '::base.html.twig' %}
-{% block activeRequest %} active{% endblock %}
+{% block activeSearch %}class="active"{% endblock %}
 {% block title %}Add New Job{% endblock %}
 {% block body %}
 {% set originalParameters = app.request.attributes.get('_route_params') | merge(app.request.query.all()) %}
@@ -17,7 +17,7 @@
                     <div class="float-left">
                         <a href="{{ path('objects_karas_employer_show_employee_profile', {employeeId: employee.id}  ) }}" >
                             <span class="jobName">
-                                {{ employee.firstName }}
+                                {{ employee.maskFirstName() }}
                             </span>
                         </a>
                         <div class="clear"></div>

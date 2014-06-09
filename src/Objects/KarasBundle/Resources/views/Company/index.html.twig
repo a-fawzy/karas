@@ -42,8 +42,8 @@
                 <td>{{ entity.phone }}</td>
                 <td>{{ entity.fax }}</td>
                 <td>{{ entity.website }}</td>
-                <td>{{ entity.workFrom }}</td>
-                <td>{{ entity.workTo }}</td>
+                <td>{{ entity.workFrom|date('d-m-Y')  }}</td>
+                <td>{{ entity.workTo|date('d-m-Y')  }}</td>
                 <td>{{ entity.poBox }}</td>
                 <td>{{ entity.public }}</td>
                 <td>{{ entity.contactName }}</td>

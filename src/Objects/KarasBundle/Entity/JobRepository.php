@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class JobRepository extends EntityRepository
 {
-    public function getJobs($page = 1, $maxResults = 20, $profession= null, $type= null){
+    public function getJobs($page = 1, $maxResults = 20, $profession= null, $type= null, $owner = null){
         $data = array(
            'count' => 0,
            'entities' => array()
@@ -30,6 +30,11 @@ class JobRepository extends EntityRepository
             if ($profession) {
                 $parameters['profession'] = $profession;
                 $whereQuery .= ' AND j.profession = :profession';
+            }
+            
+            if ($owner) {
+                $parameters['owner'] = $owner;
+                $whereQuery .= ' AND j.owner = :owner';
             }
             
             if ($type) {

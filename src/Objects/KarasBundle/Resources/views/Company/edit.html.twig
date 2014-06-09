@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Add Profile</h1>
+    <h1>Company Profile</h1>
     {{ form_start(edit_form, {'action': path('employer_profile_update', {id: entity.id}), 'attr': {'class': 'form-horizontal legend', 'id': 'employerProfile' } } ) }}
         <div class="control-group">
             <label class="control-label" for="name">Name</label>

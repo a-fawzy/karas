@@ -33,15 +33,19 @@ class BookmarkController extends Controller
     
     public function showAction(){
         $bookmarks = $this->getUser()->getBookmarks();
-        $ids = array();
-        foreach ($bookmarks as $bookmark) {
-            $ids[$bookmark->getEmployee()->getId()] = $bookmark->getInquired();
+        $employees = $ids = array();
+        if(count($bookmarks)){
+            $ids = array();
+            foreach ($bookmarks as $bookmark) {
+                $ids[$bookmark->getEmployee()->getId()] = $bookmark->getInquired();
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $employees = $em->getRepository('ObjectsUserBundle:User')->findBy(array(
+                'id' => array_keys($ids)
+            ));
         }
         
-        $em = $this->getDoctrine()->getManager();
-        $employees = $em->getRepository('ObjectsUserBundle:User')->findBy(array(
-            'id' => array_keys($ids)
-        ));
         $countries = \Symfony\Component\Locale\Locale::getDisplayCountries('en');
         
         return $this->render('ObjectsKarasBundle:Bookmark:show.html.twig', array(

@@ -12,7 +12,9 @@
             <a href="{{ path(app.request.attributes.get('_route'), originalParameters | merge({'type': 'inside'})) }}">Jobs Inside</a>
         </li>
         <li class="{% if type == 'outside' %}active{% endif %}"><a href="{{ path(app.request.attributes.get('_route'), originalParameters | merge({'type': 'outside'})) }}">Jobs Outside</a></li>
+        {% if owner == null %}
         <li class="{% if type == 'paper' %}active{% endif %}"><a href="{{ path(app.request.attributes.get('_route'), originalParameters | merge({'type': 'paper'})) }}">Paper Jobs</a></li>
+        {% endif %}
     </ul>
     <div class="tab-content">
         <ul class="jobList">

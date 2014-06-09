@@ -1,6 +1,6 @@
 {% extends '::base.html.twig' %}
-{% block activeRequest %} active{% endblock %}
-{% block title %}Search People{% endblock %}
+{% block activeSearch %}class="active"{% endblock %}
+{% block title %}Search Employees{% endblock %}
 {% block javascripts %}
     {{ parent()  }}
     <script type="text/javascript" src="{{ asset('js/jquery-ui.js') }}"></script>

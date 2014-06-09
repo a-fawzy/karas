@@ -104,15 +104,21 @@ class JobController extends Controller
     }
 
     public function listAction(Request $request,$type, $profession, $page) {
-
+        
         $maxResult = $this->container->getParameter('max_result');
         $em   = $this->getDoctrine()->getManager();
+        $ownerId = null;
+        $company = $em->getRepository('ObjectsKarasBundle:Company')->findOneBy(array('user' => $this->getUser()->getId()));
+        if($company){
+            $ownerId = $this->getUser()->getId();
+        }
         $jobs = $em->getRepository('ObjectsKarasBundle:Job')
-                ->getJobs($page, 20, $this->fixValues($profession), $this->fixValues($type));
+                ->getJobs($page, 20, $this->fixValues($profession), $this->fixValues($type), $ownerId);
                 
         return $this->render('ObjectsKarasBundle:Job:list.html.twig', array(
             'jobs' => $jobs['entities'],
-            'type' => $type
+            'type' => $type,
+            'owner' => $ownerId,
         ));
     }
     

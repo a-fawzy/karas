@@ -170,7 +170,8 @@ class UserRepository extends EntityRepository implements UserProviderInterface {
             //Query Creation
             $selectQuery = "SELECT u" ;
             $fromQuery =  ' FROM ObjectsUserBundle:User u';
-            $whereQuery = " WHERE u.enabled = TRUE ";
+            $whereQuery = " WHERE u.enabled = TRUE AND u.type = :type" ;
+            $parameters['type'] = 'employee';
             $joinQuery = " ";
             if($industry){
                 $whereQuery .=  " AND EXISTS (SELECT e FROM ObjectsKarasBundle:Experience e WHERE e.user = u.id AND e.industry = :industry ) ";
