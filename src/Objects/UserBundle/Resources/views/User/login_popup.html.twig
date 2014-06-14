@@ -47,7 +47,10 @@
         </div>
     </div>
     <input type="hidden" value="popup" name="popup" />
-    <input style="{% if not error %}display: none{% endif %}" class="btn btn-primary" id="loginBtn" type="submit" title="{% trans %}Login{% endtrans %}" value="{% trans %}Login{% endtrans %}" />
+    <input type="submit" style="display: none;"  id="loginBtn"/>
+    {% if not isMain %}
+        <input type="submit" class="btn btn-primary" />
+    {% endif %}
 </form>
 {% if facebookSignupEnabled %}
 {% render url('facebook_button', {'facebookUserHandleRoute': 'facebook_logging', 'permissions': 'email,publish_stream', 'cssClass' : 'facebook', 'linkText' : 'facebook login'|trans}) %}<br>

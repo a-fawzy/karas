@@ -39,7 +39,7 @@ class Slide
         return $this->id;
     }
     
-        /**
+    /**
      * @return string the path of upload directory starting of root
      */
     public function getUploadRootDir() {

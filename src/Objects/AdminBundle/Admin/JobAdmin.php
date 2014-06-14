@@ -7,9 +7,23 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class JobAdmin extends Admin
 {
+    
+    /**
+    * this variable holds the route name prefix for this actions
+    * @var string
+    */
+    protected $baseRouteName = 'job_admin';
+
+    /**
+    * this variable holds the url route prefix for this actions
+    * @var string
+    */
+    protected $baseRoutePattern = 'job';
+    
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -41,16 +55,14 @@ class JobAdmin extends Admin
             ->add('id')
             ->add('title')
             ->add('experience')
-            ->add('description')
             ->add('gender')
-            ->add('skills')
             ->add('languages')
             ->add('salary')
-            ->add('allowances')
             ->add('countryCode')
             ->add('city')
             ->add('type')
             ->add('approved')
+            ->add('image', NULL, array('template' => 'ObjectsAdminBundle:General:list_image.html.twig'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -66,20 +78,44 @@ class JobAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $imageAttributes = array(
+		    'onchange' => 'readURL(this);'
+        );
+        
+        if ($this->getSubject() && $this->getSubject()->getId() && $this->getSubject()->getImage()) {
+            $imageAttributes['data-image-url'] = $this->getRequest()->getBasePath() . '/' . $this->getSubject()->getSmallImageUrl(60, 60);
+            $imageAttributes['data-image-remove-url'] = $this->generateObjectUrl('remove_image', $this->getSubject());
+        }
+        
         $formMapper
-            ->add('id')
             ->add('title')
+            ->add('industry', 'sonata_type_model', array(), array(
+                        'placeholder' => 'No industry selected'
+            ))
+            ->add('profession', 'sonata_type_model', array(), array(
+                        'placeholder' => 'No profession selected'
+            ))
             ->add('experience')
             ->add('description')
-            ->add('gender')
+            ->add('gender', 'choice', array(
+                'choices'   => array(
+                    'Both' => 'Any',
+                    'male'   => 'Male',
+                    'female' => 'Female',
+            )))
             ->add('skills')
             ->add('languages')
-            ->add('salary')
-            ->add('allowances')
-            ->add('countryCode')
+            ->add('salary', null, array('required' => false))
+            ->add('allowances', null, array('required' => false))
+            ->add('countryCode', 'country')
             ->add('city')
-            ->add('type')
-            ->add('approved')
+            ->add('type', 'choice', array(
+                'choices'   => array(
+                    'internal'   => 'By Company',
+                    'paper' => 'Paper Job',
+            )))
+            ->add('file', 'file', array('required' => false, 'label' => 'image', 'attr' => $imageAttributes))
+            ->add('approved', null, array('required' => false))
         ;
     }
 
@@ -101,7 +137,18 @@ class JobAdmin extends Admin
             ->add('countryCode')
             ->add('city')
             ->add('type')
+            ->add('image', NULL, array('template' => 'ObjectsAdminBundle:General:show_image.html.twig'))
             ->add('approved')
         ;
     }
+    
+    /**
+    * this function is for editing the routes of this class
+    * @param RouteCollection $collection
+    */
+    protected function configureRoutes(RouteCollection $collection) {
+            $collection->add('remove_image', $this->getRouterIdParameter() . '/remove-image');
+    }
+
+
 }

@@ -21,7 +21,7 @@ class UserController extends Controller {
      * @author Mahmoud
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function loginAction() {
+    public function loginAction($isMain) {
         //initialize an emtpy message string
         $message = '';
         //check if we have a logged in user
@@ -47,6 +47,9 @@ class UserController extends Controller {
         if (! isset($error)){
             $view = 'ObjectsUserBundle:User:login_popup.html.twig';
         }
+        if (! $isMain){
+            $view = 'ObjectsUserBundle:User:login.html.twig';
+        }
         $container = $this->container;
         $twitterSignupEnabled = $container->getParameter('twitter_signup_enabled');
         $facebookSignupEnabled = $container->getParameter('facebook_signup_enabled');
@@ -60,7 +63,8 @@ class UserController extends Controller {
                     'facebookSignupEnabled' => $facebookSignupEnabled,
                     'linkedinSignupEnabled' => $linkedinSignupEnabled,
                     'googleSignupEnabled' => $googleSignupEnabled,
-                    'loginNameRequired' => $container->getParameter('login_name_required')
+                    'loginNameRequired' => $container->getParameter('login_name_required'),
+                    'isMain' => $isMain
         ));
     }
 

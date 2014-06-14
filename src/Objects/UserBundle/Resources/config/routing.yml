@@ -6,8 +6,8 @@ logout:
     path:  /logout
 
 login:
-    path:  /login
-    defaults: { _controller: ObjectsUserBundle:User:login }
+    path:  /login/{isMain}
+    defaults: { _controller: ObjectsUserBundle:User:login, isMain: false }
 
 # routing files
 user:

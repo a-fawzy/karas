@@ -45,7 +45,6 @@ class SkillAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
             ->add('name')
         ;
     }

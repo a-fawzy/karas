@@ -95,6 +95,7 @@ sonata_admin:
                     - objects_admin.admin.industry
                     - objects_admin.admin.profession
                     - objects_admin.admin.job
+                    - objects_admin.admin.company
                     - user_admin
 
 sonata_block:

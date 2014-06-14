@@ -40,32 +40,36 @@
         </div>
         <div class="footerCont1">
             <h3>Lates Jobs :</h3>
-            {% set jobLength = (recentJobs|length) / 2 %}
             <ul class="latestJobs">
-                {% for i in 0 .. jobLength%}
-                    <li>
-                        <a class="allLnk" href="{{ path('objects_karas_job_show', {id: recentJobs[i].id}) }}">
-                            <em>&gt;</em><span>{{ recentJobs[i].title }}</span>
-                            <span class="lineTwo">{{ recentJobs[i].city }}, {{ recentJobs[i].countryCode }}</span>
-                        </a>
-                    </li>
+                {% for recentJob in recentJobs %}
+                    {% if loop.index0 is odd %}
+                        <li>
+                            <a class="allLnk" href="{{ path('objects_karas_job_show', {id: recentJob.id}) }}">
+                                <em>&gt;</em><span>{{ recentJob.title }}</span>
+                                <span class="lineTwo">{{ recentJob.city }}, {{ recentJob.countryCode }}</span>
+                            </a>
+                        </li>
+                    {% endif %}
                 {% endfor %}
             </ul>
         </div>
         <div class="footerCont1 marginRightZero">
             <h3 class="lastItem">&nbsp;</h3>
             <ul class="latestJobs">
-                {% for i in (jobLength + 1) ..  (recentJobs|length) %}
+                {% for recentJob in recentJobs %}
+                    {% if loop.index0 is even %}
                     <li>
-                        <a class="allLnk" href="{{ path('objects_karas_job_show', {id: recentJobs[i].id}) }}">
-                            <em>&gt;</em><span>{{ recentJobs[i].title }}</span>
-                            <span class="lineTwo">{{ recentJobs[i].city }}, {{ recentJobs[i].countryCode }}</span>
+                        <a class="allLnk" href="{{ path('objects_karas_job_show', {id: recentJob.id}) }}">
+                            <em>&gt;</em><span>{{ recentJob.title }}</span>
+                            <span class="lineTwo">{{ recentJob.city }}, {{ recentJob.countryCode }}</span>
                         </a>
                     </li>
+                    {% endif %}
                 {% endfor %}
             </ul>
-
         </div>
+            
+
         <div class="clear">
         </div>
         <div class="fullWidth lineR">
