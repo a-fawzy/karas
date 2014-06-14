@@ -694,7 +694,17 @@ class Job
      * @param $height the desired image height
      * @return string the htaccess file url pattern which map to timthumb url
      */
-    public function getSmallImageUrl($width = 50, $height = 50) {
+    public function getSmallImageUrl($width = 50, $height = 50, $isOriginal = FALSE) {
+        if($isOriginal){
+            $size = getimagesize($this->getWebPath());
+            $originalWidth= $size[0];
+            $originalHeight = $size[1];
+            if($originalWidth > $originalHeight){
+                $height = round($originalHeight / $originalWidth * $height) ;
+            } else {
+                $width = round($originalWidth / $originalHeight * $width) ;
+            }
+        }
         return NULL === $this->image ? NULL : $this->getSamllImageUrlBaseString() . "/$width/$height/$this->image";
     }
 

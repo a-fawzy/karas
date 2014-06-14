@@ -25,6 +25,11 @@
             </div>
             <h3 class="fh">Job Details</h3>
             <div class="clear"></div>
+            <div class="right">
+                {% if job.image %}
+                    <img src="{{ asset(job.getSmallImageUrl(300, 300, true)) }}" /> 
+                {% endif %}
+            </div>
             <span class="jobField">Job Industry:</span><span class="jobData"> {{ job.industry.title }}</span><hr />
             <span class="jobField">Job Profession:</span><span class="jobData"> {{ job.profession.title }}</span><hr />
             <span class="jobField">Experience:</span><span class="jobData"> {{ job.experience }}</span><hr />

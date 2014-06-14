@@ -115,7 +115,7 @@ class JobController extends Controller
             $ownerId = $this->getUser()->getId();
         }
         $jobs = $em->getRepository('ObjectsKarasBundle:Job')
-                ->getJobs($page, $maxResult, $this->fixValues($profession), $this->fixValues($type), $ownerId);
+                ->getJobs($page, 100, $this->fixValues($profession), $this->fixValues($type), $ownerId);
                 
         return $this->render('ObjectsKarasBundle:Job:list.html.twig', array(
             'jobs' => $jobs['entities'],
