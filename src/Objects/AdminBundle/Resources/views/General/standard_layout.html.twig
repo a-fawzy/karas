@@ -33,7 +33,6 @@
 <div class="nav-collapse collapse">
     <ul class="nav">
         <li><a href="{{ path('sonata_admin_dashboard') }}"><i class="icon-home"></i> {% trans %}Dashboard{% endtrans %}</a></li>
-        <li><a href="{{ path('admin_site_emails') }}"><i class="icon-envelope"></i> {% trans %}Site Emails{% endtrans %}</a></li>
         <li><a href="{{ path('admin_site_configurations') }}"><i class="icon-wrench"></i> {% trans %}Site Configurations{% endtrans %}</a></li>
         <li><a href="{{ path('logout') }}"><i class="icon-off"></i> {% trans %}Logout{% endtrans %}</a></li>
     </ul>
@@ -43,7 +42,7 @@
 {% block footer %}
 <div class="pull-right clearfix" style="margin-bottom: 10px;">
     <span class="label">
-        {% trans %}Developed by{% endtrans %} <a style="color: black" target="_blank" rel="noreferrer" href="http://objects.ws">Objects</a>
+        {% trans %}Developed by{% endtrans %} <a style="color: black" target="_blank" rel="noreferrer" href="mailto:ahmaad.fawzy@hotmail.com">Ahmed Fawzy</a>
     </span>
 </div>
 {% endblock %}
