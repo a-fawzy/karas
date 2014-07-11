@@ -150,7 +150,16 @@ class JobController extends Controller
         return $this->redirect($this->generateUrl('objects_karas_homepage'));
     }
     
-    
+    public function sideBarSearchAction(){
+        $em = $this->getDoctrine()->getManager();
+        $industries = $em->getRepository('ObjectsKarasBundle:Industry')->findBy(array(),array('title' => 'ASC'));
+        $professions = $em->getRepository('ObjectsKarasBundle:Profession')->findBy(array(),array('title' => 'ASC'));
+
+        return $this->render('ObjectsKarasBundle:Job:sideBarSearch.html.twig', array(
+            'industries' => $industries,
+            'professions' => $professions,
+        ));
+    }
     public function searchAction(Request $request) {
         $countries = \Symfony\Component\Locale\Locale::getDisplayCountries('en');
         $em = $this->getDoctrine()->getManager();

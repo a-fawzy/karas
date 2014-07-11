@@ -1,0 +1,23 @@
+<div class="section1over3">
+    <img class="logo" src="{{ asset('img/logo.png') }}"/>
+    <hr class="hrLogo"/>
+    <h3>Find Your Job :</h3>
+    <form action="{{ path('objects_karas_job_filter') }}" method="post" >
+        <h4>SELCET YOUR JOB INDUSTRY HERE</h4>
+        <select name="industries[]" data-placeholder="select multiple industries ..."  class="sidebar-industry" multiple>
+            {% for industry in industries %}
+                <option value="{{ industry.id }}">{{ industry.title }}</option>
+            {% endfor %}
+        </select>
+        <br/><br/>
+        <h4>SELECT YOUR PROFESSION HERE</h4>
+        <select name="professions[]" data-placeholder="select multiple professions ..."  class="sidebar-profession" multiple>
+            {% for profession in professions %}
+                <option value="{{ profession.id }}">{{ profession.title }}</option>
+            {% endfor %}
+        </select>
+        <div class="clearfix"></div>
+        <hr class="hr1"/>
+        <button type="submit" class="btn btn-large btn-block btn-warning" type="button">SEARCH NOW<i class="icon-white icon-circle-arrow-right"></i></button>
+    </form>
+</div>

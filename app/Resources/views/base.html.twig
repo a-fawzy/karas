@@ -11,6 +11,8 @@
             <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-responsive.css') }}"/>
             <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}"/>
             <link rel="stylesheet" type="text/css" href="{{ asset('css/flexslider.css') }}"/>
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/chosen.css') }}"/>
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery-ui.css') }}"/>
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         
@@ -18,11 +20,20 @@
             <script type="text/javascript" src="{{ asset('js/jquery-1.10.1.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/jquery.flexslider-min.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('js/holder.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/jquery-ui.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/chosen.jquery.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/tag-it.min.js') }}"></script>
             <script>
                 $(document).ready(function() {
                     $('.flexslider').flexslider({
                         animation: "slide"
+                    });
+                    $('.sidebar-industry').chosen({
+                        width: '95% !important',
+                        inherit_select_classes: true,
+                    });
+                    $('.sidebar-profession').chosen({
+                        width: '95% !important',
                     });
                 });
             </script>
@@ -31,21 +42,7 @@
     <body>
         <div class="wrapper970">
             {% block sideBar %}
-                <div class="section1over3">
-                    <img class="logo" src="{{ asset('img/logo.png') }}"/>
-                    <hr class="hrLogo"/>
-                    <h3>Find Your Job :</h3>
-                    <h4>ENTER YOUR JOB SPECIALITY HERE</h4>
-                    <input class="homeInput" type="text" placeholder="job speciality ..."/>
-                    <h4>ENTER YOUR INDUSTRY HERE</h4>
-                    <input class="homeInput" type="text" placeholder="email address ..."/>
-                    <div class="clearfix">
-                    </div>
-                    <a href="javascript:void(0)" class="btn btn-warning">RESET</a><a href="javascript:void(0)" class="btn btn-info marginLeft10px">SUBMIT</a>
-                    <hr class="hr1"/>
-                    <button class="btn btn-large btn-block btn-warning" type="button">Post Your Resume<i class="icon-white icon-circle-arrow-right"></i></button>
-                    <button class="btn btn-large btn-block btn-info" type="button">Find Resume<i class="icon-white icon-circle-arrow-right"></i></button>
-                </div>
+                {{ render(controller('ObjectsKarasBundle:Job:sideBarSearch')) }}
             {% endblock %}
             
             <div class="section2over3">
@@ -104,6 +101,13 @@
                                 {% endif %}
                                 <li {% block activeService %}{% endblock %}><a href="{{ path('objects_karas_services') }}">SERVICES</a></li>
                                 <li {% block activeContact %}{% endblock %}><a href="{{ path('objects_karas_contact') }}">CONTACT US</a></li>
+                                {% if app.user  %}
+                                    {%if app.user.type == 'employee' %}
+                                        <li {% block activeProfile %}{% endblock %}><a href="{{ path('objects_karas_employee_profile') }}">Profile</a></li>
+                                    {% else %}
+                                        <li {% block activeEmployer %}{% endblock %}><a href="{{ path('employer_profile_edit', {id: app.user.company.id} ) }}">Profile</a></li>
+                                    {% endif %}
+                                {% endif %}
                             </ul>
                         </div>
                     </div>
@@ -191,7 +195,5 @@
                 </div>
             </div>
         {% endblock %}
-        
-
     </body>
 </html>

@@ -1,5 +1,6 @@
 {% extends '::base.html.twig' %}
 {% block activeRequest %} active{% endblock %}
+{% block activeRequestt %}class="active"{% endblock %}
 {% block title %}Add New Job{% endblock %}
 {% block body %}
 {% set originalParameters = app.request.attributes.get('_route_params') | merge(app.request.query.all()) %}
