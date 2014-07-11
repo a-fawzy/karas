@@ -252,7 +252,7 @@ class User implements AdvancedUserInterface {
     /**
      * @var text $type
      *
-     * @ORM\Column(name="type", type="text", length=10)
+     * @ORM\Column(name="type", type="text", length=10, nullable=true)
      */
     private $type;
     
