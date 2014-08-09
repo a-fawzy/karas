@@ -10,6 +10,6 @@ parameters:
     auto_active: true
     login_name_required: true
     twitter_signup_enabled: false
-    facebook_signup_enabled: false
+    facebook_signup_enabled: true
     linkedin_signup_enabled: false
     google_signup_enabled: false

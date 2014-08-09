@@ -11,6 +11,11 @@ objects_admin:
     resource: "@ObjectsAdminBundle/Resources/config/routing.yml"
     prefix:   /admin
 
+ObjectsAPIBundle:
+    resource: "@ObjectsAPIBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
 # Login routes
 #login_check:
 #    path:  /login-check
